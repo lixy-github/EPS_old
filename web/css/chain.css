@@ -1,0 +1,80 @@
+.shop_container{
+    margin-top:45px;
+    width: 1150px;
+}
+.shop_container:before{
+    border:none;
+}
+.chain-list .cl-item{
+    width:750px;
+    border: 2px solid #eaeaea;
+    box-sizing: border-box;
+    border-radius: 3px;
+    padding: 20px 0 5px 20px;
+    font-size:13px;
+    margin-bottom:25px;
+}
+.chain-list .cl-item .cli-name{
+    float:left;
+    width: 50px;
+    text-align: center;
+}
+.chain-list .cl-item .cli-name .clin-color{
+    background:#bedc59;
+    height:20px;
+    border-radius:3px 3px 0 0;
+}
+.chain-list .cl-item .cli-name .clin-text{
+    border:2px solid #eaeaea;
+    border-top:none;
+    border-radius:0 0 3px 3px;
+    padding: 5px;
+}
+.chain-list .cl-item .cli-top{
+    float:left;
+    color:#797979;
+    margin-left: 15px;
+}
+.chain-list .cl-item .cli-top>div,
+.chain-list .cl-item .cli-top .clit-date>p{
+    display:inline-block;
+}
+.chain-list .cl-item .cli-top .clit-company .clitc-name{
+    display: inline-block;
+    margin-left: 5px;
+    width: 155px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.chain-list .cl-item .cli-top .clit-company .fa-user-o{
+    font-size:15px;
+    vertical-align:top;
+}
+.chain-list .cl-item .cli-top .clit-date{
+    margin-left: 50px;
+}
+.chain-list .cl-item .cli-top .clit-date>p{
+    padding-left: 12px;
+    border-left: 1.5px solid #d5d4d4;
+    margin-right: 25px;
+}
+.chain-list .cl-item .cli-top .clit-date>p .fa{
+    margin-right:5px;
+    font-size: 16px;
+}
+.chain-list .cl-item .cli-middle,
+.chain-list .cl-item .cli-bottom{
+    float:left;
+    width: 80%;
+    overflow:hidden;
+}
+.chain-list .cl-item .cli-middle{
+    font-size:21px;
+    color:#000;
+    margin: 15px 0 15px 15px;
+}
+.chain-list .cl-item .cli-bottom{
+    margin: 5px 0 15px 66px;
+    color:#585858;
+    max-height: 35px;
+}

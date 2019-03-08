@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<link rel="stylesheet" href="/css/personal.css">
+<link rel="stylesheet" href="/admin/selectorCss/1140.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="/admin/selectorCss/styles.css" type="text/css" media="screen" />
+<script src="/js/jquery-1.9.1.min.js"></script>
+<style type="text/css">
+	.upload_img_btn{
+		width: 80px;
+		line-height: 0px;
+		height: 34px;
+	}
+</style>
+</head>
+<body>
+<div class="container" style="width:607px">
+	<div class="panel-wrapper">
+		<div class="panel">
+			<div class="tabs">
+			    <ul>
+			      <li class="active"><a href="/admin/back/getSelector.action?demandEntity.random=${demandEntity.random!}" class="shuqianlink">提供类别</a></li>
+			      <li class="labledown"><a href="/admin/back/getSelectorForSearch.action?demandEntity.random=${demandEntity.random!}" class="shuqianlink">单位检索</a></li>
+			    </ul>
+			</div>
+			<!-- .content -->
+			<div class="content">
+				<table id="maintable">
+					<tr>
+		   				<td align="center" bgcolor="#d7efff" colspan="3" style="font-size: 12px;">
+		   					<input type="checkbox" value="生产订单" name="type"> 生产订单 &nbsp;
+		   					<input type="checkbox" value="工序加工" name="type"> 工序加工 &nbsp;
+		   					<input type="checkbox" value="毛衫设计" name="type"> 毛衫设计 &nbsp;
+		   					<input type="checkbox" value="产品质检" name="type"> 产品质检 &nbsp;
+		   					<input type="checkbox" value="原材料" name="type"> 原材料 &nbsp;
+		   					<input type="checkbox" value="成衣销售" name="type"> 成衣销售 &nbsp;
+		   					<input type="checkbox" value="仓储服务" name="type"> 仓储服务 &nbsp;
+		   			 	</td>
+					</tr>
+					<tr>
+					  <td width="270" class="htitle" bgcolor="#d7efff" align="center" height="22" class="searchlist"></td>
+					  <td width="50" class="htitle" bgcolor="#d7efff" align="center" height="22">&nbsp;</td>
+					  <td width="270" class="htitle" align="center" height="22"></td>
+					</tr>
+					<tr height="150">
+						<td align="center" bgcolor="#FFFFFF">
+							<select name="from" id="from" multiple size="10"  style="border:0px;width:200px" ondblclick="moveSelected(from,to)">
+							</select>
+						</td>
+					<td align="center" bgcolor="#FFFFFF">
+						<img src="/admin/selectorCss/rnd_br_next_icon&24.png" onClick="moveSelected(from,to);"><br>
+						<img src="/admin/selectorCss/rnd_br_last_icon&24.png" onClick="moveAllSelecte(from,to);"><br><br>
+						<img src="/admin/selectorCss/rnd_br_prev_icon&24.png" onClick="moveSelected(to,from);"><br>
+						<img src="/admin/selectorCss/rnd_br_first_icon&24.png" onClick="moveAllSelecte(to,from);">
+					</td>
+					<td align="center" bgcolor="#FFFFFF">
+						<select name="to" id="to" multiple size="10"  style="border:0px;width:200px" ondblclick="moveSelected(to,from)">
+						</select>
+					</td>
+					</tr>
+		  		</table>
+				<div id="buttonUnder">
+				    <input type="button" class="upload_img_btn" onclick="xuanDingUser();" value="选 定">&nbsp;&nbsp;
+				</div>
+			</div>
+			<!-- /.content -->
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+
+	function xuanDingUser(){
+		if(to.length==0){
+			window.close();
+			return;
+		}
+		var str = "";
+		var str_real="";
+		for(var i=0;i<to.length;i++){
+			str+=to[i].value+",";
+			str_real+=to[i].innerHTML+",";
+		}
+		
+		eval('opener.str_backfun("'+str+'","'+str_real+'")');
+		window.close();
+	}
+
+	function moveSelected(from,to){
+		for(var i=0;i<to.options.length;i++){
+			to.options[i].selected = false;
+		}
+		
+		var newTo = new Array();
+		for(var i=0;i<from.options.length;i++){
+			if(from.options[i].selected){
+				 newTo[newTo.length] = cloneOption(from.options[i]);
+				 from.options[i] = null;
+				 i--;
+			}
+		}
+		
+		for(i=0; i<newTo.length; i++) {
+			to.options[to.options.length] = newTo[i];
+		}
+	}
+	
+	function moveAllSelecte(from,to){
+		var newTo = new Array();
+		for(var i=0;i<from.options.length;i++){
+			newTo[newTo.length] = cloneOption(from.options[i]);
+			from.options[i] = null;
+			i--;
+		}
+		for(i=0; i<newTo.length; i++) {
+			to.options[to.options.length] = newTo[i];
+		}
+	}
+
+	function cloneOption(option) {
+	    var out = new Option(option.text,option.value);
+	    out.selected = option.selected;
+	    out.defaultSelected = option.defaultSelected;
+	    return out;
+	}
+
+
+	$(function(){
+		$("input[type='checkbox']").click(function(){
+			var str="";
+			var l = $("input[type='checkbox']:checked").length
+			$("input[type='checkbox']:checked").each(function(index){
+				var val = $(this).val();
+				str+=val+",";
+			})
+			
+			
+			$.ajax({
+				url:"getUserEntityByAdvantage.action",
+				type:"post",
+				data:{
+					"advantages":str,
+					"demandEntity.random":"${demandEntity.random!}"
+				},
+				success:function(data){
+					if(data.result==-1){
+						layer.alert(data.msg);
+					}else{
+						var list = data.aaData;
+						var html = "";
+						for(var i=0;i<list.length;i++){
+							html += "<option value='"+list[i].random+"'>"+list[i].companyName+"</option>"
+						}
+						$("#from").html(html);
+					}
+				}
+			})
+			
+		})
+	})
+</script>
+
+
+</body>
+</html>

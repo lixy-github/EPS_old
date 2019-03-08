@@ -1,0 +1,314 @@
+*{
+    margin:0;
+    padding:0;
+}
+img{
+    border:0;
+}
+a{
+    text-decoration:none;
+    cursor:pointer;
+    color:#555;
+}
+a:link,a:avtive,a:visited{
+    color:#555;
+}
+ul,li{
+    list-style:none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+.clearfix:after{
+    visibility:hidden;
+    display:block;
+    content:" ";
+    height:0;
+    font-size:0;
+    clear:both;
+}
+.clearfix{
+    *zoom:1;
+}
+body{
+    font-family:"Microsoft Yahei";
+    color:#555;
+}
+
+/* 头部 */
+/* #header{
+    background:#f6f6f6;
+    border-bottom:2px dashed #e9e9e9;
+    min-height:100px;
+    margin-top: 70px;
+}
+#header .header-div{
+    width:960px;
+    margin:0 auto;
+}
+#header .header-div .hd-left{
+    float:left;
+    width:465px;
+}
+#header .header-div .hd-left .logo{
+    float:left;
+    width:145px;
+    height:90px;
+}
+#header .header-div .hd-left .logo img{
+    width:100%;
+    height:100%;
+}
+#header .header-div .hd-left .hd-title{
+    float: left;
+    padding-left: 38px;
+    line-height: 71px;
+    font-size: 30px;
+    font-weight: normal;
+    margin-top:10px;
+}
+#header .header-div .hd-right{
+    float:right;
+    margin-top:60px;
+}
+#header .header-div .hd-right li{
+    float:left;
+    margin-right:7px;
+}
+#header .header-div .hd-right li a{
+    font-size:14px;
+    margin-right:5px;
+}
+#header .header-div .hd-right li a:hover{
+    color:#ff4e02;
+}
+#header .header-div .hd-right li span{
+    color:#d2d2d2;
+} */
+
+.forgotpw-container{
+    width:1000px;
+    margin:0 auto;
+    margin-top:130px;
+    margin-bottom:60px;
+}
+.forgotpw-container .fgpc-left{
+    float:left;
+    width:540px;
+    height:440px;
+    /* background:url("../images/register-i5.png") no-repeat; */
+    background:url("../images/b-ux-design-aimed-at-millenials.jpg") no-repeat;
+}
+.forgotpw-container .fgpc-left img{
+    width:100%;
+    height:100%;
+}
+.forgotpw-container .fgpc-right{
+    float:right;
+    width: 460px;
+    height: 440px;
+}
+.forgotpw-container .fgpc-right ul{
+    margin-left:145px;
+}
+.forgotpw-container .fgpc-right ul li{
+    float:left;
+    padding: 5px 8px;
+    font-size: 14px;
+}
+.forgotpw-container .fgpc-right ul li i{
+    width: 32px;
+    height: 28px;
+    display: inline-block;
+    vertical-align: bottom;
+    background: url(../images/forget-i2.png) no-repeat;
+}
+.forgotpw-container .fgpc-right .step2 i{
+    background-position:-31px 0;    
+}
+.forgotpw-container .fgpc-right .step3 i{
+    background-position:-62px 0;    
+}
+.forgotpw-container .fgpc-right .z-old{
+    color:#03a1e8;
+}
+.forgotpw-container .fgpc-right .z-old2 i{
+    background-position:-31px -28px;
+}
+.forgotpw-container .fgpc-right .z-old3 i{
+    background-position:-63px -27px;
+}
+.forgotpw-container .fgpc-right .change{
+    margin-left:145px;
+    margin-top: 60px;
+    margin-bottom:50px;
+    position:relative;
+}
+.forgotpw-container .fgpc-right .change>p{
+    width:300px;
+    height: 39px;
+    line-height: 39px;
+    background:#fff;
+    position:relative;
+    font-size: 14px;
+    font-weight: bold;
+    padding-left: 10px;
+    cursor:pointer;
+    border: 1px solid #e2e2e2;
+}
+.forgotpw-container .fgpc-right .change>p i{
+    position: absolute;
+    top: 12px;
+    right: 0;
+    width: 19px;
+    height: 18px;
+    background: url(../images/forget-i3.png) center no-repeat;
+}
+.forgotpw-container .fgpc-right .change .changeBox{
+    position:absolute;
+    top:41px;
+    left:0;
+    border:1px solid #e2e2e2;
+    background:#fff;
+    border-top:none;
+    width:310px;
+    height:0;
+    z-index:2;
+}
+.forgotpw-container .fgpc-right .change .changeBox>p{
+    font-size:12px;
+    height:35px;
+    line-height:35px;
+    padding-left:10px;
+    cursor:pointer;
+}
+.forgotpw-container .fgpc-right .change .changeBox>p:hover{
+    background:#efefef;
+}
+.forgotpw-container .fgpc-right form .marginPublic{
+    margin-top:25px;
+    margin-left:145px;
+    position:relative;
+}
+.forgotpw-container .fgpc-right form input{
+    outline:0;
+    border:none;
+    border:1px solid #e2e2e2;
+    font-size:14px;
+    padding: 8px 0;
+}
+.forgotpw-container .fgpc-right form input:focus{
+    border-color:#ff6b58;
+}
+.forgotpw-container .fgpc-right .intPhone{
+    width: 175px;
+    padding-left: 10px;
+    vertical-align:top;
+}
+.forgotpw-container .codeimg{
+	margin-left:21px;
+}
+.forgotpw-container .fgpc-right .got-code{
+    display: inline-block;
+    margin-left: 20px;
+    width: 100px;
+    height: 33px;
+    line-height: 33px;
+    vertical-align:top;
+    text-align: center;
+    font-size: 13px;
+    color: #888;
+    background: #f0f0f0;
+    cursor:pointer;
+    border:1px solid #e2e2e2;
+    transition:all .3s;
+}
+.forgotpw-container .fgpc-right .got-code:hover{
+    color:#fff;
+    background:#e2e2e2;
+}
+.forgotpw-container .fgpc-right .code11{
+    display: inline-block;
+    margin-left: 20px;
+    width: 100px;
+    height: 35px;
+    line-height: 35px;
+    vertical-align:top;
+    text-align: center;
+    box-sizing:border-box;
+    font-size: 14px;
+    border:1px solid #c1c1c1;
+}
+.forgotpw-container .fgpc-right .phone-code{
+    width:300px;
+    padding-left:10px;
+}
+.forgotpw-container .fgpc-right .submit-btn{
+    display: block;
+    width: 310px;
+    height: 58px;
+    margin-top:35px;
+    line-height: 58px;
+    text-align: center;
+    padding-left: 0;
+    cursor: pointer;
+    font-size: 17px;
+    letter-spacing:10px;
+    color: #fff;
+    background: #ff6450;
+    border: 0;
+    outline:0;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+}
+.verify-step2{
+    margin-top:40px;
+}
+.verify-step3{
+    width:350px;
+    text-align:center;
+    margin-left:125px;
+}
+.verify-step3 .success-logo{
+    width:100px;
+    height:100px;
+    margin-left:128px;
+    margin-top:40px;
+}
+.verify-step3 .success-logo img{
+    width:100%;
+    height:100%;
+}
+.verify-step3 .success-text{
+    color:#03a1e8;
+    line-height: 60px;
+    font-size: 24px;
+}
+.verify-step3 .back-home{
+    font-size:14px;
+    margin-top:20px;
+}
+.verify-step3 .back-home a{
+    padding: 5px;
+    color: #03a1e8;
+    background: #def3f9;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+}
+
+/* 尾部 */
+/* .footer{
+    background:#f6f6f6;
+    border-top:2px dashed #e9e9e9;
+    text-align:center;
+    padding:20px 0 40px;
+    font-size:13px;
+    margin-top:40px;
+} */

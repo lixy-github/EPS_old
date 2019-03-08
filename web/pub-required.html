@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1250px, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>我发布的需求</title>
+    <link rel="stylesheet" href="css/index.css" type="text/css">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/shop.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/personal.css">
+    <link href="css/chain.css" rel="stylesheet">
+    <!-- <link href="css/shop.css" rel="stylesheet"> -->
+    <script src="js/jquery-1.9.1.min.js"></script>
+    <script src="js/head-foot.js"></script>
+    <script src="js/personal.js"></script>
+    <script src="js/webuploader.min.js"></script>
+    <script src="js/diyUpload.js"></script>
+</head>
+
+<body>
+    <!-- 头部2 -->
+    <div class="nav_header_box nhb_fixed">
+        <div class="nav_box">
+            <div class="nav clearfix">
+                <div class="logo">
+                    <a href="">
+                        <img src="images/logo.png">
+                    </a>
+                </div>
+                <div class="login_register_box">
+                    <div class="login-register-btns" style="display:none">
+                        <a class="login">登录</a>
+                        <a class="register">注册</a>
+                    </div>
+                    <!-- 登陆成功后显示购物车 -->
+                    <div class="buy-car-box" style="display:block">
+                        <a class="car-icon fa fa-shopping-cart">
+                            <i class="car_num">0</i>
+                        </a>
+                        <div class="head-img">
+                            <div class="user-head-img">
+                                <img src="images/user-default-photo7.png">
+                                <i class="head-news">9+</i>
+                            </div>
+                            <div class="per_withdraw" style="display:none">
+                                <!-- <i class="fa fa-angle-up"></i> -->
+                                <a href="个人中心.html">个人中心</a>
+                                <a href="" class="news">
+                                    消息
+                                    <span class="news-num">(15)</span>
+                                </a>
+                                <a href="index.html">退出</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="nav_list">
+                    <ul class="clearfix">
+                        <li>
+                            <a href="">首页</a>
+                        </li>
+                        <li>
+                            <a href="">供应链</a>
+                        </li>
+                        <li>
+                            <a href="">金融</a>
+                        </li>
+                        <li>
+                            <a href="market.html">超市</a>
+                        </li>
+                        <li>
+                            <a href="">设计</a>
+                        </li>
+                        <li>
+                            <a href="">智能工厂</a>
+                        </li>
+                        <li class="line line-js"></li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+        <!-- 下线 -->
+        <div class="navFixed_line"></div>
+    </div>
+
+    <div class="little_nav clearfix" style="display:none">
+        <div class="little_nav_logo">
+            <a>
+                <img src="images/logo.png">
+            </a>
+        </div>
+        <div class="little_nav_list">
+            <p class="little_btn fa fa-bars"></p>
+        </div>
+        <div class="login_register_box lnl_status">
+            <div class="login-register-btns" style="display:none">
+                <a class="login">登录</a>
+                <a class="register">注册</a>
+            </div>
+            <!-- 登陆成功后显示购物车 -->
+            <div class="buy-car-box" style="display:block">
+                <a class="car-icon fa fa-shopping-cart">
+                    <i class="car_num">0</i>
+                </a>
+                <div class="head-img">
+                    <div class="user-head-img">
+                        <img src="images/user-default-photo7.png">
+                        <i class="head-news">9+</i>
+                    </div>
+                    <div class="per_withdraw" style="display:none">
+                        <!-- <i class="fa fa-angle-up"></i> -->
+                        <a href="个人中心.html">个人中心</a>
+                        <a href="" class="news">
+                            消息
+                            <span class="news-num">(15)</span>
+                        </a>
+                        <a href="index.html">退出</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="nav_cont" style="display:none">
+            <ul>
+                <li>
+                    <a href="">首页</a>
+                </li>
+                <li>
+                    <a href="">供应链</a>
+                </li>
+                <li>
+                    <a href="">金融</a>
+                </li>
+                <li>
+                    <a href="market.html">超市</a>
+                </li>
+                <li>
+                    <a href="">设计</a>
+                </li>
+                <li>
+                    <a href="">智能工厂</a>
+                </li>
+            </ul>
+        </div>
+        <!-- 下线 -->
+        <div class="navFixed_line"></div>
+    </div>
+    <!-- 头部2 结束-->
+
+    <div class="person-container clearfix">
+        <div class="sc_left">
+            <div class="chain-list">
+                <div class="cl-item clearfix">
+                    <div class="cli-name">
+                        <p class="clin-color"></p>
+                        <p class="clin-text">成衣订购</p>
+                    </div>
+                    <div class="cli-top">
+                        <div class="clit-company">
+                            <i class="fa fa-user-o"></i>
+                            <span class="clitc-name">发布单位名字</span>
+                        </div>
+                        <div class="clit-date">
+                            <p>
+                                <i class="fa fa-tag fa-rotate-90"></i>
+                                <span>2018/03/15</span>
+                            </p>
+                            <p>
+                                <i class="fa fa-commenting-o"></i>
+                                <span>
+                                    留言(
+                                    <span>2</span>
+                                    )
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="cli-middle">
+                        5000件女款羊绒衫采购需求
+                    </div>
+                    <div class="cli-bottom">
+                        需求详情描述需求详情描述需求详情描述需求详情描述需求详情描述需求详情描述
+                    </div>
+                </div>
+                <div class="cl-item clearfix">
+                    <div class="cli-name">
+                        <p class="clin-color"></p>
+                        <p class="clin-text">成衣订购</p>
+                    </div>
+                    <div class="cli-top">
+                        <div class="clit-company">
+                            <i class="fa fa-user-o"></i>
+                            <span class="clitc-name">发布单位名字</span>
+                        </div>
+                        <div class="clit-date">
+                            <p>
+                                <i class="fa fa-tag fa-rotate-90"></i>
+                                <span>2018/03/15</span>
+                            </p>
+                            <p>
+                                <i class="fa fa-commenting-o"></i>
+                                <span>
+                                    留言(
+                                    <span>3</span>
+                                    )
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="cli-middle">
+                        5000件女款羊绒衫采购需求
+                    </div>
+                    <div class="cli-bottom">
+                        需求详情描述需求详情描述需求详情描述需求详情描述需求详情描述需求详情描述
+                    </div>
+                </div>
+                <div class="cl-item clearfix">
+                    <div class="cli-name">
+                        <p class="clin-color"></p>
+                        <p class="clin-text">成衣订购</p>
+                    </div>
+                    <div class="cli-top">
+                        <div class="clit-company">
+                            <i class="fa fa-user-o"></i>
+                            <span class="clitc-name">发布单位名字</span>
+                        </div>
+                        <div class="clit-date">
+                            <p>
+                                <i class="fa fa-tag fa-rotate-90"></i>
+                                <span>2018/03/15</span>
+                            </p>
+                            <p>
+                                <i class="fa fa-commenting-o"></i>
+                                <span>
+                                    留言(
+                                    <span>2</span>
+                                    )
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="cli-middle">
+                        5000件女款羊绒衫采购需求
+                    </div>
+                    <div class="cli-bottom">
+                        需求详情描述需求详情描述需求详情描述需求详情描述需求详情描述需求详情描述
+                    </div>
+                </div>
+                <div class="cl-item clearfix">
+                    <div class="cli-name">
+                        <p class="clin-color"></p>
+                        <p class="clin-text">工序加工</p>
+                    </div>
+                    <div class="cli-top">
+                        <div class="clit-company">
+                            <i class="fa fa-user-o"></i>
+                            <span class="clitc-name">发布单位名字</span>
+                        </div>
+                        <div class="clit-date">
+                            <p>
+                                <i class="fa fa-tag fa-rotate-90"></i>
+                                <span>2018/03/15</span>
+                            </p>
+                            <p>
+                                <i class="fa fa-commenting-o"></i>
+                                <span>
+                                    留言(
+                                    <span>2</span>
+                                    )
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="cli-middle">
+                        5000件女款羊绒衫采购需求
+                    </div>
+                    <div class="cli-bottom">
+                        需求详情描述需求详情描述需求详情描述需求详情描述需求详情描述需求详情描述
+                    </div>
+                </div>
+                <div class="cl-item clearfix">
+                    <div class="cli-name">
+                        <p class="clin-color"></p>
+                        <p class="clin-text">工序加工</p>
+                    </div>
+                    <div class="cli-top">
+                        <div class="clit-company">
+                            <i class="fa fa-user-o"></i>
+                            <span class="clitc-name">发布单位名字</span>
+                        </div>
+                        <div class="clit-date">
+                            <p>
+                                <i class="fa fa-tag fa-rotate-90"></i>
+                                <span>2018/03/15</span>
+                            </p>
+                            <p>
+                                <i class="fa fa-commenting-o"></i>
+                                <span>
+                                    留言(
+                                    <span>2</span>
+                                    )
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="cli-middle">
+                        5000件女款羊绒衫采购需求
+                    </div>
+                    <div class="cli-bottom">
+                        需求详情描述需求详情描述需求详情描述需求详情描述需求详情描述需求详情描述
+                    </div>
+                </div>
+                <div class="cl-item clearfix">
+                    <div class="cli-name">
+                        <p class="clin-color"></p>
+                        <p class="clin-text">工序加工</p>
+                    </div>
+                    <div class="cli-top">
+                        <div class="clit-company">
+                            <i class="fa fa-user-o"></i>
+                            <span class="clitc-name">发布单位名字</span>
+                        </div>
+                        <div class="clit-date">
+                            <p>
+                                <i class="fa fa-tag fa-rotate-90"></i>
+                                <span>2018/03/15</span>
+                            </p>
+                            <p>
+                                <i class="fa fa-commenting-o"></i>
+                                <span>
+                                    留言(
+                                    <span>2</span>
+                                    )
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="cli-middle">
+                        5000件女款羊绒衫采购需求
+                    </div>
+                    <div class="cli-bottom">
+                        需求详情描述需求详情描述需求详情描述需求详情描述需求详情描述需求详情描述
+                    </div>
+                </div>
+                <div class="cl-item clearfix">
+                    <div class="cli-name">
+                        <p class="clin-color"></p>
+                        <p class="clin-text">原料采购</p>
+                    </div>
+                    <div class="cli-top">
+                        <div class="clit-company">
+                            <i class="fa fa-user-o"></i>
+                            <span class="clitc-name">发布单位名字</span>
+                        </div>
+                        <div class="clit-date">
+                            <p>
+                                <i class="fa fa-tag fa-rotate-90"></i>
+                                <span>2018/03/15</span>
+                            </p>
+                            <p>
+                                <i class="fa fa-commenting-o"></i>
+                                <span>
+                                    留言(
+                                    <span>2</span>
+                                    )
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="cli-middle">
+                        5000件女款羊绒衫采购需求
+                    </div>
+                    <div class="cli-bottom">
+                        需求详情描述需求详情描述需求详情描述需求详情描述需求详情描述需求详情描述
+                    </div>
+                </div>
+                <div class="cl-item clearfix">
+                    <div class="cli-name">
+                        <p class="clin-color"></p>
+                        <p class="clin-text">原料采购</p>
+                    </div>
+                    <div class="cli-top">
+                        <div class="clit-company">
+                            <i class="fa fa-user-o"></i>
+                            <span class="clitc-name">发布单位名字</span>
+                        </div>
+                        <div class="clit-date">
+                            <p>
+                                <i class="fa fa-tag fa-rotate-90"></i>
+                                <span>2018/03/15</span>
+                            </p>
+                            <p>
+                                <i class="fa fa-commenting-o"></i>
+                                <span>
+                                    留言(
+                                    <span>2</span>
+                                    )
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="cli-middle">
+                        5000件女款羊绒衫采购需求
+                    </div>
+                    <div class="cli-bottom">
+                        需求详情描述需求详情描述需求详情描述需求详情描述需求详情描述需求详情描述
+                    </div>
+                </div>
+                <div class="cl-item clearfix">
+                    <div class="cli-name">
+                        <p class="clin-color"></p>
+                        <p class="clin-text">原料采购</p>
+                    </div>
+                    <div class="cli-top">
+                        <div class="clit-company">
+                            <i class="fa fa-user-o"></i>
+                            <span class="clitc-name">发布单位名字</span>
+                        </div>
+                        <div class="clit-date">
+                            <p>
+                                <i class="fa fa-tag fa-rotate-90"></i>
+                                <span>2018/03/15</span>
+                            </p>
+                            <p>
+                                <i class="fa fa-commenting-o"></i>
+                                <span>
+                                    留言(
+                                    <span>2</span>
+                                    )
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="cli-middle">
+                        5000件女款羊绒衫采购需求
+                    </div>
+                    <div class="cli-bottom">
+                        需求详情描述需求详情描述需求详情描述需求详情描述需求详情描述需求详情描述
+                    </div>
+                </div>
+                <div class="cl-item clearfix">
+                    <div class="cli-name">
+                        <p class="clin-color"></p>
+                        <p class="clin-text">服装设计</p>
+                    </div>
+                    <div class="cli-top">
+                        <div class="clit-company">
+                            <i class="fa fa-user-o"></i>
+                            <span class="clitc-name">发布单位名字</span>
+                        </div>
+                        <div class="clit-date">
+                            <p>
+                                <i class="fa fa-tag fa-rotate-90"></i>
+                                <span>2018/03/15</span>
+                            </p>
+                            <p>
+                                <i class="fa fa-commenting-o"></i>
+                                <span>
+                                    留言(
+                                    <span>2</span>
+                                    )
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="cli-middle">
+                        5000件女款羊绒衫采购需求
+                    </div>
+                    <div class="cli-bottom">
+                        需求详情描述需求详情描述需求详情描述需求详情描述需求详情描述需求详情描述
+                    </div>
+                </div>
+            </div>
+            <!-- 分页 -->
+            <div class="pagination pag-two"></div>
+        </div>
+        <div class="pc-right">
+            <ul>
+                <li>
+                    <p>会员管理</p>
+                    <div class="drop-down" style="display:none">
+                        <a href="个人中心.html">用户中心</a>
+                        <a href="change-password.html">修改密码</a>
+                        <a href="bind_mail_phone.html">绑定邮箱/手机</a>
+                        <a href="完善资料.html">单位信息</a>
+                        <a>工厂认证</a>
+                    </div>
+                </li>
+                <li>
+                    <p>需求管理</p>
+                    <div class="drop-down" style="display:none">
+                        <a href="">发布新需求</a>
+                        <a href="">我发布的需求</a>
+                        <a href="">待我响应的需求</a>
+                    </div>
+                </li>
+                <li>
+                    <p>订单管理</p>
+                    <div class="drop-down" style="display:none">
+                        <a href="">在线下单</a>
+                        <a href="">我下的订单</a>
+                        <a href="">我接的订单</a>
+                    </div>
+                </li>
+                <li>
+                    <p>财务管理</p>
+                    <div class="drop-down" style="display:none">
+                        <a href="">我的账户</a>
+                        <a href="">支付记录</a>
+                        <a href="">开票管理</a>
+                    </div>
+                </li>
+                <li>
+                    <p>商品超市</p>
+                    <div class="drop-down" style="display:none">
+                        <a href="">我发布的商品</a>
+                        <a href="">我的购物车</a>
+                        <a href="">我购买的商品</a>
+                        <a href="">我的销售交易</a>
+                    </div>
+                </li>
+                <li>
+                    <p>收藏夹</p>
+                    <div class="drop-down" style="display:none">
+                        <a href="">我关注的单位</a>
+                        <a href="">我关注的商品</a>
+                        <a href="">我关注的需求</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+    <!-- 尾部 -->
+    <div id="footer">
+        <div class="footer-box clearfix">
+            <div class="footer-logo">
+            </div>
+            <div class="foot-info">
+                <ul class="foot-link clearfix">
+                    <li>
+                        <a>易品速介绍</a>
+                        <i></i>
+                    </li>
+                    <li>
+                        <a>法律声明</a>
+                        <i></i>
+                    </li>
+                    <li>
+                        <a>用户协议</a>
+                        <i></i>
+                    </li>
+                    <li>
+                        <a>服务价格</a>
+                        <i></i>
+                    </li>
+                    <li>
+                        <a>联系我们</a>
+                    </li>
+                </ul>
+                <div class="company-add">
+                    <p>
+                        地址：嘉兴桐乡科创园三幢701-703室&nbsp;&nbsp;&nbsp;&nbsp;客服热线：400-100-4811
+                    </p>
+                    <p>
+                        &copy;&nbsp;山英智能科技（桐乡）有限公司&nbsp;&nbsp;&nbsp;&nbsp;版权所有
+                    </p>
+                    <p>
+                        浙ICP备111111111号-1
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 分页
+        var obj, j;
+        var page = 0;
+        var currentPage = 0; //当前页
+        var listNum = 3; //每页显示个数
+        var PagesLen; //总页数
+        var PageNum = 2; //分页链接个数
+
+        window.onload = function () {
+            obj = $(".chain-list .cl-item");
+            j = obj.length; //要分页数据的个数
+            PagesLen = Math.ceil(j / listNum); //总页数
+            upPage(0);
+        }
+
+        function upPage(p) {
+            currentPage = p
+            //内容变换
+            for (var i = 0; i < j; i++) {
+                obj[i].style.display = "none"
+            }
+            for (var i = p * listNum; i < (p + 1) * listNum; i++) {
+                if (obj[i]) obj[i].style.display = "block";
+
+            }
+            //分页链接变换
+            // var strS = '<a href="#" onclick="upPage(0)">首页</a> '; //首页
+            var strPrev = '<a href="javascript:;" onclick="upPage(' + 'currentPage==0?0:(currentPage-1)' +
+                ')">上一页</a> '; //上一页
+            var PageNum_2 = PageNum % 2 == 0 ? Math.ceil(PageNum / 2) + 1 : Math.ceil(PageNum / 2);
+            var PageNum_3 = PageNum % 2 == 0 ? Math.ceil(PageNum / 2) : Math.ceil(PageNum / 2) + 1;
+
+            var strC = "",
+                startPage, endPage;
+            if (PageNum >= PagesLen) {
+                startPage = 0;
+                endPage = PagesLen - 1;
+            } else if (currentPage < PageNum_2) {
+                startPage = 0;
+                endPage = PagesLen - 1 > PageNum ? PageNum : PagesLen - 1;
+            } else {
+                startPage = (currentPage + PageNum_3 >= PagesLen) ? PagesLen - PageNum - 1 : currentPage -
+                    PageNum_2 +
+                    1;
+                var t = startPage + PageNum;
+                endPage = (t > PagesLen) ? PagesLen - 1 : t;
+            }
+            // console.log(startPage, endPage);
+            for (var i = startPage; i <= endPage; i++) {
+                if (i == currentPage) {
+                    strC += '<a class="page_check" href="javascript:;" onclick="upPage(' + i + ')">' + (i + 1) +
+                        '</a> ';
+                } else {
+                    strC += '<a class="page_page" href="javascript:;" onclick="upPage(' + i + ')">' + (i + 1) +
+                        '</a> ';
+                }
+            }
+            // var strE = '<a href="#" onclick="upPage(' + (PagesLen - 1) + ')">尾页</a>'; //尾页
+            var strNext = '<a href="javascript:;" onclick="upPage(' +
+                'currentPage==(PagesLen - 1)?(PagesLen - 1):(currentPage+1)' + ')">下一页</a>'; //下一页
+
+            '<input type="submit" value="提交" onclick="toPage()">';
+            $(".pagination").html(strPrev + strC + strNext);
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1250px, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>完善资料</title>
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/personal.css">
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
+    <script src="/js/jquery-1.9.1.min.js"></script>
+    <script src="/js/personal.js"></script>
+    <script src="/js/webuploader.min.js"></script>
+    <script src="/js/diyUpload.js"></script>
+    
+    <script type="text/javascript" src="/js/myjs/user/wszl.js"></script>
+</head>
+
+<body>
+    <!-- 导航条 -->
+    <#include "/public/menu.ftl">
+
+    <!-- 主体内容 -->
+    <div class="person-container clearfix">
+        
+        <!-- 表单 因为审核的时候也需要 所以抽取 -->
+        <#include "/user/wszl_form.ftl">
+        
+        <#include "/public/grzxRightMenu.ftl">
+        
+    </div>
+ 
+ 	<!-- 尾部 -->
+    <#include "/public/foot.ftl">
+    
+
+	<script type="text/javascript" src="/js/myjs/user/uploadZzwj.js"></script>
+</body>
+
+</html>

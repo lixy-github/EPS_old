@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1250px, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>发布需求</title>
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/personal.css">
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
+    <script src="/js/jquery-1.9.1.min.js"></script>
+    <script src="/js/personal.js"></script>
+    <script src="/js/webuploader.min.js"></script>
+    <script src="/js/diyUpload.js"></script>
+    
+    <script type="text/javascript" src="/js/myjs/publicFun.js"></script>
+    <script type="text/javascript" src="/js/myjs/user/releaseDemand.js"></script>
+    
+    <style type="text/css">
+    	.publish_goods_box {
+		    padding: 20px 0;
+		    border: 1px solid white;
+		}
+    </style>
+</head>
+
+<body>
+    <!-- 导航条 -->
+    <#include "/public/menu.ftl">
+
+    <!-- 主体内容 -->
+    <div class="person-container clearfix">
+    	<#include "/user/demand_form.ftl">
+        
+        <#include "/public/grzxRightMenu.ftl">
+    </div>
+    
+    <!-- 尾部 -->
+    <#include "/public/foot.ftl">
+    
+</body>
+
+</html>

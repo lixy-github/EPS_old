@@ -1,0 +1,1175 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-size:100%;
+    font-weight:normal;
+}
+h1,h2,h3,h4,h4,h6{
+    font-weight:bold;
+}
+ul,li{
+    list-style:none;
+}
+img{
+    border:0;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+a{
+    text-decoration:none;
+    cursor:pointer;
+}
+a:active,a:link,a:visited{
+    color:#000;
+}
+input{
+    outline:none;
+}
+.clearfix:after{
+    visibility:hidden;
+    display:block;
+    content:"";
+    clear:both;
+    font-size:0;
+    height:0;
+}
+.clearfix{
+    *zoom:1;
+}
+body{
+    font-family:"Microsoft YaHei",Arial,Helvetica,sans-serif;
+    min-width:1250px;
+}
+
+.wrapper-container{
+    width:1000px;
+    margin:0 auto;
+    margin-top:130px;
+    margin-bottom:60px;
+}
+
+.wrapper-container .change-color{
+    color:#159eee;
+    cursor:pointer;
+}
+.change-color:hover{
+    color:#fa462e;
+}
+
+.header{
+    width:100%;
+    position:relative;
+}
+
+.head-banner{
+    width:100%;
+    height:250px;
+    background:url("../images/head-banner.png") no-repeat;
+    background-size:cover;
+    position:relative;
+}
+.head-banner .hb-name{
+    position:absolute;
+    left: 136px;
+    top: 120px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 38px;
+}
+
+/* 顶部轮播 */
+.header .slideBox {
+    width: 100%;
+    height: 465px;
+    overflow: hidden;
+    position: relative;
+}
+
+.header .slideBox .hd {
+    height: 15px;
+    position: absolute;
+    left: 50%;
+    bottom: 15px;
+    /* margin-left:-58px; */
+    z-index: 1;
+}
+
+.header .slideBox .hd ul {
+    zoom: 1;
+    float: left;
+}
+
+.header .slideBox .hd ul li {
+    float: left;
+    margin-right: 15px;
+    width: 14px;
+    height: 14px;
+    line-height: 14px;
+    text-align: center;
+    background: rgba(255,255,255,.5);
+    cursor: pointer;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+
+.header .slideBox .hd ul li.on {
+    background: #fff;
+    position:relative;
+}
+.header .slideBox .hd ul li.on:after {
+    display:block;
+    content:"";
+    width:130%;
+    height:130%;
+    border-radius:50%;
+    border:2px solid #fff;
+    position:absolute;
+    top:-4px;
+    left:-4px;
+}
+
+.header .slideBox .bd {
+    position: relative;
+    height: 100%;
+    z-index: 0;
+}
+
+.header .slideBox .bd li {
+    zoom: 1;
+    vertical-align: middle;
+    position:relative;
+}
+
+.header .slideBox .bd img {
+    width: 100%;
+    height: 465px;
+    display: block;
+}
+
+.header .slideBox .bd ul li .caption{
+    position:absolute;
+    top:120px;
+    left:200px;
+    color:#fff;
+}
+.header .slideBox .bd ul li .caption h1{
+    width: 1000px;
+    height: 80px;
+    font-size: 63px;
+    font-weight:normal;
+    overflow: hidden;
+    margin-bottom:20px;
+}
+.header .slideBox .bd ul li .caption h2{
+    width: 800px;
+    height: 65px;
+    overflow: hidden;
+    margin-bottom:40px;
+}
+.header .slideBox .bd ul li .caption>p a{
+    color:#fff;
+    display:inline-block;
+    width:170px;
+    height:50px;
+    box-sizing:border-box;
+    text-align:center;
+    line-height:46px;
+    border-radius:3px;
+    position:relative;
+    z-index:1;
+    overflow:hidden;
+}
+.header .slideBox .bd ul li .caption>p .talk{
+    background:#159eee;
+    line-height:50px;
+}
+.header .slideBox .bd ul li .caption>p .talk:after{
+    position: absolute;
+    content: "";
+    display: block;
+    top: 0%;
+    bottom: 0;
+    left: -10%;
+    right: 0;
+    margin: auto;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: #3f3e3e;
+    transition: all .2s ease-out;
+    z-index: -1;
+}
+.header .slideBox .bd ul li .caption>p .talk:hover:after{
+    width: 150%;
+    height: 500%;
+}
+.header .slideBox .bd ul li .caption>p .theme{
+    border:2px solid rgba(255, 255, 255, .35);
+    background:transparent;
+    margin-left:10px;
+    vertical-align:top;
+}
+.header .slideBox .bd ul li .caption>p .theme:after{
+    position: absolute;
+    top: 0%;
+    bottom: 0;
+    left: -10%;
+    right: 0;
+    margin: auto;
+    width: 0;
+    height: 0;
+    display: block;
+    content: "";
+    background: #159eee;
+    border-radius: 50%;
+    transition: all .2s ease-out;
+    z-index: -1;
+}
+.header .slideBox .bd ul li .caption>p .theme:hover:after{
+    width: 150%;
+    height: 500%;
+}
+.header .slideBox .bd ul li .caption>p .theme:hover{
+    border-color:#159eee;
+}
+
+.header .slideBox .prev,
+.header .slideBox .next {
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    text-align: center;
+    line-height: 70px;
+    top: 50%;
+    left: 0;
+    margin-top: -35px;
+    z-index: 10;
+    background: rgba(255,255,255,.4);
+    color: #fff;
+    font-size: 21px;
+}
+
+.header .slideBox .next {
+    left: auto;
+    right: 0;
+}
+
+.header .slideBox .prevStop {
+    display: none;
+}
+
+.header .slideBox .nextStop {
+    display: none;
+}
+/* 顶部轮播 结束*/
+
+/* 登录 */
+.loginbox{
+    background:rgba(0,0,0,.3);
+    width:100%;
+    height:100%;
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:1000;
+}
+.loginbox .login-account{
+    position:absolute;
+    padding: 0 60px;
+    width: 300px;
+    height: auto;
+    /* min-height: 375px; */
+    background:#fff;
+    top:50%;
+    left:50%;
+    margin-top:-222px;
+    margin-left:-221px;
+    text-align:center;
+}
+.loginbox .login-account .close{
+    position:absolute;
+    width:50px;
+    height:50px;
+    top:0;
+    right:0;
+    cursor:pointer;
+    background:url("../images/pop-close2.png") no-repeat center center;
+}
+.loginbox .login-account .logintitle{
+    font-size:18px;
+    margin-top:30px;
+    color:#555;
+}
+.loginbox .login-account form{
+    text-align:left;
+    margin-top:20px;
+}
+.loginbox .login-account form input{
+    border:1px solid #e2e2e2;
+    padding:10px;
+    color:#888;
+    font-size:14px;
+    outline:0;
+}
+.loginbox .login-account form input:focus{
+    border:1px solid #ff6b58;
+}
+.loginbox .login-account .phone{
+    width:278px;
+}
+.loginbox .login-account .radios{
+    margin-top:20px;
+}
+.loginbox .login-account .radios span{
+    color: #565656;
+    font-size: 12px;
+    cursor: pointer;
+    margin-right:40px;
+}
+.loginbox .login-account .codes{
+    margin-top:23px;
+    position:relative;
+}
+.loginbox .login-account .codes .code{
+    width:110px;
+    margin-right:2px;
+}
+.loginbox .login-account .codes>span{
+    display: inline-block;
+    border: 1px solid #e2e2e2;
+    width: 100px;
+    height: 37px;
+    vertical-align: top;
+}
+.loginbox .login-account .codes>a{
+    color:#888;
+    font-size:12px;
+    margin-left: 5px;
+    cursor:pointer;
+}
+.loginbox .login-account .codes>a:hover{
+    color:#f44d37;
+}
+.loginbox .login-account .inputcodebox{
+    margin-top:23px;
+    position:relative;
+}
+.loginbox .login-account .inputcodebox .inputcode{
+    width:130px;
+    margin-right:12px;
+}
+.loginbox .login-account .inputcodebox .getcode{
+    display:inline-block;
+    width:128px;
+    height:37px;
+    line-height:37px;
+    font-size:13px;
+    text-align:center;
+    color:#888;
+    background:#f0f0f0;
+    border:1px solid #e2e2e2;
+    vertical-align:bottom;
+    cursor:pointer;
+    transition:all .3s ease-out;
+}
+.loginbox .login-account .inputcodebox .getcode:hover{
+    color:#fff;
+    background:#e2e2e2;
+}
+.loginbox .login-account .entry{
+    width: 298px;
+    height: 44px;
+    line-height: 44px;
+    font-size: 18px;
+    background:#ff6450;
+    margin-top: 23px;
+    border: 0;
+    color: #fff;
+    letter-spacing: 10px;
+    outline:0;
+    cursor:pointer;
+}
+.loginbox .login-account .entry:hover{
+    background:#f44d37;
+}
+.loginbox .login-account .forgetbox{
+    margin-top:20px;
+    margin-bottom: 40px;
+}
+.loginbox .login-account .forgetbox a{
+    color:#565656;
+    font-size:12px;
+    cursor:pointer;
+}
+.loginbox .login-account .forgetbox a:last-child{
+    margin-left: 172px;
+}
+.loginbox .login-account .forgetbox a:hover{
+    color:#f44d37;
+}
+.loginbox .login-account .phonePassword{
+    width:278px;
+}
+
+/* 手机注册 */
+.registerbox{
+    position:fixed;
+    background:rgba(0,0,0,0.3);
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+    z-index:1000;
+}
+.registerbox .register-account{
+    position:absolute;
+    padding: 0 60px;
+    width: 300px;
+    height: auto;
+    min-height: 375px;
+    background:#fff;
+    top:50%;
+    left:50%;
+    margin-top:-272px;
+    margin-left:-221px;
+    text-align:center;
+    padding-top:20px;
+}
+.registerbox .register-account .close{
+    position:absolute;
+    width:50px;
+    height:50px;
+    top:0;
+    right:0;
+    cursor:pointer;
+    background:url("../images/pop-close2.png") no-repeat center center;
+}
+
+.registerbox .register-account .changeRegisterBtns{
+    position:absolute;
+    top:52px;
+    right:60px;
+}
+.registerbox .register-account .changeTop{
+    top:56px;
+}
+.registerbox .register-account .changeRegisterBtns span{
+    font-size:12px;
+    cursor:pointer;
+    color:#555;
+}
+
+.registerbox .register-account .logintitle{
+    font-size:18px;
+    margin-top:30px;
+    color:#555;
+}
+.registerbox .register-account form{
+    text-align:left;
+    margin-top:20px;
+}
+.registerbox .register-account form input{
+    border:1px solid #e2e2e2;
+    padding:10px;
+    color:#888;
+    font-size:14px;
+    outline:0;
+}
+.registerbox .register-account input:focus{
+    border:1px solid #ff6b58;
+}
+.registerbox .register-account .phone{
+    width:278px;
+}
+.registerbox .register-account .phonePassword,
+.registerbox .register-account .email{
+    width:278px;
+}
+.registerbox .register-account .codes{
+    margin-top:23px;
+    position:relative;
+}
+.registerbox .register-account .codes .dnot-pass{
+    top:40px;
+    left:0px;
+    border:0;
+}
+.registerbox .register-account .codes .code{
+    width:110px;
+    margin-right:2px;
+}
+.registerbox .register-account .codes>span{
+    display: inline-block;
+    border: 1px solid #e2e2e2;
+    width: 100px;
+    height: 37px;
+    vertical-align: top;
+}
+.registerbox .register-account .codes>a{
+    color:#888;
+    font-size:12px;
+    margin-left: 5px;
+    cursor:pointer;
+}
+.registerbox .register-account .reformcode .reformintcode{
+    width:278px;
+}
+.registerbox .register-account .codes>a:hover{
+    color:#f44d37;
+}
+.registerbox .register-account .inputcodebox{
+    margin-top:23px;
+    position:relative;
+}
+.registerbox .register-account .inputcodebox .dnot-pass{
+    left: 0;
+    top: 40px;
+}
+.registerbox .register-account .inputcodebox .inputcode{
+    width:130px;
+    margin-right:12px;
+}
+.registerbox .register-account .inputcodebox .getcode,
+.foxRegister .getEmailcode{
+    display:inline-block;
+    width:128px;
+    height:37px;
+    line-height:37px;
+    font-size:13px;
+    text-align:center;
+    color:#888;
+    background:#f0f0f0;
+    border:1px solid #e2e2e2;
+    vertical-align:bottom;
+    cursor:pointer;
+    transition:all .3s ease-out;
+}
+.registerbox .register-account .inputcodebox .getcode:hover{
+    color:#fff;
+    background:#e2e2e2;
+}
+.registerbox .register-account .entry{
+    width: 298px;
+    height: 44px;
+    line-height: 44px;
+    font-size: 18px;
+    background:#ff6450;
+    margin-top: 20px;
+    border: 0;
+    color: #fff;
+    letter-spacing: 10px;
+    outline:0;
+    cursor:pointer;
+}
+.registerbox .register-account .entry:hover{
+    background:#f44d37;
+}
+.registerbox .register-account .readbox{
+    margin-top:20px;
+    color:#565656;
+    font-size:12px;
+}
+.registerbox .register-account .haved-account{
+    margin-top:20px;
+    margin-bottom:40px;
+    text-align:center;
+    color:#565656;
+    font-size:12px;
+}
+.registerbox .register-account .haved-account a{
+    cursor:pointer;
+}
+.registerbox .register-account .haved-account a:hover{
+    color:#f44d37;
+}
+.dnot-pass-box{
+    position:relative;
+    margin-top: 23px;
+}
+.dnot-pass{
+    color:#f44d37;
+    font-size:12px;
+    position:absolute;
+    border: 0;
+    top:40px;
+    left:0px;
+    display:block;
+    /* display:none; */
+}
+
+.loginbox .login-account .codes .dnot-pass{
+    left: 0px;
+    top: 40px;
+    border: 0;
+}
+.loginbox .login-account .inputcodebox .dnot-pass{
+    left: 0px;
+    top: 40px;
+}
+
+/* 遮罩层 */
+#bg-mask {
+    width:100%;
+    height:100%;
+    background-color:#000;
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:99998;
+    opacity:0.3;
+    /*兼容IE8及以下版本浏览器*/
+    filter: alpha(opacity=30);
+    display:none;
+}
+
+#bg-mask-msg {
+    width:200px;
+    height:200px;
+    margin: auto;
+    position: fixed;
+    z-index:99999;
+    top: 0;
+    bottom: 0;
+    left: 40%;
+    right: 40%;
+    display:none;
+}
+
+.hide{
+	display: none;
+}
+.show{
+	display: block;
+}
+
+/* 导航条2 */
+.nav_header_box{
+    width:100%;
+    position:absolute;
+    top:0;
+    left:0;
+    z-index:1000;
+}
+.nav_header_box .nav_box{
+    width:85%;
+    margin:0 auto;
+    color:#fff;
+}
+.nav_header_box .nav_box .nav .logo{
+    float:left;
+    width:145px;
+    height:90px;
+}
+.nav_header_box .nav_box .nav .logo img{
+    width:100%;
+    height:100%;
+}
+.nav_header_box .nav_box .nav .nav_list{
+    float:right;
+    margin-right: 20px;
+    margin-top: 33px;
+}
+.nav_header_box .nav_box .nav .nav_list ul li{
+    float:left;
+    margin-left: 10px;
+}
+.nav_header_box .nav_box .nav .nav_list ul li a{
+    position: relative;
+    padding: 5px 20px;
+    color: #fff;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all .3s;
+    z-index:1;
+}
+.nav_header_box .nav_box .nav .nav_list ul li a:after{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    content: "";
+    display: block;
+    width: 100%;
+    height: 0;
+    background: #159eee;
+    transition: all .3s;
+    border-radius:3px;
+    z-index: -1;
+}
+.nav_header_box .nav_box .nav .nav_list ul li a.active:after {
+    height: 100%;
+}
+.nav_header_box .nav_box .nav .nav_list ul li.line{
+    border: 0.5px solid #fff;
+    height: 30px;
+    margin-top: -5px;
+    margin-left: 20px;
+    margin-right: 15px;
+}
+
+.nav_header_box .nav_box .nav .login_register_box{
+    float:right;
+    margin-top:33px;
+}
+.nav_header_box .nav_box .nav .login_register_box .login-register-btns a{
+    padding: 5px 20px;
+    color: #fff;
+    margin-right: 5px;
+    cursor: pointer;
+}
+.nav_header_box .nav_box .nav .login_register_box .login-register-btns .login {
+    background: #159eee;
+    border-radius: 3px;
+}
+.nav_header_box .nav_box .nav .login_register_box .login-register-btns .register {
+    border: 1px solid #159eee;
+    border-radius: 3px;
+    padding:4px 19px;
+}
+.nav_header_box .nav_box .nav .login_register_box .login-register-btns .register:hover {
+    background: #1bb371;
+    border-color: #1bb371;
+}
+.nav_header_box .nav_box .nav .login_register_box .buy-car-box{
+    margin-top: -6px;
+}
+.nav_header_box .nav_box .nav .login_register_box .buy-car-box a{
+    cursor:pointer;
+}
+.nav_header_box .nav_box .nav .login_register_box .buy-car-box .car-icon {
+    width: 35px;
+    height: 35px;
+    text-align: center;
+    line-height: 35px;
+    font-size: 20px;
+    vertical-align: middle;
+    color: #fff;
+    position: relative;
+}
+.nav_header_box .nav_box .nav .login_register_box .buy-car-box .car-icon:hover {
+    color: #159eee;
+}
+.nav_header_box .nav_box .nav .login_register_box .buy-car-box .car-icon .car_num {
+    position: absolute;
+    top: -1px;
+    right: -5px;
+    background: #159eee;
+    font-size: 12px;
+    color: #fff;
+    width: 15px;
+    height: 15px;
+    text-align: center;
+    line-height: 16px;
+    border-radius: 3px;
+    padding-right: 3px;
+    box-sizing: border-box;
+}
+.nav_header_box .nav_box .nav .login_register_box .buy-car-box .head-img {
+    display: inline-block;
+    text-align: center;
+    line-height: 35px;
+    vertical-align: middle;
+    margin-left: 20px;
+    margin-top:-7px;
+    position:relative;
+}
+.nav_header_box .nav_box .nav .login_register_box .buy-car-box .head-img .user-head-img{
+    border-radius: 50%;
+    overflow: hidden;
+    width: 35px;
+    height: 35px;
+    border: 1px solid #e2e2e2;
+}
+.nav_header_box .nav_box .nav .login_register_box .buy-car-box .head-img img {
+    width: 100%;
+    height: 100%;
+}
+.head-img .head-news {
+    position:absolute;
+    right:-5px;
+    top:-5px;
+    background:#fa462e;
+    color:#fff;
+    font-size:10px;
+    font-weight:100;
+    width: 16px;
+    height: 16px;
+    text-align: center;
+    line-height: 16px;
+    border-radius: 3px;
+    padding-right: 2px;
+    box-sizing: border-box;
+}
+.nav_header_box .nav_box .nav .login_register_box .buy-car-box .per_withdraw {
+    position: absolute;
+    top: 43px;
+    right: -22px;
+    width: 75px;
+    height: 105px;
+    line-height: 52px;
+    border: 1px solid #ddd;
+    background: #fff;
+    text-align: center;
+    border-radius: 3px;
+    z-index:1001;
+}
+.nav_header_box .nav_box .nav .login_register_box .buy-car-box .per_withdraw:before {
+    position: absolute;
+    top: -9px;
+    left: 30px;
+    display: block;
+    content: "";
+    width: 13px;
+    height: 10px;
+    background: url(../images/ingdanlink-icon.png) -320px -311px no-repeat;
+}
+.nav_header_box .nav_box .nav .login_register_box .buy-car-box .per_withdraw a {
+    width: 100%;
+    height: 20px;
+    display: block;
+    font-size: 12px;
+    color: #555;
+    cursor: pointer;
+    margin: 0;
+    margin-bottom: 10px;
+}
+.nav_header_box .nav_box .nav .login_register_box .buy-car-box .per_withdraw a:hover {
+    color: #f44d37;
+}
+.nav_header_box .nav_box .nav .login_register_box .buy-car-box .per_withdraw .news-num {
+    font-size:10px;
+}
+
+.nhb_fixed{
+    position:fixed;
+    background:#fff;
+    width:100%;
+    height:90px;
+    z-index:1000;
+    top:0;
+}
+.nhb_fixed .navFixed_line{
+    width:100%;
+    position: absolute;
+    bottom:0;
+    left:0;
+    border-bottom: 1px solid #e7e7e7;
+}
+.nhb_fixed .nav_box .nav .nav_list ul li a{
+    color:#797979;
+}
+.nhb_fixed .nav_box .nav .nav_list ul li a.active {
+    color:#fff;
+}
+.nhb_fixed .nav_box .nav .nav_list ul li.line-js {
+    border-color: #797979;
+}
+.nhb_fixed .nav_box .nav .login_register_box .login-register-btns .register{
+    color:#797979;
+}
+.nhb_fixed .nav_box .nav .login_register_box .login-register-btns .register:hover{
+    color:#fff;
+}
+.nhb_fixed .nav_box .nav .login_register_box .buy-car-box .car-icon{
+    color:#797979;
+}
+
+.little_nav{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:90px;
+    background:#fff;
+    z-index:1000;
+}
+.little_nav .little_nav_logo{
+    width:127px;
+    margin:0 auto;
+}
+.little_nav .little_nav_logo img{
+    width:100%;
+    height:100%;
+}
+.little_nav .little_nav_list{
+    width:14px;
+    margin-left:10%;
+    position: relative;
+    top: -55px;
+    left: 0;
+}
+.little_nav .little_nav_list .little_btn{
+    font-size:14px;
+    cursor:pointer;
+}
+.little_nav .little_nav_list .little_btn:hover{
+    color:#b2dd4c;
+}
+.little_nav .nav_cont{
+    position:absolute;
+    width:100%;
+    top:80px;
+    left:0;
+    background:#fff;
+    z-index:1000;
+}
+.little_nav .nav_cont ul{
+    width:80%;
+    margin:0 auto;
+}
+.little_nav .nav_cont ul li a{
+    color:#797979;
+    font-size:14px;
+    display:block;
+    border-bottom:1px solid #eaeaea;
+    line-height:35px;
+    cursor:pointer;
+}
+.little_nav .nav_cont ul li:last-child a{
+    border:none;
+}
+.little_nav .nav_cont ul li a:hover{
+    color:#b2dd4c;
+}
+.little_nav .lnl_status{
+    float:right;
+    position:relative;
+    top:-75px;
+    right:4%;
+}
+.little_nav .lnl_status .login-register-btns a{
+    padding: 4px 11px;
+    color: #797979;
+    margin-right: 5px;
+    cursor: pointer;
+}
+.little_nav .lnl_status .login-register-btns .login {
+    background: #159eee;
+    border-radius: 3px;
+    color:#fff;
+}
+.little_nav .lnl_status .login-register-btns .register {
+    border: 1px solid #159eee;
+    border-radius: 3px;
+    padding:3px 10px;
+}
+.little_nav .lnl_status .login-register-btns .register:hover {
+    background: #1bb371;
+    border-color: #1bb371;
+    color:#fff;
+}
+.little_nav .lnl_status .buy-car-box .car-icon{
+    width: 35px;
+    height: 35px;
+    text-align: center;
+    line-height: 35px;
+    font-size: 20px;
+    vertical-align: middle;
+    color:#797979;
+    position: relative;
+}
+.little_nav .lnl_status .buy-car-box .car-icon:hover {
+    color: #b2dd4c;
+}
+.little_nav .lnl_status .buy-car-box .car-icon .car_num {
+    position: absolute;
+    top: -1px;
+    right: -5px;
+    background: #b2dd4c;
+    font-size: 12px;
+    color: #fff;
+    width: 15px;
+    height: 15px;
+    text-align: center;
+    line-height: 16px;
+    border-radius: 3px;
+    padding-right: 3px;
+    box-sizing: border-box;
+}
+.little_nav .lnl_status .buy-car-box .head-img {
+    display: inline-block;
+    text-align: center;
+    line-height: 35px;
+    vertical-align: middle;
+    margin-left: 20px;
+    margin-top:-7px;
+    position: relative;
+}
+.little_nav .lnl_status .buy-car-box .head-img .user-head-img {
+    border-radius: 50%;
+    overflow: hidden;
+    width: 35px;
+    height: 35px;
+}
+.little_nav .lnl_status .buy-car-box .head-img img {
+    width: 100%;
+    height: 100%;
+}
+.little_nav .lnl_status .buy-car-box .per_withdraw {
+    position: absolute;
+    top: 43px;
+    right: -22px;
+    width: 75px;
+    height: 105px;
+    line-height: 52px;
+    border: 1px solid #ddd;
+    background: #fff;
+    text-align: center;
+    border-radius: 3px;
+    z-index: 1001;
+}
+.little_nav .lnl_status .buy-car-box .per_withdraw:before {
+    position: absolute;
+    top: -9px;
+    left: 30px;
+    display: block;
+    content: "";
+    width: 13px;
+    height: 10px;
+    background: url(../images/ingdanlink-icon.png) -320px -311px no-repeat;
+}
+.little_nav .lnl_status .buy-car-box .per_withdraw a {
+    width: 100%;
+    height: 20px;
+    display: block;
+    font-size: 12px;
+    color: #555;
+    cursor: pointer;
+    margin: 0;
+    margin-bottom: 10px;
+}
+.little_nav .lnl_status .buy-car-box .per_withdraw a:hover {
+    color: #f44d37;
+}
+.little_nav .navFixed_line {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    border-bottom: 1px solid #e7e7e7;
+}
+.little-nav-two{
+    color:#fff;
+    background:transparent;
+}
+.little-nav-two .lnl_status .buy-car-box .car-icon,
+.little-nav-two .lnl_status .login-register-btns .register{
+    color:#fff;
+}
+/* 导航条2 结束*/
+
+.person-title{
+    font-size:25px;
+    margin-left: 150px;
+    margin-bottom: 30px;
+}
+.pt-changePw,.pt-publish,.pt-scc{
+    margin-left:55px;
+}
+.pt-sh{
+    margin-left:33px;
+}
+.pt-shd{
+    margin-left:75px;
+    margin-bottom:40px;
+}
+.pt-sett{
+    margin-left:6px;
+}
+.pt-pur{
+    margin-left:67px;
+}
+
+/* 分页 */
+.pagination a,.pagination span {
+	display: inline-block;
+	width: 45px;
+	height: 45px;
+	text-align: center;
+	line-height: 45px;
+	border: 2px solid #eaeaea;
+	border-radius: 3px;
+	font-size: 14px;
+	color: #7f7f7f;
+}
+
+.pagination input {
+	display: inline-block;
+	width: 45px;
+	height: 22px;
+	text-align: center;
+	line-height: 22px;
+	border: 2px solid #eaeaea;
+}
+
+.pagination .page_check, .pagination a:hover {
+	color: #fff;
+	background: #159eee;
+	border-color: #159eee;
+}
+
+.pag-two{
+    text-align: center;
+    margin-left: -55px;
+}
+.pag-two a:first-child,
+.pag-two a:last-child{
+    width:100px;
+}
+/* 分页结束 */
+
+/*********尾部**********/
+#footer{
+    background:#383d41;
+    width:100%;
+    min-width:1200px;
+    padding: 15px 0 0 0;
+    margin:0 auto;
+}
+#footer .footer-box{
+    width:800px;
+    margin-left:165px;
+}
+#footer .footer-box .footer-logo{
+    float:left;
+    width:95px;
+    height:145px;
+    background:url("../images/foot-logo.png") no-repeat;
+}
+#footer .footer-box .foot-info{
+    float:left;
+    font-size:13px;
+    margin-left:50px;
+}
+#footer .footer-box .foot-info .foot-link{
+    margin:20px 0 20px 0;
+}
+#footer .footer-box .foot-info .foot-link li{
+    float:left;
+    font-weight:bold;
+}
+#footer .footer-box .foot-info .foot-link li a{
+    cursor:pointer;
+    letter-spacing:3px;
+    font-weight:bold;
+    color:#fff;
+}
+#footer .footer-box .foot-info .foot-link li i{
+    display:inline-block;
+    border: 1px solid #fff;
+    height: 14px;
+    vertical-align: middle;
+    margin:0 23px 2px 23px;
+}
+#footer .footer-box .foot-info .company-add{
+    color:#e2e2e2;
+    line-height:1.5;
+    font-size: 12.5px;
+    font-weight:100;
+    letter-spacing:1px;
+}
+
+/*********尾部 结束**********/

@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1250px, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>主页</title>
+    <link rel="stylesheet" href="/css/index.css" type="text/css">
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/container.css">
+    <script src="/js/jquery-1.9.1.min.js"></script>
+    <script src="/js/jquery.SuperSlide.2.1.1.js"></script>
+    <script src="/js/index.js"></script>
+    <script src="/js/canvas-line.js"></script>
+    
+
+</head>
+
+<body>
+    
+    <!-- 导航条 -->
+    <#include "/public/menu.ftl">
+    <!-- 头部 -->
+    <div class="header">
+        <script>
+        	$(".nhb_fixed").removeClass("nhb_fixed")
+        		.find(".logo").html("<a href='/index.action'><img src='/images/logo-light.png'></a>");  
+        </script>
+        <!-- 轮播图 -->
+       	<div id="slideBox" class="slideBox slideBox1">
+            <div class="hd hd-js-1">
+                <ul>
+                </ul>
+            </div>
+            <div class="bd bd-js-1">
+                <ul>
+                    <li>
+                        <img src="images/home-main-slide-1.jpg">
+                        <div class="caption">
+                            <h1>
+                                易品速毛衫行业云生态平台
+                            </h1>
+                            <h2>
+                                易管理、控品质、提速度
+                            </h2>
+                            <p>
+                                <a href="" class="talk">了解更多</a>
+                                <a href="" class="theme">免费注册</a>
+                            </p>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="images/home-main-slide-2.jpg">
+                        <div class="caption">
+                            <h1>
+                                互联网＋智能制造＋生产供应链
+                            </h1>
+                            <h2>
+                                基于互联网打造毛衫行业网络协同制造平台
+                            </h2>
+                            <p>
+                                <a href="" class="talk">了解更多</a>
+                                <a href="" class="theme">免费注册</a>
+                            </p>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="images/home-main-slide-3.jpg">
+                        <div class="caption">
+                            <h1>
+                                紫辰羊绒智能化生产线
+                            </h1>
+                            <h2>
+                                桐乡紫辰羊绒在鹿王产业园内打造了第一条毛衫智能化生产线，基于RFID和物联网技术。。。
+                            </h2>
+                            <p>
+                                <a href="" class="talk">了解更多</a>
+                                <a href="" class="theme">免费注册</a>
+                            </p>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="images/home-main-slide-4.jpg">
+                        <div class="caption">
+                            <h1>
+                                百代服饰毛衫智能化ERP系统
+                            </h1>
+                            <h2>
+                                百代服饰年产500万件毛衫，基于信息化管理平台，从。。。
+                            </h2>
+                            <p>
+                                <a href="" class="talk">了解更多</a>
+                                <a href="" class="theme">免费注册</a>
+                            </p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <a class="prev fa fa-chevron-left" href="javascript:void(0)"></a>
+            <a class="next fa fa-chevron-right" href="javascript:void(0)"></a>
+        </div>
+    </div>
+
+    <!-- 主体内容 -->
+    <div class="container">
+        <div class="c-top-list clearfix">
+            <div class="wrapper">
+                <p class="fa fa-bookmark-o"></p>
+                <p>Pixel-Perfect Design</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam nulla, cum minus sapiente a libero! Ad
+                    necessitatibus voluptatibus magnam non aliquam, quos deleniti minus dicta eum cum. Pariatur, necessitatibus
+                    unde!
+                </p>
+            </div>
+            <div class="wrapper">
+                <p class="fa fa-commenting-o"></p>
+                <p>Pixel-Perfect Design</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam nulla, cum minus sapiente a libero! Ad
+                    necessitatibus voluptatibus magnam non aliquam, quos deleniti minus dicta eum cum. Pariatur, necessitatibus
+                    unde!
+                </p>
+            </div>
+            <div class="wrapper">
+                <p class="fa fa-hdd-o"></p>
+                <p>Pixel-Perfect Design</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam nulla, cum minus sapiente a libero! Ad
+                    necessitatibus voluptatibus magnam non aliquam, quos deleniti minus dicta eum cum. Pariatur, necessitatibus
+                    unde!
+                </p>
+            </div>
+            <div class="wrapper">
+                <p class="fa fa-folder-open-o"></p>
+                <p>Pixel-Perfect Design</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam nulla, cum minus sapiente a libero! Ad
+                    necessitatibus voluptatibus magnam non aliquam, quos deleniti minus dicta eum cum. Pariatur, necessitatibus
+                    unde!
+                </p>
+            </div>
+        </div>
+        <div class="c-canvas-box">
+            <canvas id="J_dotLine" style="background-color: #F7F7F7;"></canvas>
+            <div class="c-canvas-container clearfix">
+                <div class="ccc-l">
+                    <h2>Create A Beautiful Presentation For The World To See</h2>
+                    <h4>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Beatae reprehenderit vel ex laudantium a corrupti
+                        voluptas officiis quia doloribus porro exercitationem, facere blanditiis amet ab fugit ipsum odio
+                        sit ea.</h4>
+                    <a>
+                        <span class="context">视图特征</span>
+                        <span class="c-icon">
+                            <i class="fa fa-rocket"></i>
+                            <i class="fa fa-arrow-circle-o-right"></i>
+                        </span>
+                    </a>
+                </div>
+                <div class="ccc-r">
+                    <img src="images/graphic-1-home-main.png">
+                </div>
+            </div>
+        </div>
+        <div class="c-slide1">
+       		<div id="slideBox" class="slideBox slideBox2">
+                <div class="hd hd-js-2">
+                    <ul>
+                    </ul>
+                </div>
+                <div class="bd bd-js-2">
+                    <ul>
+                        <li>
+                            <div class="caption">
+                                <h2>A Startup Theme Like No Other</h2>
+                                <h4>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam</h4>
+                                <div class="talk-windows clearfix">
+                                    <div class="talk">
+                                        <div class="talk-top">
+                                            <p>"Remarkable Style."</p>
+                                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde aut odio molestiae
+                                                doloribus rem eligendi v</p>
+                                        </div>
+                                        <div class="talk-bottom clearfix">
+                                            <div class="talk-bt">
+                                                <img src="images/testimonials-1.png">
+                                            </div>
+                                            <div class="talk-bt">
+                                                <p>Jack Jones</p>
+                                                <p>Manager at TechDream</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="talk">
+                                        <div class="talk-top">
+                                            <p>"Remarkable Style."</p>
+                                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde aut odio molestiae
+                                                doloribus rem eligendi v</p>
+                                        </div>
+                                        <div class="talk-bottom clearfix">
+                                            <div class="talk-bt">
+                                                <img src="images/testimonials-1.png">
+                                            </div>
+                                            <div class="talk-bt">
+                                                <p>Jack Jones</p>
+                                                <p>Manager at TechDream</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="talk">
+                                        <div class="talk-top">
+                                            <p>"Remarkable Style."</p>
+                                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde aut odio molestiae
+                                                doloribus rem eligendi v</p>
+                                        </div>
+                                        <div class="talk-bottom clearfix">
+                                            <div class="talk-bt">
+                                                <img src="images/testimonials-1.png">
+                                            </div>
+                                            <div class="talk-bt">
+                                                <p>Jack Jones</p>
+                                                <p>Manager at TechDream</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="caption">
+                                <h2>A Startup Theme Like No Other</h2>
+                                <h4>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam</h4>
+                                <div class="talk-windows clearfix">
+                                    <div class="talk">
+                                        <div class="talk-top">
+                                            <p>"Remarkable Style."</p>
+                                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde aut odio molestiae
+                                                doloribus rem eligendi v</p>
+                                        </div>
+                                        <div class="talk-bottom clearfix">
+                                            <div class="talk-bt">
+                                                <img src="images/testimonials-2.png">
+                                            </div>
+                                            <div class="talk-bt">
+                                                <p>Jack Jones</p>
+                                                <p>Manager at TechDream</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="talk">
+                                        <div class="talk-top">
+                                            <p>"Remarkable Style."</p>
+                                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde aut odio molestiae
+                                                doloribus rem eligendi v</p>
+                                        </div>
+                                        <div class="talk-bottom clearfix">
+                                            <div class="talk-bt">
+                                                <img src="images/testimonials-2.png">
+                                            </div>
+                                            <div class="talk-bt">
+                                                <p>Jack Jones</p>
+                                                <p>Manager at TechDream</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="talk">
+                                        <div class="talk-top">
+                                            <p>"Remarkable Style."</p>
+                                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde aut odio molestiae
+                                                doloribus rem eligendi v</p>
+                                        </div>
+                                        <div class="talk-bottom clearfix">
+                                            <div class="talk-bt">
+                                                <img src="images/testimonials-2.png">
+                                            </div>
+                                            <div class="talk-bt">
+                                                <p>Jack Jones</p>
+                                                <p>Manager at TechDream</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <a class="prev fa fa-chevron-left" href="javascript:void(0)"></a>
+                <a class="next fa fa-chevron-right" href="javascript:void(0)"></a>
+            </div>
+        </div>
+        <div class="c-findmore clearfix">
+            <div class="c-findmore-l">
+                <img src="images/image-1-home-main.jpg">
+            </div>
+            <div class="c-findmore-r">
+                <h2>Create Your Own Genuine Web Masterpiece</h2>
+                <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident, maiores? Quis aperiam accusamus quod.
+                    Distinctio placeat voluptatibus in repellendus enim, mollitia voluptatem recusandae, beatae quasi eligendi
+                    corporis quibusdam molestiae pariatur.</h4>
+                <a href="">
+                    <span>find out more</span>
+                    <span class="i-cons">
+                        <i class="fa fa-rocket"></i>
+                        <i class="fa fa-arrow-circle-o-right"></i>
+                    </span>
+                </a>
+            </div>
+        </div>
+        <div class="c-slide2">
+            <div id="slideBox" class="slideBox slideBox3">
+                <div class="hd hd-js-3">
+                    <ul>
+                    </ul>
+                </div>
+                <div class="bd bd-js-3">
+                    <ul>
+                        <li>
+                            <img src="images/image-slider-1-home-main.jpg">
+                            <div class="caption">
+                                <div class="caption-container">
+                                    <h2>What Are You Waiting For? StartIt Today!</h2>
+                                    <h4>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod</h4>
+                                    <p>
+                                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil veniam beatae voluptatum placeat maxime, atque a dolorem
+                                        voluptas ex quam, iusto non cumque exercitationem fugiat, excepturi in repellendus
+                                        recusandae architecto.
+                                    </p>
+                                    <a href="">
+                                        <span>Buy The Theme</span>
+                                        <span class="i-cons">
+                                            <i class="fa fa-shopping-cart"></i>
+                                            <i class="fa fa-arrow-circle-o-right"></i>
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <img src="images/image-slider-2-home-main.jpg">
+                            <div class="caption">
+                                <div class="caption-container">
+                                    <h2>What Are You Waiting For? StartIt Today!</h2>
+                                    <h4>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod</h4>
+                                    <p>
+                                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil veniam beatae voluptatum placeat maxime, atque a dolorem
+                                        voluptas ex quam, iusto non cumque exercitationem fugiat, excepturi in repellendus
+                                        recusandae architecto.
+                                    </p>
+                                    <a href="">
+                                        <span>Buy The Theme</span>
+                                        <span class="i-cons">
+                                            <i class="fa fa-shopping-cart"></i>
+                                            <i class="fa fa-arrow-circle-o-right"></i>
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <img src="images/image-slider-3-home-main.jpg">
+                            <div class="caption">
+                                <div class="caption-container">
+                                    <h2>What Are You Waiting For? StartIt Today!</h2>
+                                    <h4>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod</h4>
+                                    <p>
+                                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil veniam beatae voluptatum placeat maxime, atque a dolorem
+                                        voluptas ex quam, iusto non cumque exercitationem fugiat, excepturi in repellendus
+                                        recusandae architecto.
+                                    </p>
+                                    <a href="">
+                                        <span>Buy The Theme</span>
+                                        <span class="i-cons">
+                                            <i class="fa fa-shopping-cart"></i>
+                                            <i class="fa fa-arrow-circle-o-right"></i>
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <img src="images/image-slider-4-home-main.jpg">
+                            <div class="caption">
+                                <div class="caption-container">
+                                    <h2>What Are You Waiting For? StartIt Today!</h2>
+                                    <h4>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod</h4>
+                                    <p>
+                                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil veniam beatae voluptatum placeat maxime, atque a dolorem
+                                        voluptas ex quam, iusto non cumque exercitationem fugiat, excepturi in repellendus
+                                        recusandae architecto.
+                                    </p>
+                                    <a href="">
+                                        <span>Buy The Theme</span>
+                                        <span class="i-cons">
+                                            <i class="fa fa-shopping-cart"></i>
+                                            <i class="fa fa-arrow-circle-o-right"></i>
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <a class="prev fa fa-chevron-left" href="javascript:void(0)"></a>
+                <a class="next fa fa-chevron-right" href="javascript:void(0)"></a>
+            </div>
+        </div>
+        <div class="c-tabs">
+            <div class="c-tabs-top">
+                <h2>Design the Web in Your Image</h2>
+                <h4>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam</h4>
+            </div>
+            <div class="c-tabs-bottom clearfix">
+                <div class="ctb-l">
+                    <img src="images/graphic-2-home-main.png">
+                </div>
+                <div class="ctb-r">
+                    <div class="slideTxtBox">
+                        <div class="hd">
+                            <ul>
+                                <li>Tab Example1</li>
+                                <li>Tab Example2</li>
+                                <li>Tab Example3</li>
+                                <li>Tab Example4</li>
+                            </ul>
+                        </div>
+                        <div class="bd">
+                            <div>
+                                Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna
+                                aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper
+                                suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor
+                                in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla
+                                facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum
+                                zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis
+                                eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum.
+                                Typi non habent
+                            </div>
+                            <div>
+                                Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna
+                                aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper
+                                suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor
+                                in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla
+                                facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum
+                                zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis
+                                eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum.
+                                Typi non habent
+                            </div>
+                            <div>
+                                Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna
+                                aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper
+                                suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor
+                                in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla
+                                facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum
+                                zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis
+                                eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum.
+                                Typi non habent
+                            </div>
+                            <div>
+                                Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna
+                                aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper
+                                suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor
+                                in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla
+                                facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum
+                                zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis
+                                eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum.
+                                Typi non habent
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="c-imgeightbox clearfix">
+            <a href="">
+                <img src="images/p-app-update-and-rebrand-300x224.jpg">
+                <div>
+                    <h5>Office Management Systems</h5>
+                    <p>Business/Marketing</p>
+                </div>
+            </a>
+            <a href="">
+                <img src="images/p-big-data-goes-global-300x224.jpg">
+                <div>
+                    <h5>Office Management Systems</h5>
+                    <p>Business/Marketing</p>
+                </div>
+            </a>
+            <a href="">
+                <img src="images/p-millenials-research-2015-300x224.jpg">
+                <div>
+                    <h5>Office Management Systems</h5>
+                    <p>Business/Marketing</p>
+                </div>
+            </a>
+            <a href="">
+                <img src="images/p-new-findings-in-responsive-testing-300x224.jpg">
+                <div>
+                    <h5>Office Management Systems</h5>
+                    <p>Business/Marketing</p>
+                </div>
+            </a>
+            <a href="">
+                <img src="images/p-new-trends-in-seo-and-analytics-300x224.jpg">
+                <div>
+                    <h5>Office Management Systems</h5>
+                    <p>Business/Marketing</p>
+                </div>
+            </a>
+            <a href="">
+                <img src="images/p-new-trends-in-social-media-300x224.jpg">
+                <div>
+                    <h5>Office Management Systems</h5>
+                    <p>Business/Marketing</p>
+                </div>
+            </a>
+            <a href="">
+                <img src="images/p-office-management-systems-300x224.jpg">
+                <div>
+                    <h5>Office Management Systems</h5>
+                    <p>Business/Marketing</p>
+                </div>
+            </a>
+            <a href="">
+                <img src="images/p-the-tablet-app-of-the-future-300x224.jpg">
+                <div>
+                    <h5>Office Management Systems</h5>
+                    <p>Business/Marketing</p>
+                </div>
+            </a>
+        </div>
+        <div class="c-checkitout">
+            <div class="c-ccko clearfix">
+                <p>
+                    StarIt is filled with a variety of shortcodes and elements, made especially for you.
+                </p>
+                <a>
+                    <span>CHECK IT OUT NOW</span>
+                    <span class="i-cons">
+                        <i class="fa fa-arrow-circle-o-right"></i>
+                        <i class="fa fa-arrow-circle-o-right"></i>
+                    </span>
+                </a>
+            </div>
+        </div>
+        <div class="c-fourman">
+            <div class="cf-container">
+                <h2>Let Them Know Why you’re the Best</h2>
+                <h4>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam</h4>
+                <div class="cf-conbox clearfix">
+                    <div class="cfc-box">
+                        <div class="cfc-img">
+                            <img src="images/team-1-home-main.jpg">
+                            <div class="cfc-icon">
+                                <i class="fa fa-cog"></i>
+                            </div>
+                            <div class="cfc-display">
+                                Developer
+                            </div>
+                        </div>
+                        <div class="cfc-cont">
+                            <h3>Dexter Collier</h3>
+                            <p>
+                                Lorem ipsum dolor sit amet, consect adipiscing elit, sed diam nonummy
+                            </p>
+                        </div>
+                    </div>
+                    <div class="cfc-box">
+                        <div class="cfc-img">
+                            <img src="images/team-2-home-main.jpg">
+                            <div class="cfc-icon">
+                                <i class="fa fa-pencil"></i>
+                            </div>
+                            <div class="cfc-display">
+                                Developer
+                            </div>
+                        </div>
+                        <div class="cfc-cont">
+                            <h3>Dexter Collier</h3>
+                            <p>
+                                Lorem ipsum dolor sit amet, consect adipiscing elit, sed diam nonummy
+                            </p>
+                        </div>
+                    </div>
+                    <div class="cfc-box">
+                        <div class="cfc-img">
+                            <img src="images/team-3-home-main.jpg">
+                            <div class="cfc-icon">
+                                <i class="fa fa-book"></i>
+                            </div>
+                            <div class="cfc-display">
+                                Developer
+                            </div>
+                        </div>
+                        <div class="cfc-cont">
+                            <h3>Dexter Collier</h3>
+                            <p>
+                                Lorem ipsum dolor sit amet, consect adipiscing elit, sed diam nonummy
+                            </p>
+                        </div>
+                    </div>
+                    <div class="cfc-box">
+                        <div class="cfc-img">
+                            <img src="images/team-4-home-main.jpg">
+                            <div class="cfc-icon">
+                                <i class="fa fa-wrench"></i>
+                            </div>
+                            <div class="cfc-display">
+                                Developer
+                            </div>
+                        </div>
+                        <div class="cfc-cont">
+                            <h3>Dexter Collier</h3>
+                            <p>
+                                Lorem ipsum dolor sit amet, consect adipiscing elit, sed diam nonummy
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="c-learnmore">
+            <p class="fa fa-cog"></p>
+            <div class="clm-cont">
+                <h2>Easy & Simple - No Coding Required!</h2>
+                <h4>
+                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna
+                    aliquam erat volutpat. Ut wisi enim ad minim veniam
+                </h4>
+                <div class="clm-cont-btns">
+                    <a href="" class="btns-one">LEARN MORE</a>
+                    <a href="" class="btns-two">BUY THE THEME</a>
+                </div>
+            </div>
+        </div>
+        <div class="c-divthreebox clearfix">
+            <div class="cdtb">
+                <div class="cdtb-cont">
+                    <h3>No Coding Required</h3>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna
+                        aliquam erat volutpat. Ut wisi enim ad minim veniam
+                    </p>
+                    <a href="">
+                        <span>LEARN MORE</span>
+                        <span class="i-cons">
+                            <i class="fa fa-lightbulb-o" style="left:19px"></i>
+                            <i class="fa fa-arrow-circle-o-right"></i>
+                        </span>
+                    </a>
+                </div>
+            </div>
+            <div class="cdtb">
+                <div class="cdtb-cont">
+                    <h3>No Coding Required</h3>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna
+                        aliquam erat volutpat. Ut wisi enim ad minim veniam
+                    </p>
+                    <a href="">
+                        <span>LEARN MORE</span>
+                        <span class="i-cons">
+                            <i class="fa fa-database"></i>
+                            <i class="fa fa-arrow-circle-o-right"></i>
+                        </span>
+                    </a>
+                </div>
+            </div>
+            <div class="cdtb">
+                <div class="cdtb-cont">
+                    <h3>No Coding Required</h3>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna
+                        aliquam erat volutpat. Ut wisi enim ad minim veniam
+                    </p>
+                    <a href="">
+                        <span>LEARN MORE</span>
+                        <span class="i-cons">
+                            <i class="fa fa-cog"></i>
+                            <i class="fa fa-arrow-circle-o-right"></i>
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="c-wrap clearfix">
+            <div class="cw-l">
+                <h2>What Are You Waiting For? StartIt Today!</h2>
+                <h4>
+                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sediam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam
+                    erat volutpat
+                </h4>
+                <div class="cw-l-list clearfix">
+                    <ul>
+                        <li>
+                            <i class="fa fa-check-circle"></i>Make a difference</li>
+                        <li>
+                            <i class="fa fa-check-circle"></i>Make a difference</li>
+                        <li>
+                            <i class="fa fa-check-circle"></i>Make a difference</li>
+                        <li>
+                            <i class="fa fa-check-circle"></i>Make a difference</li>
+                        <li>
+                            <i class="fa fa-check-circle"></i>Make a difference</li>
+                        <li>
+                            <i class="fa fa-check-circle"></i>Make a difference</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="cw-r">
+                <img src="images/image-2-home-main.jpg">
+            </div>
+        </div>
+        <div class="c-designbox">
+            <div class="cdb clearfix">
+                <div class="cdb-box">
+                    <div class="cdbbox-top">
+                        <div class="cdbbox-icon">
+                            <i class="fa fa-pencil"></i>
+                        </div>
+                    </div>
+                    <h2>Design</h2>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
+                    </p>
+                </div>
+                <div class="cdb-box">
+                    <div class="cdbbox-top">
+                        <div class="cdbbox-icon">
+                            <i class="fa fa-desktop"></i>
+                        </div>
+                    </div>
+                    <h2>Design</h2>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
+                    </p>
+                </div>
+                <div class="cdb-box">
+                    <div class="cdbbox-top">
+                        <div class="cdbbox-icon">
+                            <i class="fa fa-wrench"></i>
+                        </div>
+                    </div>
+                    <h2>Design</h2>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
+                    </p>
+                </div>
+                <div class="cdb-box">
+                    <div class="cdbbox-top">
+                        <div class="cdbbox-icon">
+                            <i class="fa fa-cog"></i>
+                        </div>
+                    </div>
+                    <h2>Design</h2>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="c-learnmoretwo">
+            <div class="c-learnmore">
+                <div class="clm-cont">
+                    <h2>Easy & Simple - No Coding Required!</h2>
+                    <h4>
+                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna
+                        aliquam erat volutpat. Ut wisi enim ad minim veniam
+                    </h4>
+                    <div class="clm-cont-btns">
+                        <a href="" class="btns-one">LEARN MORE</a>
+                        <a href="" class="btns-two">BUY THE THEME</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <#include "/public/foot.ftl">
+    
+</body>
+
+</html>

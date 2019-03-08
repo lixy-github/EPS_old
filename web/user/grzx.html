@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1250px, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>个人中心</title>
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/personal.css">
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
+    <script src="/js/jquery-1.9.1.min.js"></script>
+    <script src="/js/personal.js"></script>
+    <script src="/js/webuploader.min.js"></script>
+    <script src="/js/diyUpload.js"></script>
+</head>
+
+<body>
+     <!-- 导航条 -->
+    <#include "/public/menu.ftl">
+
+    <!-- 主体内容 -->
+    <div class="person-container clearfix">
+        <div class="pc-left">
+        		<h2 class="person-title">
+                用户中心
+            </h2>
+            <div class="pcl-top clearfix">
+                <div class="person-headimg">
+                    <!-- 添加头像 -->
+                    <div class="add_per_head" style="display: none;">
+                        <input type="file" id="headImg" class="headImg" accept="image/*" name="headImg">
+                        <label for="headImg" class="headImg_label" style="cursor: pointer;"></label>
+                    </div>
+                    <!-- 显示头像 -->
+                    <div class="show_head_img_box">
+                        <div class="show_head_img">
+                        	<#if userEntity.headImg??>
+                        	<img src="/upfile/head/${userEntity.headImg!}">
+                        	<#else>
+                        	<img src="/images/user_header.png">
+                        	</#if>
+                        </div>
+                        <label class="change_head_img" for="headImg" style="display: none;">点击修改</label>
+                    </div>
+                </div>
+                <!--<div class="pcl-right">
+                    <div class="showUserStatusBox">
+                        <p>
+                        当前账号：${_REALNAME_!}
+                        </p>
+                        <div class="checkStatusBox">
+                            <span>
+                                审核：
+                                <span><a href="javascript:toWszl();" style="color: #159eee;">
+                                <#if userEntity.userType??>
+                               		<#if userEntity.userType=="1">
+                               			已审核
+                               		<#elseif userEntity.userType=="2">
+                               			待审核
+                               		<#elseif userEntity.userType=="3">	
+                               			审核不通过
+                               		</#if>
+                               	<#else>
+                                未审核
+                                </#if>
+                                </a></span>
+                            </span>
+                            <br>
+                            <span>
+                                手机：
+                                <span><a href="javascript:toBindsjAndyx();" style="color: #159eee;">
+                                	<#if userEntity.tel??>
+                                		${userEntity.tel!}
+                                		<#else>
+                                		未绑定
+                                	</#if>
+                                </a></span>
+                            </span>
+                            <br>
+                            <span>
+                                邮箱：
+                                <span><a href="javascript:toBindsjAndyx();" style="color: #159eee;">
+                                	<#if userEntity.email??>
+                                		${userEntity.email!}
+                                		<#else>
+                                		未绑定
+                                	</#if>
+                                </a></span>
+                            </span>
+                        </div>
+                    </div>
+                    <p>
+                        <span>普通供应商</span>
+                        <span>升级VIP可享受xx网专家服务</span>
+                    </p>
+                    <div class="pcl-btn">
+                        <a href="">VIP付款</a>
+                    </div>
+                </div>-->
+                <div class="pcl-right">
+                    <div class="showUserStatusBox">
+                        <#if userEntity.userType??>
+                        	<p class="user-company">
+                        		<a href="javascript:toWszl();" style="color: #159eee;">
+	                            <span>${userEntity.companyName!}</span>
+	                            <span>（<#if userEntity.userType=="2">
+	                            		审核中
+	                            		<#elseif userEntity.userType=="3">
+	                            		审核不通过
+	                            		<#elseif userEntity.userType=="1">
+	                            		已审核
+	                            		</#if>）</span>
+	                            </a>
+                        	</p>
+                        <#else>
+                        	 <p class="user-company-no">
+	                            尚未提交用户单位资料，
+	                            <a href="javascript:toWszl();" style="color: red;">点此完善</a>
+	                        </p>
+                        </#if>
+                        <div class="checkStatusBox">
+                        	<#if userEntity.userType??>
+	                            <!-- 免费用户 -->
+	                            <div>
+	                                <span class="user-free">免费用户</span>
+	                                <span>升级VIP用户可享受更多专业服务</span>
+	                                <a class="user-vip-pay">升级VIP用户</a>
+	                            </div>
+	                        <#else>
+	                        	<!-- 临时用户 -->
+	                            <div>
+	                                <span class="user-free">临时用户</span>
+	                                <span>完善单位资料并审核通过后升级为正式用户</span>
+	                            </div>
+	                        </#if>
+                        </div>
+                        <div class="checkPhoneEmail">
+                            <div class="check-phone">
+                                手机：
+                                <span class="<#if userEntity.tel??>checkPhone-ok<#else>checkPhone-no</#if>">
+                                	<#if userEntity.tel??>
+                                		${userEntity.tel!}
+                                		<#else>
+                                		未绑定
+                                	</#if>
+                                </span>
+                                <span class="check-line">|</span>
+                                <span class="setting-pe">
+                                    <a href="javascript:toBindsjAndyx();"><#if userEntity.tel??>修改<#else>设置</#if></a>
+                                </span>
+                            </div>
+                            <div class="check-email">
+                                邮箱：
+                                <span class="<#if userEntity.email??>checkPhone-ok<#else>checkPhone-no</#if>">
+                                    <#if userEntity.email??>
+                                		${userEntity.email!}
+                                		<#else>
+                                		未绑定
+                                	</#if>
+                                </span>
+                                <span class="check-line">|</span>
+                                <span class="setting-pe">
+                                    <a href="javascript:toBindsjAndyx();"><#if userEntity.email??>修改<#else>设置</#if></a>
+                                </span>
+                            </div>
+                        </div>
+                        <#if userEntity.userType??>
+                        <div class="account-info">
+                            <div class="balance-info">
+                                <span>
+                                    账户余额：
+                                    <i class="balance-money fa fa-credit-card"></i>
+                                    <span class="balance-num">
+                                        0.00
+                                    </span>
+                                    元
+                                </span>
+                                <span class="account-integral">
+                                    易积分：
+                                    <i class="balance-money fa fa-database"></i>
+                                    <span class="balance-num">
+                                        2018
+                                    </span>
+                                </span>
+                            </div>
+                            <div class="balance-info">
+                                <span>
+                                    会员星级：
+                                    <span class="user-lever">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                    </span>
+                                </span>
+                                <span class="factory-lever">
+                                    工厂等级：
+                                    <#if manufacturerIsSh?? && manufacturerIsSh=="YES">
+                                    	 <!-- 已认证 -->
+	                                    <span class="user-lever">
+	                                        <i class="fa fa-star"></i>
+	                                        <i class="fa fa-star-o"></i>
+	                                        <i class="fa fa-star-o"></i>
+	                                        <i class="fa fa-star-o"></i>
+	                                        <i class="fa fa-star-o"></i>
+	                                    </span>
+	                               	<#else>
+	                               		<!-- 未认证 -->
+	                                    <span>
+	                                        <span class="factory-no">
+	                                            未开通工厂认证
+	                                        </span>
+	                                        <span class="check-line">|</span>
+	                                        <span class="apply-cert">
+	                                            <a href="/user/grzx/manufacturer.action" target="_black">申请认证</a>
+	                                        </span>
+	                                    </span>
+	                            	</#if>
+                                </span>
+                            </div>
+                        </div>
+                        </#if>
+                    </div>
+                </div>
+            </div>
+            <#if userEntity.userType??>
+            <div class="pcl-bottom">
+                <a href="">
+                    <p class="num">0</p>
+                    <p>我的需求</p>
+                </a>
+                <a href="">
+                    <p class="num">0</p>
+                    <p>我的订单</p>
+                </a>
+                <a href="">
+                    <p class="num">0</p>
+                    <p>我的商品</p>
+                </a>
+                <a href="">
+                    <p class="num">0</p>
+                    <p>我的交易</p>
+                </a>
+            </div>
+            </#if>
+        </div>
+        <script>
+			$.cookie("data-twoLevelMenu","用户中心",{ path: '/' });
+		</script>
+        <#include "/public/grzxRightMenu.ftl">
+    </div>
+    
+   <script type="text/javascript" src="/js/myjs/user/uploadZzwj.js"></script>
+   <script type="text/javascript">
+   		function toWszl(){
+   			$.cookie("data-twoLevelMenu","单位信息",{ path: '/' });
+   			window.location.href = "/user/grzx/wszl.action";;
+   		}
+   		function toBindsjAndyx(){
+   			$.cookie("data-twoLevelMenu","修改密码",{ path: '/' });
+   			window.location.href = "/user/grzx/bindsjAndyx.action";;
+   		}
+   </script>
+   <script>
+   		$(function(){
+			function changePcltop() {
+			      if ($("body").width() > 1422) {
+			          $(".person-container .pc-left .pcl-top").css("marginLeft", "150px");
+			      }else{
+			          $(".person-container .pc-left .pcl-top").css("marginLeft", "180px");
+			      }
+			  }
+			  changePcltop();
+			  $(window).resize(function(){
+			      changePcltop();
+			  })
+   		})
+   </script>
+   <#include "/public/foot.ftl">
+</body>
+</html>

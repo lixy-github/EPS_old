@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1250px, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>我发布的需求</title>
+    <link rel="stylesheet" href="/css/index.css">
+     <link rel="stylesheet" href="/css/personal.css">
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/css/shop.css" rel="stylesheet">
+    <link href="/css/chain.css" rel="stylesheet">
+    
+    <script src="/js/jquery-1.9.1.min.js"></script>
+    <script src="/js/diyUpload.js"></script>
+    <script type="text/javascript">
+    	function toPage(num){
+    		window.location.href = "/user/grzx/listDemandForUser.action?currentPage="+num;
+    	}
+    </script>
+</head>
+
+<body>
+    <!-- 导航条 -->
+    <#include "/public/menu.ftl">
+    
+    <div class="person-container clearfix">
+		
+		<!--与供应链共用-->
+		<#include "/public/eachDemand.ftl">
+		
+
+		<#include "/public/grzxRightMenu.ftl">
+    </div>
+ 
+ 	<!-- 尾部 -->
+    <#include "/public/foot.ftl">
+</body>
+
+</html>

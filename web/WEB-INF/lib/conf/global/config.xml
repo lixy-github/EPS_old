@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<global-config>
+	<attachment>
+		<path>%COPA-ROOT%\docRoot\attachmentRoot</path>
+	</attachment>
+	<resource>
+		<path>%COPA-ROOT%\docRoot\resourceRoot</path>
+	</resource>
+	<initWorkflow>
+		<path>%COPA-ROOT%\docRoot\initWorkflow</path>
+	</initWorkflow>
+	<ca>
+		<path>%COPA-ROOT%\docRoot\ca</path>
+	</ca>
+</global-config>

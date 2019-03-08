@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1250px, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>我的收藏</title>
+    <link rel="stylesheet" href="/css/index.css" type="text/css">
+    <link rel="stylesheet" href="/css/personal.css" type="text/css">
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/css/shop.css" rel="stylesheet">
+    <script src="/js/jquery-1.9.1.min.js"></script>
+    <script src="/js/slide.js"></script>
+    <script src="/js/personal.js"></script>
+    <script src="/js/jquery.fly.min.js"></script>
+
+</head>
+
+<body>
+    <!-- 导航条 -->
+    <#include "/public/menu.ftl">
+
+    <div class="shop_container clearfix">
+        <div class="sc_left">
+            <div class="sc_l_top clearfix">
+                <div class="show_num">
+                    共 <span id="show_num">${pageSupport.totalCount}</span> 件商品
+                </div>
+            </div>
+            <div id="goodsList" class="sc_l_bottom clearfix">
+            	<#list pageSupport.items as collection>
+            		<#assign goods = collection.goods>
+            		<div class="product_show">
+	                    <a target="_blank" href="/supermarket/goodsDetail.action?random=${goods.random}">
+	                    	<#if goods.imageList[0]??>
+	                    		<#assign imageSrc = goods.imageList[0].path>
+	                    		<img src="${goods.imageList[0].path}">
+	                    		<#else>
+	                    		 <img src="/images/s-3-in-one-lux-router-550x550.jpg">
+	                    		 <#assign imageSrc = "/images/s-3-in-one-lux-router-550x550.jpg">
+	                    	</#if>   
+	                    </a>
+	                    <div class="product_info_holder">
+	                        <div class="pro_info_top clearfix">
+	                            <div class="product_price">
+	                                <h4>${goods.name}</h4>
+	                                <p class="price">¥${goods.danjia?c}</p>
+	                            </div>
+	                            <div class="product_level">
+	                                <i class="fa fa-star"></i>
+	                                <i class="fa fa-star"></i>
+	                                <i class="fa fa-star"></i>
+	                                <i class="fa fa-star"></i>
+	                                <i class="fa fa-star-o"></i>
+	                            </div>
+	                        </div>
+	                        <div class="pro_info_bottom">
+	                            <div class="add_car_box">
+	                            	<a class="p_info"  onmouseup="cancelCollection(this,'${collection.random}')">取消收藏</a> 
+									<a class="add_car" <#if (goods.kucun<=0) >style="cursor: not-allowed;"<#else> onmouseup="flyCart(event,${goods.id?c},1,'${imageSrc}')"</#if>>添加到购物车</a>                            
+	                            </div>
+	                        </div>
+	                    </div>
+                	</div>
+            	</#list>
+                
+           </div>
+            <!-- 分页 -->
+          <!--  <#if (goodsList?size>6)>
+            <div class="pagination"></div>
+           </#if> -->
+           ${pageSupport.html}
+        </div>
+        <#include "/public/grzxRightMenu.ftl">
+    </div>
+    
+    <#include "/public/foot.ftl">
+    <script>
+    function cancelCollection(_this,random){ 
+    	layer.confirm(
+			'确定取消收藏吗?', 
+			{btn: ['确定','取消']	}, 
+			function(index){
+				layer.close(index);
+				$.ajax({           
+	                url:'/user/grzx/removeCollection.action',    
+	                data:{"random":random},    
+	                dataType:'json',    
+	                success:function(data){
+	                	if(data.status==0){
+	                		var $product_show = $(_this).parents(".product_show");
+	                		$product_show.slideUp(500,function(){
+	                			$("#show_num").html(Number($("#show_num").html().trim())-1)
+	                			$product_show.remove();
+	                		});
+	                	}
+	                }
+	            });
+			}
+		);
+    }
+   </script>
+</body>
+</html>

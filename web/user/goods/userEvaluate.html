@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1250px, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>交易评价</title>
+    <link rel="stylesheet" href="/css/index.css" type="text/css">
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/css/personal.css" rel="stylesheet">
+    <link href="/css/order-detail.css" rel="stylesheet">
+    <script src="/js/jquery-1.9.1.min.js"></script>
+    <script src="/js/webuploader.min.js"></script>
+    <script src="/js/diyUpload-2.js"></script>
+</head>
+
+<body>
+
+<#include "/public/menu.ftl">
+
+<div class="evaluate-container">
+    <div class="wrapper-container">
+        <div class="evaluate-head">
+            <p class="eh-title">交易评价</p>
+            <div>
+                <span>
+                    订单号：
+                    <a class="od-color eh-onum">${order.orderNumber}</a>
+                </span>
+                <span>${order.createTime?string("yyyy-MM-dd HH:mm:ss")}</span>
+            </div>
+        </div>
+        <#list order.items as item>
+        	<div class="ec-content clearfix goods-evaluate" id="${item.goodsRandom!}">
+	            <div class="ec-goods">
+	                <div class="ecg-img">
+	                    <a href="/supermarket/goodsDetail.action?random=${item.goodsRandom!}" target="_black">
+	                    	<img src="${item.imageUrl}">
+	                    </a>
+	                </div>
+	                <div class="ec-info">
+	                    <a href="/supermarket/goodsDetail.action?random=${item.goodsRandom!}" target="_black">${item.goodsName!}</a>
+	                </div>
+	                <div class="ec-price">￥${(item.danjia*item.piece)?string("0.00")}</div>
+	            </div>
+	            <div class="ec-eva">
+	           <!-- 买家评价卖家 -->
+	           <div class="buyer-eva-seller" style="display:block">
+	               <div class="buy-eva">
+	                   <span class="garde-name">商品评分：</span>
+	                   <div class="buy-eva-star">
+	                       <i class="fa fa-star"></i>
+	                       <i class="fa fa-star"></i>
+	                       <i class="fa fa-star"></i>
+	                       <i class="fa fa-star"></i>
+	                       <i class="fa fa-star"></i>
+	                   </div>
+	                   <span class="grade" data-target="starSP">5分</span>
+	               </div>
+	               <div class="buy-eva">
+	                   <span class="garde-name">卖家的服务态度：</span>
+	                   <div class="buy-eva-star">
+	                       <i class="fa fa-star"></i>
+	                       <i class="fa fa-star"></i>
+	                       <i class="fa fa-star"></i>
+	                       <i class="fa fa-star"></i>
+	                       <i class="fa fa-star"></i>
+	                   </div>
+	                   <span class="grade" data-target="starFW">5分</span>
+	               </div>
+	               <div class="buy-eva">
+	                   <span class="garde-name">卖家的发货速度：</span>
+	                   <div class="buy-eva-star">
+	                       <i class="fa fa-star"></i>
+	                       <i class="fa fa-star"></i>
+	                       <i class="fa fa-star"></i>
+	                       <i class="fa fa-star"></i>
+	                       <i class="fa fa-star"></i>
+	                   </div>
+	                   <span class="grade" data-target="starWL">5分</span>
+	               </div>
+	               <div class="evaluate-single clearfix">
+	                   <div class="evas-name">评价晒单：</div>
+	                   <div class="es-text">
+	                       <textarea onkeyup="limitWord(this)"></textarea>
+	                       <div class="es-residue">还可以输入<span class="num">500</span>字</div>
+	                       <div class="es-upload-img">
+	                           <form>
+	                               <div>
+	                                   <ul class="upload-ul clearfix">
+	                                       <li class="upload-pick">
+	                                           <div class="webuploader-container clearfix" id="goodsUpload">
+	                                               晒图
+	                                           </div>
+	                                       </li>
+	                                   </ul>
+	                               </div>
+	                           </form>
+	                           <div class="es-res-num">
+	                               共<span class="esrn">0</span>张，还能上传<span class="esrn">5</span>张
+	                           </div>
+	                       </div>
+	                   </div>
+	               </div>
+	           </div>
+	        </div>
+	    </div>
+	    <script>
+	    	(function(){
+	    		var uploader = WebUploader.create({
+	    		    // 选完文件后，是否自动上传。
+	    		    auto: true,
+	    		    // 文件接收服务端。
+	    		    server: '/user/grzx/upLoadImage.action',
+	    		    // 选择文件的按钮。可选。
+	    		    // 内部根据当前运行是创建，可能是input元素，也可能是flash.
+	    		    pick: '#${item.goodsRandom} #goodsUpload',
+	    		    formData:{savaFileName:"evaluate/user"},
+	    		    // 只允许选择图片文件。
+	    		    accept: {
+	    		        title: 'Images',
+	    		        extensions: 'gif,jpg,jpeg,bmp,png',
+	    		        mimeTypes: 'image/*'
+	    		    },
+	    		    fileNumLimit: 5, //上传文件数量限制
+	    		    duplicate: false,//可以重复上传
+	    		    compress: {
+	    		        quality: 80,
+	    		        // 是否允许放大，如果想要生成小图的时候不失真，此选项应该设置为false.
+	    		        allowMagnify: false,
+	    		        // 是否允许裁剪。
+	    		        crop: false,
+	    		        // 是否保留头部meta信息。
+	    		        preserveHeaders: false,
+	    		        // 如果发现压缩后文件大小比原来还大，则使用原来图片
+	    		        // 此属性可能会影响图片自动纠正功能
+	    		        noCompressIfLarger: false,
+	    		        // 单位字节，如果图片大小小于此值，不会采用压缩。
+	    		        compressSize: 1024*1024
+	    		    }
+	    		    
+	    		});
+	    		uploader.on( 'fileQueued', function( file ) {
+	    			var $li = $(
+	    					'<li class="diyUploadHover">'+
+	    				    		'<div class="viewThumb" style="text-align: initial;">'+	 
+	    						  	'<p class="diyControl">'+
+	    					    	 	'<span data-id="'+file.id+'" class="diyCancel" data-itemid="${item.id}" onclick="diyCancel(this)"><i></i></span>'+
+	    						 	'</p>'+   	 	
+	    						 	'<img src="/images/imgLoading.gif"></img><input type="hidden" id="'+file.id+'" name="pathArr">'+
+	    						 '</div>'+
+	    					'</li>'
+	    				  );
+	    			$("#${item.goodsRandom} .upload-pick").before($li);
+	    		    uploader.makeThumb( file, function( error, src ) {
+	    		    	$li.find("img").data("src",src);
+	    		    	var $ersn0 = $("#${item.goodsRandom} .es-res-num span").eq(0);
+	    		    	var $ersn1 = $("#${item.goodsRandom} .es-res-num span").eq(1);
+	    		    	$ersn0.html(Number($ersn0.html())+1);
+	    		    	$ersn1.html(Number($ersn1.html())-1);
+	    			}, 100, 100 );
+	    		});
+	    		uploader.on( 'uploadAccept', function( fileObj,data ) {
+	    			  var $img = $("#${item.goodsRandom} #"+fileObj.file.id).val(data.path).prev("img");
+	    			  $img.attr("src",$img.data("src"));
+	    		});
+
+	    		uploader.on( 'uploadError', function( file ) {
+	    		   layer.msg("上传失败",{time:1000})
+	    		});
+	    		uploader.on("error",function (type){
+	    			if (type == "Q_EXCEED_NUM_LIMIT") {
+	    		        layer.msg("最多传5张照片",{time:1000});
+	    		    } else if (type == "F_DUPLICATE") {
+	    		        layer.msg("文件已存在队列中",{time:1000});
+	    		    }else if (type == "Q_TYPE_DENIED") {
+	    		        layer.msg("文件类型不满足",{time:1000});
+	    		    }
+	    		});
+	    		if(!window.uploaderObj){
+	    			window.uploaderObj = {"${item.id}":uploader};
+	    			window.evaluateObj = [];
+	    		}else{
+	    			window.uploaderObj["${item.id}"] = uploader;
+	    		}
+	    		window.evaluateObj.push({goodsRandom:"${item.goodsRandom}"});
+	    	})();
+	    </script>
+        </#list>
+    <div class="ec-content">
+        <div class="ecc-btn-box">
+            <button class="ecc-btn" onclick="submitEcaluate()">提交</button>
+            <span class="ecc-anonymity">
+                <label>
+                    <input type="checkbox" id="isInvisible"> 匿名评价
+                </label>
+            </span>
+        </div>
+    </div>
+</div>
+<#include "/public/foot.ftl">
+
+<script>
+function submitEcaluate(){
+	var isImgOk = true;
+	$(".goods-evaluate").each(function(i){
+		var $this = $(this);
+		var evaluate = window.evaluateObj[i];
+		$this.find(".grade").each(function(){		 //评分
+			evaluate[$(this).data("target")] = parseInt($(this).html())
+		})
+		evaluate.pingjia = $this.find(".es-text textarea").val(); //评价
+		evaluate.pathArr = [];//图片
+		$this.find("input[name='pathArr']").each(function(){
+			if(this.value==""){
+				layer.msg("请等待图片上传完成!");
+				return false;
+			}
+			evaluate.pathArr.push(this.value);
+		})
+		evaluate.isInvisible = $("#isInvisible").is(":checked"); //是否匿名
+	});
+	if(!isImgOk){
+		return false;
+	}
+	
+	 $("<form action='/user/grzx/saveUserEvaluate.action' method='post' style='display:none'>"+
+			"<input name='t' value='"+JSON.stringify(window.evaluateObj)+"'>"+
+			"<input name='id' value='${order.id?c}'>"+
+	   "</form>").appendTo("body").submit(); 
+}
+
+function limitWord(_this){
+	var length = _this.value.length;
+	if(length > 500){
+		_this.value = _this.value.substring(0,500)
+	}
+	$(_this).parent().find(".num").html(500-_this.value.length);
+}
+function diyCancel(_this){
+	window.uploaderObj[$(_this).data("itemid")].removeFile($(_this).data("id"));
+	var $ersn0 = $(_this).parents(".ec-content").find(".es-res-num span").eq(0);
+	var $ersn1 = $(_this).parents(".ec-content").find(".es-res-num span").eq(1);
+	$ersn0.html(Number($ersn0.html())-1);
+	$ersn1.html(Number($ersn1.html())+1);
+	$(_this).parents(".diyUploadHover").remove();
+}
+$(function () {
+    $(".buy-eva-star i").bind("click", function () {
+        $(this).parent().find("i").removeClass("fa-star").addClass("fa-star-o")
+        $(this).removeClass("fa-star-o").addClass("fa-star")
+            .prevAll().removeClass("fa-star-o").addClass("fa-star");
+        $(this).parent().siblings(".grade").html(($(this).index() + 1) + "分")
+    })
+})
+</script>
+</body>
+
+</html>

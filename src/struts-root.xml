@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE struts PUBLIC  
+"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"  
+"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<constant name="struts.enable.DynamicMethodInvocation" value="true"/>
+	
+	<package name="root" extends="json-default" namespace="/">
+		<action name="registerUser" class="com.broadcontact.clothing.action.UserEntityAction" method="addUser">
+			<result type="json"><param name="root">map</param></result>			
+		</action>
+		<action name="login" class="com.broadcontact.clothing.action.UserEntityAction" method="login">
+			<result type="json"><param name="root">map</param></result>			
+		</action>
+		<action name="logout" class="com.broadcontact.clothing.action.UserEntityAction" method="logout">
+			<result type="redirectAction">index.action</result>			
+		</action>
+		<action name="losePwdCheckTelOrEmail" class="com.broadcontact.clothing.action.UserEntityAction" method="losePwdCheckTelOrEmail">
+			<result type="json"><param name="root">map</param></result>			
+		</action>
+		<action name="updatePassword" class="com.broadcontact.clothing.action.UserEntityAction" method="updatePassword">
+			<result type="json"><param name="root">map</param></result>			
+		</action>
+		<action name="toLostPwdPage" class="com.broadcontact.clothing.action.UserEntityAction" method="toLostPwdPage">
+			<result type="freemarker">/user/losePw.html</result>
+		</action>
+		
+		
+		<action name="index" class="com.broadcontact.clothing.action.PublicAction">
+			<result type="freemarker">/main/index.html</result>			
+		</action>
+		<action name="chain" class="com.broadcontact.clothing.action.DemandEntityAction" method="listAllDemand">
+			<result type="freemarker">/main/chain.html</result>			
+		</action>
+		<action name="design" class="com.broadcontact.clothing.action.PublicAction">
+			<result type="freemarker">/main/design.html</result>			
+		</action>
+		<action name="factory" class="com.broadcontact.clothing.action.PublicAction">
+			<result type="freemarker">/main/factory.html</result>			
+		</action>
+		
+	</package>
+	
+</struts>

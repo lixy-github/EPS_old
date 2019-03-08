@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="1250px, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>完善资料</title>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/personal.css">
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+    <script src="js/jquery-1.9.1.min.js"></script>
+    <script src="js/head-foot.js"></script>
+    <script src="js/personal.js"></script>
+</head>
+
+<body>
+    <!-- 头部 -->
+    <div class="header">
+        <!-- 导航条 -->
+        <div class="nav navFixed">
+            <div class="logo">
+                <a href="">
+                    <img src="images/logo.png">
+                </a>
+            </div>
+            <div class="nav_list">
+                <ul class="clearfix">
+                    <li>
+                        <a href="">首页</a>
+                    </li>
+                    <li>
+                        <a href="">供应链</a>
+                    </li>
+                    <li>
+                        <a href="">超市</a>
+                    </li>
+                    <li>
+                        <a href="">设计</a>
+                    </li>
+                    <li>
+                        <a href="">智能工厂</a>
+                    </li>
+                    <li class="line line-js"></li>
+                </ul>
+            </div>
+            <div class="login-register-btns" style="display:none">
+                <a class="login">登录</a>
+                <a class="register">注册</a>
+            </div>
+            <!-- 登陆成功后显示购物车 -->
+            <div class="buy-car-box" style="display:block">
+                <a class="car-icon fa fa-shopping-cart"></a>
+                <div class="head-img">
+                    <img src="images/user-default-photo7.png">
+                    <div class="per_withdraw" style="display:none">
+                        <!-- <i class="fa fa-angle-up"></i> -->
+                        <a href="个人中心.html">个人中心</a>
+                        <a href="index.html">退出</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="add-nav">
+        <div class="add-nav-box clearfix">
+            <div class="anb-left">
+                <h3>完善资料</h3>
+            </div>
+            <div class="anb-right">
+                <a href="">Startit</a>
+                <span>></span>
+                <a href="">All</a>
+                <span>></span>
+                <a href="">Innovation</a>
+                <span>></span>
+                <span>UX Design Aimed At Millenials</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 主体内容 -->
+    <div class="person-container clearfix">
+        <div class="pc-left">
+            <!-- 完善资料 -->
+            <div class="completion-data">
+                <form>
+                    <!-- 上 -->
+                    <div class="cd-top">
+                        <div class="data-int-box">
+                            <span class="data-name">
+                                <span class="start">*</span>
+                                单位名称：
+                            </span>
+                            <input type="text">
+                            <span class="dnot-pass">公司名称不能为空</span>
+                        </div>
+                        <div class="data-int-box">
+                            <span class="data-name">
+                                <span class="start">*</span>
+                                地址：
+                            </span>
+                            <input type="text">
+                            <span class="dnot-pass">地址不能为空</span>
+                        </div>
+                        <div class="data-int-box">
+                            <span class="data-name">
+                                <span class="start">*</span>
+                                纳税人识别号：
+                            </span>
+                            <input type="text">
+                            <span class="dnot-pass">不能为空</span>
+                        </div>
+                        <div class="data-int-box">
+                            <span class="data-name">
+                                <span class="start">*</span>
+                                我能提供：
+                            </span>
+                            <div class="data-type">
+                                <div class="data-container"></div>
+                                <div class="data-type-cont" style="display:none">
+                                    <label for="data1">
+                                        <input id="data1" type="checkbox" name="data" value="" class="data-check"> 提供订单
+                                    </label>
+                                    <label for="data2">
+                                        <input id="data2" type="checkbox" name="data" value="" class="data-check"> 提供生产
+                                    </label>
+                                    <label for="data3">
+                                        <input id="data3" type="checkbox" name="data" value="" class="data-check"> 提供设计
+                                    </label>
+                                    <label for="data4">
+                                        <input id="data4" type="checkbox" name="data" value="" class="data-check"> 提供质检
+                                    </label>
+                                    <label for="data5">
+                                        <input id="data5" type="checkbox" name="data" value="" class="data-check"> 提供原料
+                                    </label>
+                                    <label for="data6">
+                                        <input id="data6" type="checkbox" name="data" value="" class="data-check"> 提供成品
+                                    </label>
+                                    <label for="data7">
+                                        <input id="data7" type="checkbox" name="data" value="" class="data-check"> 提供仓储
+                                    </label>
+                                    <div class="data-btn-box">
+                                        <button type="button" class="data-btn">确定</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="dnot-pass">不能为空</span>
+                        </div>
+                        <div class="data-int-box">
+                            <span class="data-name">
+                                <span class="start">*</span>
+                                联系人：
+                            </span>
+                            <input type="text">
+                            <span class="dnot-pass">不能为空</span>
+                        </div>
+                        <div class="data-int-box">
+                            <span class="data-name">
+                                <span class="start">*</span>
+                                联系电话：
+                            </span>
+                            <input type="text">
+                            <span class="dnot-pass">不能为空</span>
+                        </div>
+                    </div>
+                    <!-- 下 -->
+                    <div class="cd-bottom">
+                        <p>资质文件</p>
+                        <div class="file-box clearfix">
+                            <div class="file-upload-box">
+                                <p>营业执照/商务登记证</p>
+                                <div class="file-upload">
+                                    <!-- 添加文件 -->
+                                    <div class="add-file adf1" style="display:block">
+                                        <div class="file-bg"></div>
+                                        <input id="file1" type="file" class="in-file if1" multiple="multiple" name="file" accept="image/*" onchange="getPhoto1(this)">
+                                        <label for="file1"></label>
+                                    </div>
+                                    <!-- 显示/修改文件 -->
+                                    <div class="show-file sf1" style="display:none">
+                                        <div class="show_file_img sfi1"></div>
+                                        <label for="file1" style="display:none">点击修改</label>
+                                    </div>
+                                    <div class="revise-file-img rfi1" style="display:none">
+                                        <label for="file1">点击修改</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="file-upload-box">
+                                <p>税务登记证</p>
+                                <div class="file-upload">
+                                    <!-- 添加文件 -->
+                                    <div class="add-file adf2" style="display:block">
+                                        <div class="file-bg"></div>
+                                        <input id="file2" type="file" class="in-file if2" multiple="multiple" name="file" accept="image/*" onchange="getPhoto2(this)">
+                                        <label for="file2"></label>
+                                    </div>
+                                    <!-- 显示/修改文件 -->
+                                    <div class="show-file sf2" style="display:none">
+                                        <div class="show_file_img sfi2"></div>
+                                        <label for="file2" style="display:none">点击修改</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="file-upload-box">
+                                <p>组织机构代码证</p>
+                                <div class="file-upload">
+                                    <!-- 添加文件 -->
+                                    <div class="add-file adf3" style="display:block">
+                                        <div class="file-bg"></div>
+                                        <input id="file3" type="file" class="in-file if3" multiple="multiple" name="file" accept="image/*" onchange="getPhoto3(this)">
+                                        <label for="file3"></label>
+                                    </div>
+                                    <!-- 显示/修改文件 -->
+                                    <div class="show-file sf3" style="display:none">
+                                        <div class="show_file_img sfi3"></div>
+                                        <label for="file3" style="display:none">点击修改</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 提示 -->
+                        <div class="tips">
+                            上传附件提示：
+                            <br/> 1、中国大陆地区请提供营业执照、税务登记证和组织结构代码证，非大陆地区请提供商务登记证。
+                            <br/> 2、可以上传.JPG / .GIF / .PNG 格式的文件，单个文件大小不能超过3M。
+                        </div>
+                        <div>
+                            <button class="file-btn" type="button">提交</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="pc-right">
+            <ul>
+                <li>
+                    <p>账户信息</p>
+                    <div class="drop-down" style="display:none">
+                        <a>账户资料</a>
+                        <a>修改密码</a>
+                        <a>绑定邮箱/手机</a>
+                        <a href="完善资料.html">完善资料</a>
+                    </div>
+                </li>
+                <li>
+                    <p>我的需求</p>
+                </li>
+                <li>
+                    <p>我的生产订单</p>
+                </li>
+                <li>
+                    <p>我的收藏</p>
+                </li>
+                <li>
+                    <p>我发布的产品</p>
+                </li>
+                <li>
+                    <p>我购买的商品</p>
+                </li>
+                <li>
+                    <p>我的超市交易</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+    <script type="text/javascript">
+        var imgurl = "";
+
+        function getImg(node) {
+            try {
+                var file = null;
+                if (node.files && node.files[0]) {
+                    file = node.files[0];
+                } else if (node.files && node.files.item(0)) {
+                    file = node.files.item(0);
+                }
+                //Firefox 因安全性问题已无法直接通过input[file].value 获取完整的文件路径  
+                try {
+                    imgURL = file.getAsDataURL();
+                } catch (e) {
+                    imgRUL = window.URL.createObjectURL(file);
+                }
+            } catch (e) {
+                if (node.files && node.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        imgURL = e.target.result;
+                    };
+                    reader.readAsDataURL(node.files[0]);
+                }
+            }
+        }
+
+        // 营业执照/商务登记证
+        function creatImg1(imgRUL) {
+            var textHtml = "<img src='" + imgRUL + "'/>";
+            $(".sfi1").html(textHtml);
+        }
+
+        function getPhoto1(node) {
+            var imgURL = "";
+            getImg(node);
+            creatImg1(imgRUL);
+            return imgURL;
+        }
+
+        $(".if1").change(function () {
+            $(".adf1").css("display", "none");
+            $(".sf1").css("display", "block");
+        });
+        $(".sf1").mouseover(function () {
+            $(this).find("label").css("display", "block")
+        })
+        $(".sf1").mouseout(function () {
+            $(this).find("label").css("display", "none")
+        })
+
+        // 税务登记证
+        function creatImg2(imgRUL) {
+            var textHtml = "<img src='" + imgRUL + "'/>";
+            $(".sfi2").html(textHtml);
+        }
+
+        function getPhoto2(node) {
+            var imgURL = "";
+            getImg(node);
+            creatImg2(imgRUL);
+            return imgURL;
+        }
+
+        $(".if2").change(function () {
+            $(".adf2").css("display", "none");
+            $(".sf2").css("display", "block");
+        });
+        $(".sf2").mouseover(function () {
+            $(this).find("label").css("display", "block")
+        })
+        $(".sf2").mouseout(function () {
+            $(this).find("label").css("display", "none")
+        })
+
+        // 组织机构代码证
+        function creatImg3(imgRUL) {
+            var textHtml = "<img src='" + imgRUL + "'/>";
+            $(".sfi3").html(textHtml);
+        }
+
+        function getPhoto3(node) {
+            var imgURL = "";
+            getImg(node);
+            creatImg3(imgRUL);
+            return imgURL;
+        }
+
+        $(".if3").change(function () {
+            $(".adf3").css("display", "none");
+            $(".sf3").css("display", "block");
+        });
+
+        $(".sf3").mouseover(function () {
+            $(this).find("label").css("display", "block")
+        })
+        $(".sf3").mouseout(function () {
+            $(this).find("label").css("display", "none")
+        })
+    </script>
+</body>
+
+</html>

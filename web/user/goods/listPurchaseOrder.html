@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1250px, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>我购买的商品</title>
+    <link rel="stylesheet" href="/css/index.css" type="text/css">
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/css/personal.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/purchase.css">
+    <script src="/js/jquery-1.9.1.min.js"></script>
+</head>
+
+<body>
+    <!-- 导航条 -->
+    <#include "/public/menu.ftl">
+    <div class="person-container clearfix">
+        <div class="pc-left">
+            <h2 class="person-title pt-pur">我购买的商品</h2>
+            <div class="purchased-container">
+                <div class="pur-title">
+                    <ul class="clearfix">
+                        <li>商品</li>
+                        <li>收货人</li>
+                        <li>金额</li>
+                        <li>状态</li>
+                        <li>操作</li>
+                    </ul>
+                </div>
+                <div class="pur-show-goods">
+                	<#list pageSupport.items as order>
+                	<div class="pur-goods">
+                        <ul class="date-order clearfix">
+                            <li>
+                                <span>${order.createTime?string("yyyy-MM-dd HH:mm:ss")}</span>
+                            </li>
+                            <li>
+                                订单号：<span class="order-num">${order.orderNumber}</span>
+                            </li>
+                            <li>
+                                <span class="pur-seller">${order.seller.companyName!}</span>
+                                <a class="pur-contact fa fa-qq"></a>
+                            </li>
+                        </ul>
+                        <ul class="pur-info clearfix" >
+                            <li>
+                            	<#list order.items as item>
+                           		<div class="pur-goods-box">
+                                    <a class="pur-info-img" href="/supermarket/goodsDetail.action?random=${item.goodsRandom!}" target="_black">
+                                        <img src="${item.imageUrl!}">
+                                    </a>
+                                    <a class="pur-info-text" href="/supermarket/goodsDetail.action?random=${item.goodsRandom!}" target="_black">
+                                    	${item.goodsName!}
+                                    </a>
+                                    <span class="pur-goods-num">x${item.piece}</span>
+                                </div>
+                            	</#list>
+                            </li>
+                            <li>
+                                <span class="pur-color">${order.receiveLinkMan!}</span>
+                                <span class="fa fa-user-o"></span>
+                            </li>
+                            <li>
+                                <p class="pur-title-price">
+                                    总额：<span>¥${order.totalMoney?string("0.00")}</span>
+                                </p>
+                                <p>在线支付</p>
+                            </li>
+                            <li>
+                                <p class="pur-status">
+                                	<#if order.orderStatus=-1>
+                                		已取消
+                                	<#elseif order.orderStatus=0>
+                                		等待付款
+                               		<#elseif order.orderStatus=10>
+                                		待发货
+                                	<#elseif order.orderStatus=20>
+                                		待签收
+                                	<#elseif order.orderStatus=100>
+                                		已完成
+                                	</#if>
+                                </p>
+                                <p>
+                                    <a class="pur-color pur-color-hover" target="_black" href="/user/grzx/getOrderDetail.action?random=${order.random}">订单详情</a>
+                                </p>
+                            </li>
+                            <li class="pur-operate" onclick="orderMethod(event,this)" data-random="${order.random}">
+                            	<#if order.orderStatus=-1>		<!-- 取消 -->
+                                <a class="pur-color-hover onlyone-method" data-method="remove">删除</a>
+                                </#if>
+                                <#if order.orderStatus=0>		<!-- 未付款 -->
+                                <a class="pur-evaluate pur-color-hover"  data-method="pay">付款</a>
+                                <a class="pur-color-hover"  data-method="cancel">取消</a>
+                                </#if>
+                            	<#if (order.orderStatus=20)>  <!-- 已发货 -->
+                            	<a class="pur-evaluate pur-color-hover" data-method="sign">签收</a>
+                                <a class="pur-color-hover" data-method="transport">物流</a>
+                                </#if>
+                                <#if order.orderStatus=100 && order.userEvaluateOver?string("true","false")=="true">
+                                <a class="pur-evaluate pur-color-hover">已评价</a>
+                                <a class="pur-color-hover" data-method="remove">删除</a>
+                                </#if>
+                                <#if order.orderStatus=100 && order.userEvaluateOver?string("true","false")=="false">
+                                <a class="pur-evaluate pur-color-hover" data-method="evaluate">评价</a>
+                                <a class="pur-color-hover" data-method="remove">删除</a>
+                                </#if>
+                            </li>
+                        </ul>
+                    </div>
+                	</#list>
+                </div>
+                 <!-- 分页 -->
+           		${pageSupport.html}
+            </div>
+        </div>
+		<#include "/public/grzxRightMenu.ftl">
+    </div>
+    <!-- 尾部 -->
+    <#include "/public/foot.ftl">
+
+	<div style="overflow: hidden;width: 0px;height: 0px">
+		<div class="cancel-container">
+		<div class="tips warn-tips" style="display:none">
+		<i></i>
+		<p>请选择取消原因</p>
+		</div>
+		<div class="J-reason-list reason-list" onclick="selectReason(event)">
+			<div class="reasonBody">
+				<div class="reason" data-reason="订单不能按预计时间送达">
+					订单不能按预计时间送达<i></i>
+				</div>
+			</div>
+			<div class="reasonBody">
+				<div class="reason" data-reason="操作有误（商品、地址等选错）">
+					操作有误（商品、地址等选错）<i></i>
+				</div>
+			</div>
+			<div class="reasonBody">
+				<div class="reason" data-reason="重复下单/误下单">
+					重复下单/误下单<i></i>
+				</div>
+			</div>
+			<div class="reasonBody">
+				<div class="reason" data-reason="其他渠道价格更低">
+					其他渠道价格更低<i></i>
+				</div>
+			</div>
+			<div class="reasonBody">
+				<div class="reason" data-reason="该商品降价了">
+					该商品降价了<i></i>
+				</div>
+			</div>
+			<div class="reasonBody">
+				<div class="reason"  data-reason="不想买了">
+					不想买了<i></i>
+				</div>
+			</div>
+			<div class="reasonBody">
+				<div class="reason" data-reason="商品无货">
+					商品无货<i></i>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+</body>
+<script>
+
+function selectReason(event){
+	var event = event || window.event;
+	var target = event.target || event.srcElement;
+	if($(target).hasClass("reason")){
+		$(".reason-list .selected").removeClass("selected");
+		$(target).addClass("selected");
+	}
+}
+function orderMethod(event,_this){
+	var event = event || window.event;
+	var target = event.target || event.srcElement;
+	var method = $(target).data("method");
+	var random = $(_this).data("random");
+	if(method == "evaluate"){
+		location.href = "/user/grzx/toUserEvaluate.action?random="+random
+	}else if(method == "pay"){
+		pay(random);
+	}else if(method == "remove"){
+		orderRemove(random);
+	}else if(method == "cancel"){
+		orderCancel(random)
+	}else if(method == "sign"){
+		sign(random);
+	}
+}
+function sign(random){
+	$.ajax({           
+        url:'/user/grzx/updateOrderStatus.action',    
+        data:{random:random,status:100},    
+        dataType:'json',    
+        success:function(data){
+        	location.reload(true);
+        }
+    });	
+}
+function pay(random){
+	$.ajax({           
+        url:'/user/grzx/updateOrderStatus.action',    
+        data:{random:random,status:10},    
+        dataType:'json',    
+        success:function(data){
+        	location.reload(true);
+        }
+    });
+}
+function orderRemove(random){
+	layer.confirm('确定要删除吗', {
+        btn : [ '确定', '取消' ]
+    }, function(index) {
+    	$.ajax({           
+            url:'/user/grzx/removeOrder.action',    
+            data:{random:random},    
+            dataType:'json',    
+            success:function(data){
+            	layer.close(index);
+            	location.reload(true);
+            }
+        });
+    }); 
+}
+function orderCancel(random){
+	layer.open({
+		  type: 1,
+		  title: "请选择取消原因",
+		  closeBtn: 0,
+		  area: ['480px', '360px'],
+		  scrollbar:false,
+		  content: $(".cancel-container"),
+		  btn: ['提交', '取消'],
+		  btn1: function(index, layero){
+			$(".warn-tips").hide();
+			var reason = $(".reason-list .selected").data("reason");
+			if(!reason){
+				$(".warn-tips").show();
+				return false;
+			}
+		  	$.ajax({           
+	            url:'/user/grzx/updateOrderStatus.action',    
+	            data:{random:random,status:-1,reason:reason},    
+	            dataType:'json',    
+	            success:function(data){
+	            	layer.close(index);
+	            	location.reload(true);
+	            }
+	        });
+		  },
+		  btn2: function(index, layero){
+			  layer.close(index);
+		  }
+	});
+}
+(function(){
+	var test = $(".pur-info");
+    for (var i = 0; i < test.length; i++) {
+        if ($(test[i]).find("li:first-child").height() != $(test[i]).find("li:gt(0)").height()) {
+            $(test[i]).find("li:gt(0)").height($(test[i]).find("li:first-child").height())
+        }
+    }
+})();
+</script>
+</html>

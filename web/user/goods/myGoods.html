@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1250px, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>我的商品</title>
+    <link rel="stylesheet" href="/css/index.css" type="text/css">
+    <link rel="stylesheet" href="/css/personal.css" type="text/css">
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/css/shop.css" rel="stylesheet">
+    <script src="/js/jquery-1.9.1.min.js"></script>
+    <script src="/js/slide.js"></script>
+    <script src="/js/personal.js"></script>
+
+</head>
+
+<body>
+    <!-- 导航条 -->
+    <#include "/public/menu.ftl">
+
+    <div class="shop_container clearfix">
+    		<h2 class="person-title pt-sh">
+            我发布的商品
+        </h2>
+        <div class="sc_left">
+            <div class="sc_l_top clearfix">
+                <div class="show_num">
+                    共 ${pageSupport.totalCount} 件商品
+                </div>
+                <div class="show_list">
+                    <div class="show_list_text clearfix">
+                        <span>${statusStr}</span>
+                        <i class="fa fa-angle-down"></i>
+                    </div>
+                    <div class="show_list_option" style="display:none">
+                    	<p data-status="100">全部</p>
+                    	<p data-status="0">未处理</p>
+                        <p data-status="1">已上架</p>
+                        <p data-status="-1">已下架</p>                 
+                    </div>
+                </div>
+            </div>
+            <div id="goodsList" class="sc_l_bottom clearfix">
+            	<#list pageSupport.items as goods>
+            		<div class="product_show">
+	                    <a target="_blank" href="/supermarket/goodsDetail.action?random=${goods.random}">
+	                    	<#if goods.imageList[0]??>
+	                    		<img src="${goods.imageList[0].path}">
+	                    		<#else>
+	                    		 <img src="/images/s-3-in-one-lux-router-550x550.jpg">
+	                    	</#if>   
+	                    	<p class="product_status ps-1 hide" id="goods-xsz" <#if goods.goodsStatus=1&&(goods.kucun>0) >style="display:block"</#if> >销售中</p>  
+	                    	<p class="product_status ps-2 hide" id="goods-yxj" <#if goods.goodsStatus=-1 >style="display:block"</#if> >已下架</p>    
+	                    	<p class="product_status ps-2 hide" id="goods-ysk" <#if goods.goodsStatus=1&&(goods.kucun<=0)>style="display:block"</#if>>已售空</p>  
+	                    	<p class="product_status ps-2 hide" id="goods-wcl" <#if goods.goodsStatus=0>style="display:block"</#if> >未处理</p>              
+	                    </a>
+	                    <div class="product_info_holder">
+	                        <div class="pro_info_top clearfix">
+	                            <div class="product_price">
+	                                <h4>${goods.name}</h4>
+	                                <p class="price">¥${goods.danjia?c}</p>
+	                            </div>
+	                            <div class="product_level">
+	                                <i class="fa fa-star"></i>
+	                                <i class="fa fa-star"></i>
+	                                <i class="fa fa-star"></i>
+	                                <i class="fa fa-star"></i>
+	                                <i class="fa fa-star-o"></i>
+	                            </div>
+	                        </div>
+	                        <div class="pro_info_bottom">
+	                            <div class="add_car_box">
+	                            	<a class="p_info" href="/user/grzx/goUpdateGoods.action?random=${goods.random}">商品编辑</a>
+                                	<#if goods.goodsStatus = 1>
+                                		<a class="add_car" onclick="updateGoodsStatus(this,'${goods.random}')">商品下架</a>
+                                		<#else>
+                                		<a class="add_car" onclick="updateGoodsStatus(this,'${goods.random}')">商品上架</a>
+                                	</#if>	                                
+	                            </div>
+	                        </div>
+	                    </div>
+                	</div>
+            	</#list>
+                
+           </div>
+            <!-- 分页 -->
+           ${pageSupport.html}
+        </div>
+        <#include "/public/grzxRightMenu.ftl">
+    </div>
+    
+    <!-- 尾部 -->
+    <#include "/public/foot.ftl">
+    
+    <script>
+    function updateGoodsStatus(_this,random){
+    	var $this = $(_this);
+    	var status = 1;
+    	var statusStr = "商品下架";
+    	var divId = "goods-xsz"
+    	if($this.text().trim()=="商品下架"){
+    		status = -1;
+    		statusStr = "商品上架";
+    		divId = "goods-yxj";
+    	}
+		$.ajax({    
+            type:'post',        
+            url:'/user/grzx/updateGoodsStatus.action',    
+            data:{"goods.random":random,"status":status},    
+            dataType:'json',    
+            success:function(data){
+            	$this.text(statusStr);
+            	$this.parents(".product_show").find(".product_status").hide();
+            	$("#"+divId).show();
+            }
+        });
+	}   
+    
+    $(".show_list").bind("click",function(event){
+    	var event = event || window.event;
+    	var target = event.target||event.srcElement;
+    	if(target.tagName.toUpperCase() == "P"){
+    		$(".show_list_text span").html($(target).html());
+    	    $(".show_list_option").hide();
+        	window.location.href="/user/grzx/listMyGoods.action?status="+$(target).data("status")+"&d="+new Date();
+    	}   	
+    })
+    $(".show_list_text").click(function () {
+	    $(".show_list_option").toggle();	       
+    });
+   </script>
+</body>
+</html>

@@ -1,0 +1,464 @@
+package com.broadcontact.common.tools;
+
+import java.util.ArrayList;
+
+public class Str2Pinyin {
+	private static ArrayList pinyin = new ArrayList(395);
+	private static ArrayList charValue = new ArrayList(395);
+
+	/**
+	 * 该方法返回一个字符串的拼音，对于要做敏感字
+	 * 检查时应该一个字一个字来获取其拼音以免无法
+	 * 得知每个字对应的拼音。
+	 * @param word
+	 * @return String
+	 */
+	public static String getPinyin(String word) {
+		String pinyin = "";
+		for (int i = 0; i < word.length(); i++)
+			pinyin += getPinyin2(getCode(word.charAt(i)))+" ";
+		return pinyin;
+	}
+	/**
+	 * 该方法通过DBCS的编码值到哈希表中查询得到对应的拼音串
+	 * @param hz
+	 * @return String
+	 */
+	protected static String getPinyin2(int hz) {
+		String py = "";
+		if (hz > 0 && hz < 160)
+			py += (char)hz;
+		//else if (hz < -20319 || hz > -10247);
+		else if (hz <= -10247 && hz >= -20319){
+			int pc = 0;
+			int i = pinyin.size() - 1;
+			for (; i >= 0; i--) {
+				pc = ((Integer) charValue.get(i)).intValue();
+				if (pc <= hz)
+					break;
+			}
+			if (i >= 0)
+				py = (String)pinyin.get(i);
+		}
+		return py;
+	}
+	
+	/**
+	 * 该方法返回一个字符的DBCS编码值
+	 * @param cc
+	 * @return int
+	 */
+	protected static int getCode(char cc) {
+		byte[] bs = String.valueOf(cc).getBytes();
+		int code;
+		if(bs.length < 2)
+			code = (int)cc;
+		else
+			code = (bs[0] << 8) | (bs[1] & 0x00FF);
+		bs = null;
+		return code;
+	}
+
+	static {
+		pinyin.add("a");charValue.add(new Integer(-20319));
+		pinyin.add("ai");charValue.add(new Integer(-20317));
+		pinyin.add("an");charValue.add(new Integer(-20304));
+		pinyin.add("ang");charValue.add(new Integer(-20295));
+		pinyin.add("ao");charValue.add(new Integer(-20292));
+		pinyin.add("ba");charValue.add(new Integer(-20283));
+		pinyin.add("bai");charValue.add(new Integer(-20265));
+		pinyin.add("ban");charValue.add(new Integer(-20257));
+		pinyin.add("bang");charValue.add(new Integer(-20242));
+		pinyin.add("bao");charValue.add(new Integer(-20230));
+		pinyin.add("bei");charValue.add(new Integer(-20051));
+		pinyin.add("ben");charValue.add(new Integer(-20036));
+		pinyin.add("beng");charValue.add(new Integer(-20032));
+		pinyin.add("bi");charValue.add(new Integer(-20026));
+		pinyin.add("bian");charValue.add(new Integer(-20002));
+		pinyin.add("biao");charValue.add(new Integer(-19990));
+		pinyin.add("bie");charValue.add(new Integer(-19986));
+		pinyin.add("bin");charValue.add(new Integer(-19982));
+		pinyin.add("bing");charValue.add(new Integer(-19976));
+		pinyin.add("bo");charValue.add(new Integer(-19805));
+		pinyin.add("bu");charValue.add(new Integer(-19784));
+		pinyin.add("ca");charValue.add(new Integer(-19775));
+		pinyin.add("cai");charValue.add(new Integer(-19774));
+		pinyin.add("can");charValue.add(new Integer(-19763));
+		pinyin.add("cang");charValue.add(new Integer(-19756));
+		pinyin.add("cao");charValue.add(new Integer(-19751));
+		pinyin.add("ce");charValue.add(new Integer(-19746));
+		pinyin.add("ceng");charValue.add(new Integer(-19741));
+		pinyin.add("cha");charValue.add(new Integer(-19739));
+		pinyin.add("chai");charValue.add(new Integer(-19728));
+		pinyin.add("chan");charValue.add(new Integer(-19725));
+		pinyin.add("chang");charValue.add(new Integer(-19715));
+		pinyin.add("chao");charValue.add(new Integer(-19540));
+		pinyin.add("che");charValue.add(new Integer(-19531));
+		pinyin.add("chen");charValue.add(new Integer(-19525));
+		pinyin.add("cheng");charValue.add(new Integer(-19515));
+		pinyin.add("chi");charValue.add(new Integer(-19500));
+		pinyin.add("chong");charValue.add(new Integer(-19484));
+		pinyin.add("chou");charValue.add(new Integer(-19479));
+		pinyin.add("chu");charValue.add(new Integer(-19467));
+		pinyin.add("chuai");charValue.add(new Integer(-19289));
+		pinyin.add("chuan");charValue.add(new Integer(-19288));
+		pinyin.add("chuang");charValue.add(new Integer(-19281));
+		pinyin.add("chui");charValue.add(new Integer(-19275));
+		pinyin.add("chun");charValue.add(new Integer(-19270));
+		pinyin.add("chuo");charValue.add(new Integer(-19263));
+		pinyin.add("ci");charValue.add(new Integer(-19261));
+		pinyin.add("cong");charValue.add(new Integer(-19249));
+		pinyin.add("cou");charValue.add(new Integer(-19243));
+		pinyin.add("cu");charValue.add(new Integer(-19242));
+		pinyin.add("cuan");charValue.add(new Integer(-19238));
+		pinyin.add("cui");charValue.add(new Integer(-19235));
+		pinyin.add("cun");charValue.add(new Integer(-19227));
+		pinyin.add("cuo");charValue.add(new Integer(-19224));
+		pinyin.add("da");charValue.add(new Integer(-19218));
+		pinyin.add("dai");charValue.add(new Integer(-19212));
+		pinyin.add("dan");charValue.add(new Integer(-19038));
+		pinyin.add("dang");charValue.add(new Integer(-19023));
+		pinyin.add("dao");charValue.add(new Integer(-19018));
+		pinyin.add("de");charValue.add(new Integer(-19006));
+		pinyin.add("deng");charValue.add(new Integer(-19003));
+		pinyin.add("di");charValue.add(new Integer(-18996));
+		pinyin.add("dian");charValue.add(new Integer(-18977));
+		pinyin.add("diao");charValue.add(new Integer(-18961));
+		pinyin.add("die");charValue.add(new Integer(-18952));
+		pinyin.add("ding");charValue.add(new Integer(-18783));
+		pinyin.add("diu");charValue.add(new Integer(-18774));
+		pinyin.add("dong");charValue.add(new Integer(-18773));
+		pinyin.add("dou");charValue.add(new Integer(-18763));
+		pinyin.add("du");charValue.add(new Integer(-18756));
+		pinyin.add("duan");charValue.add(new Integer(-18741));
+		pinyin.add("dui");charValue.add(new Integer(-18735));
+		pinyin.add("dun");charValue.add(new Integer(-18731));
+		pinyin.add("duo");charValue.add(new Integer(-18722));
+		pinyin.add("e");charValue.add(new Integer(-18710));
+		pinyin.add("en");charValue.add(new Integer(-18697));
+		pinyin.add("er");charValue.add(new Integer(-18696));
+		pinyin.add("fa");charValue.add(new Integer(-18526));
+		pinyin.add("fan");charValue.add(new Integer(-18518));
+		pinyin.add("fang");charValue.add(new Integer(-18501));
+		pinyin.add("fei");charValue.add(new Integer(-18490));
+		pinyin.add("fen");charValue.add(new Integer(-18478));
+		pinyin.add("feng");charValue.add(new Integer(-18463));
+		pinyin.add("fo");charValue.add(new Integer(-18448));
+		pinyin.add("fou");charValue.add(new Integer(-18447));
+		pinyin.add("fu");charValue.add(new Integer(-18446));
+		pinyin.add("ga");charValue.add(new Integer(-18239));
+		pinyin.add("gai");charValue.add(new Integer(-18237));
+		pinyin.add("gan");charValue.add(new Integer(-18231));
+		pinyin.add("gang");charValue.add(new Integer(-18220));
+		pinyin.add("gao");charValue.add(new Integer(-18211));
+		pinyin.add("ge");charValue.add(new Integer(-18201));
+		pinyin.add("gei");charValue.add(new Integer(-18184));
+		pinyin.add("gen");charValue.add(new Integer(-18183));
+		pinyin.add("geng");charValue.add(new Integer(-18181));
+		pinyin.add("gong");charValue.add(new Integer(-18012));
+		pinyin.add("gou");charValue.add(new Integer(-17997));
+		pinyin.add("gu");charValue.add(new Integer(-17988));
+		pinyin.add("gua");charValue.add(new Integer(-17970));
+		pinyin.add("guai");charValue.add(new Integer(-17964));
+		pinyin.add("guan");charValue.add(new Integer(-17961));
+		pinyin.add("guang");charValue.add(new Integer(-17950));
+		pinyin.add("gui");charValue.add(new Integer(-17947));
+		pinyin.add("gun");charValue.add(new Integer(-17931));
+		pinyin.add("guo");charValue.add(new Integer(-17928));
+		pinyin.add("ha");charValue.add(new Integer(-17922));
+		pinyin.add("hai");charValue.add(new Integer(-17759));
+		pinyin.add("han");charValue.add(new Integer(-17752));
+		pinyin.add("hang");charValue.add(new Integer(-17733));
+		pinyin.add("hao");charValue.add(new Integer(-17730));
+		pinyin.add("he");charValue.add(new Integer(-17721));
+		pinyin.add("hei");charValue.add(new Integer(-17703));
+		pinyin.add("hen");charValue.add(new Integer(-17701));
+		pinyin.add("heng");charValue.add(new Integer(-17697));
+		pinyin.add("hong");charValue.add(new Integer(-17692));
+		pinyin.add("hou");charValue.add(new Integer(-17683));
+		pinyin.add("hu");charValue.add(new Integer(-17676));
+		pinyin.add("hua");charValue.add(new Integer(-17496));
+		pinyin.add("huai");charValue.add(new Integer(-17487));
+		pinyin.add("huan");charValue.add(new Integer(-17482));
+		pinyin.add("huang");charValue.add(new Integer(-17468));
+		pinyin.add("hui");charValue.add(new Integer(-17454));
+		pinyin.add("hun");charValue.add(new Integer(-17433));
+		pinyin.add("huo");charValue.add(new Integer(-17427));
+		pinyin.add("ji");charValue.add(new Integer(-17417));
+		pinyin.add("jia");charValue.add(new Integer(-17202));
+		pinyin.add("jian");charValue.add(new Integer(-17185));
+		pinyin.add("jiang");charValue.add(new Integer(-16983));
+		pinyin.add("jiao");charValue.add(new Integer(-16970));
+		pinyin.add("jie");charValue.add(new Integer(-16942));
+		pinyin.add("jin");charValue.add(new Integer(-16915));
+		pinyin.add("jing");charValue.add(new Integer(-16733));
+		pinyin.add("jiong");charValue.add(new Integer(-16708));
+		pinyin.add("jiu");charValue.add(new Integer(-16706));
+		pinyin.add("ju");charValue.add(new Integer(-16689));
+		pinyin.add("juan");charValue.add(new Integer(-16664));
+		pinyin.add("jue");charValue.add(new Integer(-16657));
+		pinyin.add("jun");charValue.add(new Integer(-16647));
+		pinyin.add("ka");charValue.add(new Integer(-16474));
+		pinyin.add("kai");charValue.add(new Integer(-16470));
+		pinyin.add("kan");charValue.add(new Integer(-16465));
+		pinyin.add("kang");charValue.add(new Integer(-16459));
+		pinyin.add("kao");charValue.add(new Integer(-16452));
+		pinyin.add("ke");charValue.add(new Integer(-16448));
+		pinyin.add("ken");charValue.add(new Integer(-16433));
+		pinyin.add("keng");charValue.add(new Integer(-16429));
+		pinyin.add("kong");charValue.add(new Integer(-16427));
+		pinyin.add("kou");charValue.add(new Integer(-16423));
+		pinyin.add("ku");charValue.add(new Integer(-16419));
+		pinyin.add("kua");charValue.add(new Integer(-16412));
+		pinyin.add("kuai");charValue.add(new Integer(-16407));
+		pinyin.add("kuan");charValue.add(new Integer(-16403));
+		pinyin.add("kuang");charValue.add(new Integer(-16401));
+		pinyin.add("kui");charValue.add(new Integer(-16393));
+		pinyin.add("kun");charValue.add(new Integer(-16220));
+		pinyin.add("kuo");charValue.add(new Integer(-16216));
+		pinyin.add("la");charValue.add(new Integer(-16212));
+		pinyin.add("lai");charValue.add(new Integer(-16205));
+		pinyin.add("lan");charValue.add(new Integer(-16202));
+		pinyin.add("lang");charValue.add(new Integer(-16187));
+		pinyin.add("lao");charValue.add(new Integer(-16180));
+		pinyin.add("le");charValue.add(new Integer(-16171));
+		pinyin.add("lei");charValue.add(new Integer(-16169));
+		pinyin.add("leng");charValue.add(new Integer(-16158));
+		pinyin.add("li");charValue.add(new Integer(-16155));
+		pinyin.add("lia");charValue.add(new Integer(-15959));
+		pinyin.add("lian");charValue.add(new Integer(-15958));
+		pinyin.add("liang");charValue.add(new Integer(-15944));
+		pinyin.add("liao");charValue.add(new Integer(-15933));
+		pinyin.add("lie");charValue.add(new Integer(-15920));
+		pinyin.add("lin");charValue.add(new Integer(-15915));
+		pinyin.add("ling");charValue.add(new Integer(-15903));
+		pinyin.add("liu");charValue.add(new Integer(-15889));
+		pinyin.add("long");charValue.add(new Integer(-15878));
+		pinyin.add("lou");charValue.add(new Integer(-15707));
+		pinyin.add("lu");charValue.add(new Integer(-15701));
+		pinyin.add("lv");charValue.add(new Integer(-15681));
+		pinyin.add("luan");charValue.add(new Integer(-15667));
+		pinyin.add("lue");charValue.add(new Integer(-15661));
+		pinyin.add("lun");charValue.add(new Integer(-15659));
+		pinyin.add("luo");charValue.add(new Integer(-15652));
+		pinyin.add("ma");charValue.add(new Integer(-15640));
+		pinyin.add("mai");charValue.add(new Integer(-15631));
+		pinyin.add("man");charValue.add(new Integer(-15625));
+		pinyin.add("mang");charValue.add(new Integer(-15454));
+		pinyin.add("mao");charValue.add(new Integer(-15448));
+		pinyin.add("me");charValue.add(new Integer(-15436));
+		pinyin.add("mei");charValue.add(new Integer(-15435));
+		pinyin.add("men");charValue.add(new Integer(-15419));
+		pinyin.add("meng");charValue.add(new Integer(-15416));
+		pinyin.add("mi");charValue.add(new Integer(-15408));
+		pinyin.add("mian");charValue.add(new Integer(-15394));
+		pinyin.add("miao");charValue.add(new Integer(-15385));
+		pinyin.add("mie");charValue.add(new Integer(-15377));
+		pinyin.add("min");charValue.add(new Integer(-15375));
+		pinyin.add("ming");charValue.add(new Integer(-15369));
+		pinyin.add("miu");charValue.add(new Integer(-15363));
+		pinyin.add("mo");charValue.add(new Integer(-15362));
+		pinyin.add("mou");charValue.add(new Integer(-15183));
+		pinyin.add("mu");charValue.add(new Integer(-15180));
+		pinyin.add("na");charValue.add(new Integer(-15165));
+		pinyin.add("nai");charValue.add(new Integer(-15158));
+		pinyin.add("nan");charValue.add(new Integer(-15153));
+		pinyin.add("nang");charValue.add(new Integer(-15150));
+		pinyin.add("nao");charValue.add(new Integer(-15149));
+		pinyin.add("ne");charValue.add(new Integer(-15144));
+		pinyin.add("nei");charValue.add(new Integer(-15143));
+		pinyin.add("nen");charValue.add(new Integer(-15141));
+		pinyin.add("neng");charValue.add(new Integer(-15140));
+		pinyin.add("ni");charValue.add(new Integer(-15139));
+		pinyin.add("nian");charValue.add(new Integer(-15128));
+		pinyin.add("niang");charValue.add(new Integer(-15121));
+		pinyin.add("niao");charValue.add(new Integer(-15119));
+		pinyin.add("nie");charValue.add(new Integer(-15117));
+		pinyin.add("nin");charValue.add(new Integer(-15110));
+		pinyin.add("ning");charValue.add(new Integer(-15109));
+		pinyin.add("niu");charValue.add(new Integer(-14941));
+		pinyin.add("nong");charValue.add(new Integer(-14937));
+		pinyin.add("nu");charValue.add(new Integer(-14933));
+		pinyin.add("nv");charValue.add(new Integer(-14930));
+		pinyin.add("nuan");charValue.add(new Integer(-14929));
+		pinyin.add("nue");charValue.add(new Integer(-14928));
+		pinyin.add("nuo");charValue.add(new Integer(-14926));
+		pinyin.add("o");charValue.add(new Integer(-14922));
+		pinyin.add("ou");charValue.add(new Integer(-14921));
+		pinyin.add("pa");charValue.add(new Integer(-14914));
+		pinyin.add("pai");charValue.add(new Integer(-14908));
+		pinyin.add("pan");charValue.add(new Integer(-14902));
+		pinyin.add("pang");charValue.add(new Integer(-14894));
+		pinyin.add("pao");charValue.add(new Integer(-14889));
+		pinyin.add("pei");charValue.add(new Integer(-14882));
+		pinyin.add("pen");charValue.add(new Integer(-14873));
+		pinyin.add("peng");charValue.add(new Integer(-14871));
+		pinyin.add("pi");charValue.add(new Integer(-14857));
+		pinyin.add("pian");charValue.add(new Integer(-14678));
+		pinyin.add("piao");charValue.add(new Integer(-14674));
+		pinyin.add("pie");charValue.add(new Integer(-14670));
+		pinyin.add("pin");charValue.add(new Integer(-14668));
+		pinyin.add("ping");charValue.add(new Integer(-14663));
+		pinyin.add("po");charValue.add(new Integer(-14654));
+		pinyin.add("pu");charValue.add(new Integer(-14645));
+		pinyin.add("qi");charValue.add(new Integer(-14630));
+		pinyin.add("qia");charValue.add(new Integer(-14594));
+		pinyin.add("qian");charValue.add(new Integer(-14429));
+		pinyin.add("qiang");charValue.add(new Integer(-14407));
+		pinyin.add("qiao");charValue.add(new Integer(-14399));
+		pinyin.add("qie");charValue.add(new Integer(-14384));
+		pinyin.add("qin");charValue.add(new Integer(-14379));
+		pinyin.add("qing");charValue.add(new Integer(-14368));
+		pinyin.add("qiong");charValue.add(new Integer(-14355));
+		pinyin.add("qiu");charValue.add(new Integer(-14353));
+		pinyin.add("qu");charValue.add(new Integer(-14345));
+		pinyin.add("quan");charValue.add(new Integer(-14170));
+		pinyin.add("que");charValue.add(new Integer(-14159));
+		pinyin.add("qun");charValue.add(new Integer(-14151));
+		pinyin.add("ran");charValue.add(new Integer(-14149));
+		pinyin.add("rang");charValue.add(new Integer(-14145));
+		pinyin.add("rao");charValue.add(new Integer(-14140));
+		pinyin.add("re");charValue.add(new Integer(-14137));
+		pinyin.add("ren");charValue.add(new Integer(-14135));
+		pinyin.add("reng");charValue.add(new Integer(-14125));
+		pinyin.add("ri");charValue.add(new Integer(-14123));
+		pinyin.add("rong");charValue.add(new Integer(-14122));
+		pinyin.add("rou");charValue.add(new Integer(-14112));
+		pinyin.add("ru");charValue.add(new Integer(-14109));
+		pinyin.add("ruan");charValue.add(new Integer(-14099));
+		pinyin.add("rui");charValue.add(new Integer(-14097));
+		pinyin.add("run");charValue.add(new Integer(-14094));
+		pinyin.add("ruo");charValue.add(new Integer(-14092));
+		pinyin.add("sa");charValue.add(new Integer(-14090));
+		pinyin.add("sai");charValue.add(new Integer(-14087));
+		pinyin.add("san");charValue.add(new Integer(-14083));
+		pinyin.add("sang");charValue.add(new Integer(-13917));
+		pinyin.add("sao");charValue.add(new Integer(-13914));
+		pinyin.add("se");charValue.add(new Integer(-13910));
+		pinyin.add("sen");charValue.add(new Integer(-13907));
+		pinyin.add("seng");charValue.add(new Integer(-13906));
+		pinyin.add("sha");charValue.add(new Integer(-13905));
+		pinyin.add("shai");charValue.add(new Integer(-13896));
+		pinyin.add("shan");charValue.add(new Integer(-13894));
+		pinyin.add("shang");charValue.add(new Integer(-13878));
+		pinyin.add("shao");charValue.add(new Integer(-13870));
+		pinyin.add("she");charValue.add(new Integer(-13859));
+		pinyin.add("shen");charValue.add(new Integer(-13847));
+		pinyin.add("sheng");charValue.add(new Integer(-13831));
+		pinyin.add("shi");charValue.add(new Integer(-13658));
+		pinyin.add("shou");charValue.add(new Integer(-13611));
+		pinyin.add("shu");charValue.add(new Integer(-13601));
+		pinyin.add("shua");charValue.add(new Integer(-13406));
+		pinyin.add("shuai");charValue.add(new Integer(-13404));
+		pinyin.add("shuan");charValue.add(new Integer(-13400));
+		pinyin.add("shuang");charValue.add(new Integer(-13398));
+		pinyin.add("shui");charValue.add(new Integer(-13395));
+		pinyin.add("shun");charValue.add(new Integer(-13391));
+		pinyin.add("shuo");charValue.add(new Integer(-13387));
+		pinyin.add("si");charValue.add(new Integer(-13383));
+		pinyin.add("song");charValue.add(new Integer(-13367));
+		pinyin.add("sou");charValue.add(new Integer(-13359));
+		pinyin.add("su");charValue.add(new Integer(-13356));
+		pinyin.add("suan");charValue.add(new Integer(-13343));
+		pinyin.add("sui");charValue.add(new Integer(-13340));
+		pinyin.add("sun");charValue.add(new Integer(-13329));
+		pinyin.add("suo");charValue.add(new Integer(-13326));
+		pinyin.add("ta");charValue.add(new Integer(-13318));
+		pinyin.add("tai");charValue.add(new Integer(-13147));
+		pinyin.add("tan");charValue.add(new Integer(-13138));
+		pinyin.add("tang");charValue.add(new Integer(-13120));
+		pinyin.add("tao");charValue.add(new Integer(-13107));
+		pinyin.add("te");charValue.add(new Integer(-13096));
+		pinyin.add("teng");charValue.add(new Integer(-13095));
+		pinyin.add("ti");charValue.add(new Integer(-13091));
+		pinyin.add("tian");charValue.add(new Integer(-13076));
+		pinyin.add("tiao");charValue.add(new Integer(-13068));
+		pinyin.add("tie");charValue.add(new Integer(-13063));
+		pinyin.add("ting");charValue.add(new Integer(-13060));
+		pinyin.add("tong");charValue.add(new Integer(-12888));
+		pinyin.add("tou");charValue.add(new Integer(-12875));
+		pinyin.add("tu");charValue.add(new Integer(-12871));
+		pinyin.add("tuan");charValue.add(new Integer(-12860));
+		pinyin.add("tui");charValue.add(new Integer(-12858));
+		pinyin.add("tun");charValue.add(new Integer(-12852));
+		pinyin.add("tuo");charValue.add(new Integer(-12849));
+		pinyin.add("wa");charValue.add(new Integer(-12838));
+		pinyin.add("wai");charValue.add(new Integer(-12831));
+		pinyin.add("wan");charValue.add(new Integer(-12829));
+		pinyin.add("wang");charValue.add(new Integer(-12812));
+		pinyin.add("wei");charValue.add(new Integer(-12802));
+		pinyin.add("wen");charValue.add(new Integer(-12607));
+		pinyin.add("weng");charValue.add(new Integer(-12597));
+		pinyin.add("wo");charValue.add(new Integer(-12594));
+		pinyin.add("wu");charValue.add(new Integer(-12585));
+		pinyin.add("xi");charValue.add(new Integer(-12556));
+		pinyin.add("xia");charValue.add(new Integer(-12359));
+		pinyin.add("xian");charValue.add(new Integer(-12346));
+		pinyin.add("xiang");charValue.add(new Integer(-12320));
+		pinyin.add("xiao");charValue.add(new Integer(-12300));
+		pinyin.add("xie");charValue.add(new Integer(-12120));
+		pinyin.add("xin");charValue.add(new Integer(-12099));
+		pinyin.add("xing");charValue.add(new Integer(-12089));
+		pinyin.add("xiong");charValue.add(new Integer(-12074));
+		pinyin.add("xiu");charValue.add(new Integer(-12067));
+		pinyin.add("xu");charValue.add(new Integer(-12058));
+		pinyin.add("xuan");charValue.add(new Integer(-12039));
+		pinyin.add("xue");charValue.add(new Integer(-11867));
+		pinyin.add("xun");charValue.add(new Integer(-11861));
+		pinyin.add("ya");charValue.add(new Integer(-11847));
+		pinyin.add("yan");charValue.add(new Integer(-11831));
+		pinyin.add("yang");charValue.add(new Integer(-11798));
+		pinyin.add("yao");charValue.add(new Integer(-11781));
+		pinyin.add("ye");charValue.add(new Integer(-11604));
+		pinyin.add("yi");charValue.add(new Integer(-11589));
+		pinyin.add("yin");charValue.add(new Integer(-11536));
+		pinyin.add("ying");charValue.add(new Integer(-11358));
+		pinyin.add("yo");charValue.add(new Integer(-11340));
+		pinyin.add("yong");charValue.add(new Integer(-11339));
+		pinyin.add("you");charValue.add(new Integer(-11324));
+		pinyin.add("yu");charValue.add(new Integer(-11303));
+		pinyin.add("yuan");charValue.add(new Integer(-11097));
+		pinyin.add("yue");charValue.add(new Integer(-11077));
+		pinyin.add("yun");charValue.add(new Integer(-11067));
+		pinyin.add("za");charValue.add(new Integer(-11055));
+		pinyin.add("zai");charValue.add(new Integer(-11052));
+		pinyin.add("zan");charValue.add(new Integer(-11045));
+		pinyin.add("zang");charValue.add(new Integer(-11041));
+		pinyin.add("zao");charValue.add(new Integer(-11038));
+		pinyin.add("ze");charValue.add(new Integer(-11024));
+		pinyin.add("zei");charValue.add(new Integer(-11020));
+		pinyin.add("zen");charValue.add(new Integer(-11019));
+		pinyin.add("zeng");charValue.add(new Integer(-11018));
+		pinyin.add("zha");charValue.add(new Integer(-11014));
+		pinyin.add("zhai");charValue.add(new Integer(-10838));
+		pinyin.add("zhan");charValue.add(new Integer(-10832));
+		pinyin.add("zhang");charValue.add(new Integer(-10815));
+		pinyin.add("zhao");charValue.add(new Integer(-10800));
+		pinyin.add("zhe");charValue.add(new Integer(-10790));
+		pinyin.add("zhen");charValue.add(new Integer(-10780));
+		pinyin.add("zheng");charValue.add(new Integer(-10764));
+		pinyin.add("zhi");charValue.add(new Integer(-10587));
+		pinyin.add("zhong");charValue.add(new Integer(-10544));
+		pinyin.add("zhou");charValue.add(new Integer(-10533));
+		pinyin.add("zhu");charValue.add(new Integer(-10519));
+		pinyin.add("zhua");charValue.add(new Integer(-10331));
+		pinyin.add("zhuai");charValue.add(new Integer(-10329));
+		pinyin.add("zhuan");charValue.add(new Integer(-10328));
+		pinyin.add("zhuang");charValue.add(new Integer(-10322));
+		pinyin.add("zhui");charValue.add(new Integer(-10315));
+		pinyin.add("zhun");charValue.add(new Integer(-10309));
+		pinyin.add("zhuo");charValue.add(new Integer(-10307));
+		pinyin.add("zi");charValue.add(new Integer(-10296));
+		pinyin.add("zong");charValue.add(new Integer(-10281));
+		pinyin.add("zou");charValue.add(new Integer(-10274));
+		pinyin.add("zu");charValue.add(new Integer(-10270));
+		pinyin.add("zuan");charValue.add(new Integer(-10262));
+		pinyin.add("zui");charValue.add(new Integer(-10260));
+		pinyin.add("zun");charValue.add(new Integer(-10256));
+		pinyin.add("zuo");charValue.add(new Integer(-10254));
+	}
+
+	public static void main(String[] argc) {
+		System.out.println(Str2Pinyin.getPinyin("a是sm"));
+	}
+}

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE struts PUBLIC  
+"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"  
+"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<constant name="struts.enable.DynamicMethodInvocation" value="true"/>
+	<!-- 供应链 -->
+	<package name="admin" extends="json-default" namespace="/admin">
+		<action name="toLoginPage" class="com.broadcontact.clothing.action.AdminEntityAction">
+			<result>/admin/login.html</result>			
+		</action>
+		<action name="loginForAdmin" class="com.broadcontact.clothing.action.AdminEntityAction" method="loginForAdmin">
+			<result type="json"><param name="root">map</param></result>			
+		</action>
+	</package>
+	
+	<!--需要拦截  -->
+	<package name="adminBack" extends="json-default" namespace="/admin/back">
+		<global-results>  
+        	<result name="error" type="json"><param name="root">map</param></result>  
+  		</global-results>   
+	
+		<!-- 带审核单位 -->
+		<action name="getAllUserPage" class="com.broadcontact.clothing.action.AdminEntityAction">
+			<result type="freemarker">/admin/usersForShenHe.html</result>					
+		</action>
+		<action name="getAllUserTypeEq123" class="com.broadcontact.clothing.action.AdminEntityAction" method="getAllUserTypeEq123">
+			<result type="json"><param name="root">map</param></result>						
+		</action>
+		<action name="getUserInfoById" class="com.broadcontact.clothing.action.AdminEntityAction" method="getUserInfoById">
+			<result type="freemarker">/admin/userInfo.html</result>			
+		</action>
+		<action name="updateUserType" class="com.broadcontact.clothing.action.AdminEntityAction" method="updateUserType">
+			<result type="json"><param name="root">map</param></result>			
+		</action>
+		
+		<!--工厂认证管理  -->
+		<action name="getAllManufacturerPage" class="com.broadcontact.clothing.action.AdminEntityAction">
+			<result type="freemarker">/admin/manufacturerForShenHe.html</result>			
+		</action>
+		<action name="getManufacturerStatusEq123" class="com.broadcontact.clothing.action.AdminEntityAction" method="getManufacturerStatusEq123">
+			<result type="json"><param name="root">map</param></result>		
+		</action>
+		<action name="getManufacturerInfo" class="com.broadcontact.clothing.action.AdminEntityAction" method="getManufacturerInfo">
+			<result type="freemarker">/admin/manufacturerInfo.html</result>				
+		</action>
+		<action name="updateManufacturerStatus" class="com.broadcontact.clothing.action.AdminEntityAction" method="updateManufacturerStatus">
+			<result type="json"><param name="root">map</param></result>			
+		</action>
+		
+		<!--待处理的需求  -->
+		<action name="getAllDemandPage" class="com.broadcontact.clothing.action.AdminEntityAction">
+			<result type="freemarker">/admin/demandForShenHe.html</result>			
+		</action>
+		<action name="getDemand" class="com.broadcontact.clothing.action.AdminEntityAction" method="getDemand">
+			<result type="json"><param name="root">map</param></result>		
+		</action>
+		<action name="getDemandInfo" class="com.broadcontact.clothing.action.AdminEntityAction" method="getDemandInfo">
+			<result type="freemarker">/admin/demandInfo.html</result>	
+		</action>
+		
+		
+		<action name="getSelector" class="com.broadcontact.clothing.action.AdminEntityAction">
+			<result type="freemarker">/admin/getSelector.html</result>	
+		</action>
+		<action name="getSelectorForSearch" class="com.broadcontact.clothing.action.AdminEntityAction">
+			<result type="freemarker">/admin/getSelectorForSearch.html</result>	
+		</action>
+		<action name="getUserEntityByAdvantage" class="com.broadcontact.clothing.action.AdminEntityAction" method="getUserEntityByAdvantage">
+			<result type="json"><param name="root">map</param></result>		
+		</action>
+		<action name="getUserEntityByKeyword" class="com.broadcontact.clothing.action.AdminEntityAction" method="getUserEntityByKeyword">
+			<result type="json"><param name="root">map</param></result>		
+		</action>
+		<action name="demandPiPeiCompany" class="com.broadcontact.clothing.action.AdminEntityAction" method="saveDemandPiPeiCompany">
+			<result type="json"><param name="root">map</param></result>		
+		</action>
+		
+	</package>
+</struts>

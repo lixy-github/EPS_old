@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1250px, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>购物车</title>
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/shop-cart.css">
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
+    <script src="/js/jquery-1.9.1.min.js"></script>
+    <script src="/user/goods/js/cart.js"></script>
+</head>
+
+<body>
+     <!-- 导航条 -->
+    <#include "/public/menu.ftl">
+
+    <div class="shop-cart-container">
+        <h2 class="person-title pt-scc">
+            购物车
+        </h2>
+
+        <#if (map?size>0)>
+        <#assign noCart = false>
+        <!-- 购物车商品展示 -->
+        <form class="shop-cart-show">
+            <div class="shop-cart-box">
+                <!-- 购物车头 -->
+                <ul class="shop-cart-head clearfix">
+                    <li>
+                        <label class="select-all" for="checkedAll">
+                            <input type="checkbox" class="selectAll" <#if map1.get("all")>checked</#if> id="checkedAll" name="shop-cart" onclick="checkedAll1(event)"> 全选
+                        </label>
+                    </li>
+                    <li>商品</li>
+                    <li style="height:21px"></li>
+                    <li>单价</li>
+                    <li>数量</li>
+                    <li>金额</li>
+                    <li>操作</li>
+                </ul>
+                <!-- 商品列表 -->
+               <#list map?keys as key>
+				 <div class="cart-info">
+                    <div class="seller-name">
+                        <input type="checkbox" <#if map1.get(key)>checked</#if> onclick="checkedSome(event)" name="shop-cart">
+                        <a class="seller-nm">${key.username!}</a>&nbsp;&nbsp;&nbsp;
+                        <a class="contact-seller fa fa-qq"></a>
+                    </div>
+                    <#list map.get(key) as cart>
+	                    <div class="seller-shop">
+	                        <ul class="clearfix">
+	                            <li class="ss-checkbox">
+	                                <input type="checkbox" data-id="${cart.id?c}" onclick="cartCheckedClick(event)" name="shop-cart" <#if ( cart.check)>checked</#if>/>
+	                            </li>
+	                            <li class="ss-img">
+	                            	<#if cart.goods.imageList[0]??>
+		                            	 <a target="_blank" href="/supermarket/goodsDetail.action?random=${cart.goods.random}">
+		                                    <img src="${cart.goods.imageList[0].path}">
+		                                </a>
+	                            	<#else>
+	                            		<a>
+		                                   <img src="/images/s-3-in-one-lux-router-550x550.jpg">
+		                                </a>
+	                            	</#if>
+	                            </li>
+	                            <li class="cart-goods-info">${cart.goods.name!}</li>
+	                            <li class="shop-price">
+	                               ￥${cart.goods.danjia?string("0.00")}
+	                            </li>
+	                            <li class="shop-num-change">
+	                                <div class="change-num cn1">
+	                                    <span class="minus-num" onclick="addCartNum(this,-1)">
+	                                        <i class="fa fa-minus"></i>
+	                                    </span>
+	                                    <input type="text" onblur="checkCartNum(this)" data-danjia="${cart.goods.danjia?c}" 
+	                                    	 data-kucun="${cart.goods.kucun?c}" data-prevnum="${cart.goodsNum}" value="${cart.goodsNum}" class="num-show">
+	                                    <span class="plus-num" onclick="addCartNum(this,1)">
+	                                        <i class="fa fa-plus"></i>
+	                                    </span>
+	                                </div>
+	                            </li>
+	                            <li class="shop-title-price">
+	                                ￥<span class="totalMoney">${(cart.goodsNum*cart.goods.danjia)?string("0.00")}</span>
+	                            </li>
+	                            <li class="shop-del" onclick="removeCart(this,${cart.id})">
+	                                删除
+	                            </li>
+	                        </ul>
+	                    </div>
+                    </#list>
+                </div>
+			   </#list>
+                <!-- 结算 -->
+                <div class="settle-account clearfix">
+                    <div class="sa-qs">
+                        <label for="sa-select">
+                            <input type="checkbox" <#if map1.get("all")>checked</#if> class="selectAll" id="sa-select" name="shop-cart" onclick="checkedAll1(event)"> 全选
+                        </label>
+                        <span class="sa-del" onclick="removeCartAll()">
+                            删除选中商品
+                        </span>
+                    </div>
+                    <div class="sa-right">
+                        <div class="goods-num-box">已选<span class="goods-num">0</span>件商品</div>
+                        <div class="goods-price-box">
+                        	总价：<span>￥</span>
+                            <span class="title-price">0.00</span>
+                        </div>
+                        <button type="button" onclick="toOrder(this)" id="toOrderButton" class="settle-btn-no">结算</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <#else>
+        <#assign noCart = true>
+        </#if>
+        <!-- 购物车为空 -->
+        <div class="cart-none" <#if !noCart>style="display:none"</#if>>
+            购物车还是空的，点击
+            <a href="/supermarket/listGoods.action">超市</a>
+            前往添加
+        </div>
+    </div>
+</body>
+
+</html>

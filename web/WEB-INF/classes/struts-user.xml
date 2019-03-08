@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE struts PUBLIC  
+"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"  
+"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<constant name="struts.enable.DynamicMethodInvocation" value="true"/>
+	
+	<package name="user" extends="json-default" namespace="/user">
+		<action name="updateUsername" class="com.broadcontact.clothing.action.UserEntityAction" method="updateUsername">
+			<result type="json"><param name="root">map</param></result>			
+		</action>
+		<action name="uploadHeadImg" class="com.broadcontact.clothing.action.UserEntityAction" method="uploadHeadImg">
+			<result type="json"><param name="root">map</param></result>			
+		</action>
+	</package>
+	
+	<package name="userGrzx" extends="json-default" namespace="/user/grzx">
+		
+		<global-results>  
+        	<result name="error" type="json"><param name="root">map</param></result>  
+  		</global-results>   
+	
+		<action name="updateEmailOrTel" class="com.broadcontact.clothing.action.UserEntityAction" method="updateEmailOrTel">
+			<result type="json"><param name="root">map</param></result>			
+		</action>
+		<action name="updateNewPassword" class="com.broadcontact.clothing.action.UserEntityAction" method="updateNewPassword">
+			<result type="json"><param name="root">map</param></result>			
+		</action>
+		<action name="grzx" class="com.broadcontact.clothing.action.UserEntityAction" method="grzx">
+			<result type="freemarker">/user/grzx.html</result>					
+		</action>
+		<action name="wszl" class="com.broadcontact.clothing.action.UserEntityAction" method="getWszlInfo">
+			<result type="freemarker">/user/wszl.html</result>					
+		</action>
+		<action name="saveWszl" class="com.broadcontact.clothing.action.UserEntityAction" method="saveWszl">
+			<result type="json"><param name="root">map</param></result>			
+		</action>
+		<action name="uploadFile" class="com.broadcontact.clothing.action.UserEntityAction" method="saveUploadFile">
+			<result type="json"><param name="root">map</param></result>			
+		</action>
+		<action name="removeFile" class="com.broadcontact.clothing.action.UserEntityAction" method="removeFile">
+			<result type="redirectAction">wszl.action</result>			
+		</action>
+		<action name="xgmm" class="com.broadcontact.clothing.action.UserEntityAction" method="getXgmmInfo">
+			<result type="freemarker">/user/xgmm.html</result>					
+		</action>
+		<action name="bindsjAndyx" class="com.broadcontact.clothing.action.UserEntityAction" method="getBindsjAndyxInfo">
+			<result type="freemarker">/user/bindsjAndyx.html</result>					
+		</action>
+		
+		<!--需求发布  -->
+		<action name="saveDemand" class="com.broadcontact.clothing.action.DemandEntityAction" method="saveDemand">
+			<result type="json"><param name="root">map</param></result>			
+		</action>
+		<action name="releaseDemand" class="com.broadcontact.clothing.action.DemandEntityAction" method="releaseDemand">
+			<result type="freemarker">/user/releaseDemand.html</result>
+		</action>
+		<action name="listDemandForUser" class="com.broadcontact.clothing.action.DemandEntityAction" method="listDemandForUser">
+			<result type="freemarker">/user/listDemandForUser.html</result>
+		</action>
+		<action name="listDemandNeedHandle" class="com.broadcontact.clothing.action.DemandEntityAction" method="listDemandNeedHandle">
+			<result type="freemarker">/user/listDemandForUser.html</result>
+		</action>
+		
+		
+		<!--制造方认证  -->
+		<action name="manufacturer" class="com.broadcontact.clothing.action.ManufacturerEntityAction" method="manufacturer">
+			<result type="freemarker">/user/manufacturer.html</result>
+		</action>
+		<action name="saveManufacturer" class="com.broadcontact.clothing.action.ManufacturerEntityAction" method="saveManufacturer">
+			<result type="json"><param name="root">map</param></result>	
+		</action>	
+			
+		<!--我的商品-->
+		<action name="publishGoods" class="com.broadcontact.clothing.action.supermarket.GoodsAction">
+			<result type="freemarker">/user/goods/publishGoods.html</result>
+		</action>
+		<action name="saveGoods" class="com.broadcontact.clothing.action.supermarket.GoodsAction" method="saveGoods">
+			<result type="json"><param name="root">map</param></result>			
+		</action>
+		<action name="saveGoodsHtml" class="com.broadcontact.clothing.action.supermarket.GoodsAction" method="saveGoodsHtml">
+			<result type="json"><param name="root">map</param></result>			
+		</action>
+		<action name="saveGoodsImage" class="com.broadcontact.clothing.action.supermarket.GoodsAction" method="saveGoodsImage">
+			<result type="freemarker">/user/goods/publishGoodsIframe.html</result>			
+		</action>
+		<action name="removeGoodsImage" class="com.broadcontact.clothing.action.supermarket.GoodsAction" method="removeGoodsImage">
+			<result type="json"><param name="root">map</param></result>			
+		</action>
+		<action name="updateGoodsStatus" class="com.broadcontact.clothing.action.supermarket.GoodsAction" method="updateGoodsStatus">
+			<result type="json"><param name="root">map</param></result>			
+		</action>
+		<action name="goUpdateGoods" class="com.broadcontact.clothing.action.supermarket.GoodsAction" method="goUpdateGoods">
+			<result type="freemarker">/user/goods/publishGoods.html</result>			
+		</action>
+		<action name="listMyGoods" class="com.broadcontact.clothing.action.supermarket.GoodsAction" method="listMyGoods">
+			<result type="freemarker">/user/goods/myGoods.html</result>			
+		</action>
+		<!--我的收藏-->
+		<action name="myCollection" class="com.broadcontact.clothing.action.supermarket.GoodsAction" method="myCollection">
+			<result type="freemarker">/user/goods/myCollection.html</result>
+		</action>
+		<action name="addCollection" class="com.broadcontact.clothing.action.supermarket.GoodsAction" method="addCollection">
+			<result type="json"><param name="root">map</param></result>			
+		</action>
+		<action name="removeCollection" class="com.broadcontact.clothing.action.supermarket.GoodsAction" method="removeCollection">
+			<result type="json"><param name="root">map</param></result>			
+		</action>
+		<!-- 购物车 -->
+		<action name="updateCart" class="com.broadcontact.clothing.action.supermarket.GoodsAction" method="updateCart">
+			<result type="json"><param name="root">map</param></result>			
+		</action>
+		<action name="listCart" class="com.broadcontact.clothing.action.supermarket.GoodsAction" method="listCart">
+			<result type="freemarker">/user/goods/cart.html</result>			
+		</action>
+		<action name="updateCartChecked" class="com.broadcontact.clothing.action.supermarket.GoodsAction" method="updateCartChecked">
+			<result type="json"><param name="root">map</param></result>			
+		</action>
+		<action name="updateCartNum" class="com.broadcontact.clothing.action.supermarket.GoodsAction" method="updateCartNumSession">
+			<result type="json"><param name="root">map</param></result>			
+		</action>
+		<action name="updateCartNum1" class="com.broadcontact.clothing.action.supermarket.GoodsAction" method="updateCartNum1">
+			<result type="json"><param name="root">map</param></result>			
+		</action>
+		<action name="removeCart" class="com.broadcontact.clothing.action.supermarket.GoodsAction" method="removeCart">
+			<result type="json"><param name="root">map</param></result>			
+		</action>
+		<!-- 订单 -->
+		<action name="listSalesOrder" class="com.broadcontact.clothing.action.supermarket.GoodsAction" method="listSalesOrder">
+			<result type="freemarker">/user/goods/listSalesOrder.html</result>	
+		</action>
+		<action name="listPurchaseOrder" class="com.broadcontact.clothing.action.supermarket.GoodsAction" method="listPurchaseOrder">
+			<result type="freemarker">/user/goods/listPurchaseOrder.html</result>	
+		</action>
+		<action name="getOrderDetail" class="com.broadcontact.clothing.action.supermarket.GoodsAction" method="getOrderDetail">
+			<result type="freemarker">/user/goods/orderDetail.html</result>	
+		</action>
+		<action name="updateOrderStatus" class="com.broadcontact.clothing.action.supermarket.GoodsAction" method="updateOrderStatus">
+			<result type="json"><param name="root">map</param></result>	
+		</action>
+		<action name="removeOrder" class="com.broadcontact.clothing.action.supermarket.GoodsAction" method="removeOrder">
+			<result type="json"><param name="root">map</param></result>	
+		</action>
+		<action name="addOrder" class="com.broadcontact.clothing.action.supermarket.GoodsAction" method="addOrder">
+			<result type="redirect">listPurchaseOrder.action</result>	
+			<result name="ERROR" type="redirect">listCart.action</result>		
+		</action>
+		<action name="getOrderInfo" class="com.broadcontact.clothing.action.supermarket.GoodsAction" method="getOrderInfo">
+			<result type="freemarker">/user/goods/order.html</result>
+			<result name="listCart" type="redirect">listCart.action</result>			
+		</action>
+		<action name="addAddress" class="com.broadcontact.clothing.action.supermarket.GoodsAction" method="addAddress">
+			<result type="json"><param name="root">map</param></result>			
+		</action>
+		<action name="removeAddress" class="com.broadcontact.clothing.action.supermarket.GoodsAction" method="removeAddress">
+			<result type="json"><param name="root">map</param></result>			
+		</action>
+		<action name="updateAddressDefault" class="com.broadcontact.clothing.action.supermarket.GoodsAction" method="updateAddressDefault">
+			<result type="json"><param name="root">map</param></result>			
+		</action>
+		<!-- 评价 -->
+		<action name="toSellerEvaluate" class="com.broadcontact.clothing.action.supermarket.GoodsAction" method="toSellerEvaluate">
+			<result type="freemarker">/user/goods/sellerEvaluate.html</result>			
+		</action>
+		<action name="saveSellerEvaluate" class="com.broadcontact.clothing.action.supermarket.GoodsAction" method="saveSellerEvaluate">
+			<result type="redirect">listSalesOrder.action?t=all</result>			
+		</action>
+		<action name="saveUserEvaluate" class="com.broadcontact.clothing.action.supermarket.GoodsAction" method="saveUserEvaluate">
+			<result type="redirect">listPurchaseOrder.action</result>			
+		</action>
+		<action name="toUserEvaluate" class="com.broadcontact.clothing.action.supermarket.GoodsAction" method="toUserEvaluate">
+			<result type="freemarker">/user/goods/userEvaluate.html</result>			
+		</action>
+		<action name="upLoadImage" class="com.broadcontact.clothing.action.ImageAction" method="upLoadImage">
+			<result type="json"><param name="root">map</param></result>			
+		</action>
+	</package>
+	
+</struts>

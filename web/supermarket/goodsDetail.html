@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1250px, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>超市详情</title>
+    <link rel="stylesheet" href="/css/index.css" type="text/css">
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/css/shop.css" rel="stylesheet">
+    <script src="/js/jquery-1.9.1.min.js"></script>
+    <script src="/js/base.js"></script>
+    <script src="/js/jquery.jqzoom.js"></script>
+    <script src="/js/jquery.fly.min.js"></script>
+	<!--[if lte IE 9]>
+	<script src="/js/requestAnimationFrame.js"></script>
+	<![endif]-->
+    <style>
+    		.shop_container{
+    			position:static;
+    		}
+        .shop_container:before {
+            content: " ";
+            border:none;
+        }
+    </style>
+</head>
+
+<body>
+	<div id="login_back_url" data-url="/supermarket/goodsDetail.action?random=${goods.random}"></div>
+    <!-- 头部 -->
+    <!-- 导航条 -->
+    <#include "/public/menu.ftl">
+
+    <div class="shop_container">
+    		<h2 class="person-title pt-shd">
+            商品详情
+        </h2>
+        <div class="sh_info_top clearfix">
+            <div class="product_info_img">
+                <div class="right-extra">
+                    <!--产品参数开始-->
+                    <div>
+                        <div id="preview" class="spec-preview">
+                            <#if goods.imageList[0]??>	
+                              	<span class="jqzoom">   
+		                        	<img jqimg="${goods.imageList[0].path}" src="${goods.imageList[0].path}">
+	                        	</span>
+                        	<#else>
+                        		<img src="/images/s-3-in-one-lux-router-550x550.jpg">
+                           </#if>
+                        </div>
+                        <!--缩图开始-->
+                        <div class="spec-scroll clearfix">
+                            <a class="prev fa fa-angle-left"></a>
+                            <a class="next fa fa-angle-right"></a>
+                            <div class="items">
+                                <ul>
+                                    <#if !goods.imageList[0]??>
+                                    	<#assign imageSrc = "/images/s-3-in-one-lux-router-550x550.jpg">	                   	        	  			
+			                    		<li id="onlickImg">
+		                                    <img bimg="/images/s-3-in-one-lux-router-550x550.jpg" src="/images/s-3-in-one-lux-router-550x550.jpg">
+		                                </li>
+		                                <#else>
+		                                <#assign imageSrc = goods.imageList[0].path>
+		                                <#list goods.imageList as image>
+		                                 	<li><img bimg="${image.path}" src="${image.path}" onmousemove="preview(this);"></li>
+		                                </#list>
+			                    	</#if>
+                                </ul>
+                            </div>
+                        </div>
+                        <!--缩图结束-->
+                    </div>
+                </div>
+            </div>
+            <div class="product_info_img_right">
+                <div class="piir_t1 clearfix">
+                    <h1 class="pro_detail_title">${goods.name}</h1>
+                    <p class="pro_detail_level">
+                    	<i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-o"></i></p>
+                </div>
+                <p class="price price2">￥${goods.danjia}</p>
+                <div class="product_meta">
+                    <p>库存:<span> ${goods.kucun?c}${goods.danwei}</span></p>
+                    <p>规格:<span> ${goods.guige}</span></p>
+                    <p>成分:<span> ${goods.chengfen!}</span></p>
+                    <p>产地:<span> ${goods.chandi!}</span></p>
+                    <p>物流方式:<span> ${goods.wuliuType!}</span></p>
+                    <p>物流价格:<span> ${goods.wuliuMoney!}</span></p>
+                    
+                </div>
+                <form class="add_num_box">
+                    <div class="add_num">
+                        <span class="quantity_minus">
+                            <i class="fa fa-minus"></i>
+                        </span>
+                        <input class="qty" type="text" value="1">
+                        <span class="quantity_plus">
+                            <i class="fa fa-plus"></i>
+                        </span>
+                    </div>
+                    <button type="button" <#if (goods.kucun<=0)>style="cursor: not-allowed;"<#else> onmouseup="flyCart(event,${goods.id?c},$('.qty').val(),'${imageSrc}')"</#if> class="add_qty_car" >添加到购物车</button>
+                </form>             
+            </div>
+        </div>
+      
+		<div class="sh_info_bottom clearfix">
+            <div class="related_products_box clearfix">
+                <div class="related_products">相关商品</div>
+                <div class="product_show">
+                    <a href="market-detail.html">
+                        <img src="/images/s-3-in-one-lux-router-550x550.jpg">
+                        <p class="product_status ps-1" style="display:none">热卖</p>
+                        <p class="product_status ps-2" style="display:none">已售空</p>
+                    </a>
+                    <div class="product_info_holder">
+                        <div class="pro_info_top clearfix">
+                            <div class="product_price">
+                                <h4>3 In One Lux Router</h4>
+                                <p class="price">$100.00</p>
+                            </div>
+                            <div class="product_level">
+                                 <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-o"></i>
+                            </div>
+                        </div>
+                        <div class="pro_info_bottom">
+                            <div class="add_car_box" style="display:block">
+                                <a class="p_info">产品详情</a>
+                                <a class="add_car">添加到购物车</a>
+                            </div>
+                            <div class="only_info" style="display:none">
+                                <a>产品详情</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product_show">
+                    <a href="market-detail.html">
+                        <img src="/images/s-3-in-one-lux-router-550x550.jpg">
+                        <p class="product_status ps-1" style="display:block">热卖</p>
+                        <p class="product_status ps-2" style="display:none">已售空</p>
+                    </a>
+                    <div class="product_info_holder">
+                        <div class="pro_info_top clearfix">
+                            <div class="product_price">
+                                <h4>3 In One Lux Router</h4>
+                                <p class="price">$100.00</p>
+                            </div>
+                            <div class="product_level">
+                                 <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-o"></i>
+                            </div>
+                        </div>
+                        <div class="pro_info_bottom">
+                            <div class="add_car_box" style="display:block">
+                                <a class="p_info">产品详情</a>
+                                <a class="add_car">添加到购物车</a>
+                            </div>
+                            <div class="only_info" style="display:none">
+                                <a>产品详情</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="evaluation_info">
+                <div class="pro_detail"  id="pingjia">
+                    <p class="pro_deteil_ttl">产品详情</p>
+                    <p class="pro_detatl_con">
+                      ${(goods.html!).content!}
+                    </p>
+                </div>
+                <div class="accordion_revires_box">
+                    <div class="accordion_reviews">
+                        累计评价 (<span>${pageSupport.items?size}</span>)
+                    </div>
+                    <div>
+                        <div class="accordion_reviews_con">
+                        	<#if (pageSupport.items?size >0)>
+                        	<#assign pingjiaUserName="易品速用户">
+                        	<#list pageSupport.items as evaluate>
+                            <div class="user_views clearfix" style="display:block">
+                                <div class="user-eva-left">
+                                   <#if evaluate.invisible?string("true","false") == "false" && evaluate.user.headImg??>
+			                    	<img src="/upfile/head/${evaluate.user.headImg!}" class="uel-img">
+			                    	<#else>
+			                    	<img src="/images/user-default-photo7.png" class="uel-img">
+			                    	</#if>
+                                    <#if evaluate.invisible?string("true","false") == "false">
+                                    <span class="eva-name">${evaluate.user.username?default(pingjiaUserName)}</span>
+                                    <#else>
+                                     <span class="eva-name">${pingjiaUserName}</span>
+                                    </#if>
+                                </div>
+                                <div class="user-eva-right">
+                                    <div class="user_level">
+                                    	<#assign starNum = (evaluate.starSP+evaluate.starWL+evaluate.starFW)/3>
+                                    	<#list 1..5 as index>
+                                    		<#if index<=starNum>
+                                    		<i class="fa fa-star"></i>
+                                    		<#else>
+                                    		 <i class="fa fa-star-o"></i>
+                                    		</#if>
+                                    	</#list>
+                                    </div>
+                                    <div class="user-eva-text">
+                                       ${evaluate.pingjia!}
+                                    </div>
+                                    <div class="user-eva-img">
+                                   	<#list evaluate.imageList as image>
+                                   		 <a><img src="${image.path!}"></a>
+                                   	</#list>
+                                    </div>
+                                    <!-- 点击显示大图 -->
+                                    <div class="eva-big-img" style="display:none;">
+                                        <div class="eva-big-box clearfix">
+                                        </div>
+                                        <a href="javascript:;" class="eva-big-left fa fa-chevron-left"></a>
+                                        <a href="javascript:;" class="eva-big-right fa fa-chevron-right"></a>
+                                    </div>
+                                </div>
+                            </div>
+                            </#list>
+                        	<#else>
+                        	<div class="user_noview">
+                                目前还没有评价
+                            </div>
+                        	</#if>
+                        	${pageSupport.html!}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <#include "/public/foot.ftl">
+    <div id="pingjia-preview" class="hide" style="display: none;"><img src="" height="516px"></div>
+</body>
+<script>
+	$(function(){
+		$(".user-eva-img img").bind("click",function(){
+			$("#pingjia-preview img").attr("src",this.src);
+			layer.open({
+				  type: 1,
+				  title: false,
+				  closeBtn: 1,
+				  area: '[516px]',
+				  skin: 'layui-layer-nobg', //没有背景色
+				  shadeClose: true,
+				  content: $('#pingjia-preview')
+			});
+			 
+		})
+	})
+	
+</script>
+</html>

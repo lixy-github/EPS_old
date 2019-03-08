@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1250px, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>绑定邮箱/手机</title>
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/personal.css">
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
+    <script src="/js/jquery-1.9.1.min.js"></script>
+    <script src="/js/head-foot.js"></script>
+    <script src="/js/personal.js"></script>
+    <script src="/js/webuploader.min.js"></script>
+    <script src="/js/diyUpload.js"></script>
+</head>
+
+<body>
+	<!-- 导航条 -->
+    <#include "/public/menu.ftl">
+
+    <!-- 主体内容 -->
+    <div class="person-container clearfix">
+        <div class="pc-left">
+        		<h2 class="person-title">
+                绑定邮箱/手机
+            </h2>
+            <div class="bind_box">
+                <div class="bind_select_box clearfix">
+                    <div class="bind_icon fa fa-envelope"></div>
+                    <div class="bind_select">
+                        <p class="bind_name">邮箱绑定</p>
+                        <p class="bind_status">
+                        <#if _USER_.email??>
+                        	${_USER_.email!}
+                        	<#else>
+                        	未绑定
+                        </#if>
+                        </p>
+                    </div>
+                    <div class="bind_btn">
+                        <div class="form_btn_box">
+                            <p class="form_btn mail_btn">
+                            	<#if _USER_.email??>修改<#else>绑定</#if>
+                            </p>
+                        </div>
+                    </div>
+                    <!-- 邮箱绑定 -->
+                    <div class="bind_mail_model bmm_js" style="display:none">
+                        <div class="bind_mail_form">
+                            <div class="bind_close"></div>
+                            <div class="bind_title">
+                            	<#if _USER_.email??>修改<#else>绑定</#if>邮箱
+                            </div>
+                            <form id="emailForm">
+                            	<input type="hidden" name="bindType" value="1">
+                                <div class="bind_int">
+                                    <input type="text" placeholder="邮箱" id="email" class="email" name="userEntity.email">
+                                    <span class="dnot-pass"></span>
+                                </div>
+                                <div class="bind_int">
+                                    <input type="password" placeholder="账户密码" id="password" data-temp="login" name="userEntity.password">
+                                    <span class="dnot-pass"></span>
+                                </div>
+                                <div class="bind_int">
+                                    <input type="text" placeholder="图像验证码" class="bind_int_code code" id="emailImgCode" name="imgCodeByUser">
+                                    <span class="dnot-pass"></span>
+                                    <span class="code_img" style="cursor: pointer;">
+                                    	<img alt="" src="">
+                                    </span>
+                                </div>
+                                <div class="bind_int">
+                                    <input type="text" placeholder="邮箱验证码" style="width: 160px;" id="emailCode" name="emailCodeByUser" class="inputcode">
+                                    <span class="dnot-pass"></span>
+                                    <span class="get_code getEmailcode" data-flag="bmm_js" style="font-size: 12px;">获取验证码</span>
+                                </div>
+                                <div class="bind_int">
+                                    <div class="form_btn_box">
+                                        <button class="form_btn dobtn" type="button" id="updateEmailBtn">
+                                         <#if _USER_.email??>
+				                        	修改
+				                        	<#else>
+				                        	绑定
+				                        </#if>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="bind_select_box clearfix">
+                    <div class="bind_icon bind_phone_icon fa fa-mobile"></div>
+                    <div class="bind_select bs2">
+                        <p class="bind_name">手机绑定</p>
+                        <p class="bind_status">
+                        <#if _USER_.tel??>
+                        	${_USER_.tel!}
+                        	<#else>
+                        	未绑定
+                        </#if>
+                        </p>
+                    </div>
+                    <div class="bind_btn">
+                        <div class="form_btn_box">
+                            <p class="form_btn phone_btn">
+                            	<#if _USER_.tel??>
+		                        	修改
+		                        	<#else>
+		                        	绑定
+		                        </#if>
+                            </p>
+                        </div>
+                    </div>
+                    <!-- 手机绑定 -->
+                    <div class="bind_mail_model bpm_js" style="display:none">
+                        <div class="bind_mail_form">
+                            <div class="bind_close"></div>
+                            <div class="bind_title">
+                            	<#if _USER_.tel??>修改<#else>绑定</#if>手机
+                            </div>
+                            <form id="telForm">
+                            	<input type="hidden" name="bindType" value="0">
+                                <div class="bind_int">
+                                    <input type="text" placeholder="手机号" id="tel" name="userEntity.tel" class="phone">
+                                    <span class="dnot-pass"></span>
+                                </div>
+                                <div class="bind_int">
+                                    <input type="text" placeholder="图像验证码" class="bind_int_code code" id="telImgCode" name="imgCodeByUser">
+                                    <span class="dnot-pass"></span>
+                                    <span class="code_img" style="cursor: pointer;">
+                                    	<img alt="" src="">
+                                    </span>
+                                </div>
+                                <div class="bind_int">
+                                    <input type="text" placeholder="手机验证码" class="bind_int_code" id="telCode" name="telCodeByUser">
+                                     <span class="dnot-pass"></span>
+                                    <span class="get_code getcode" data-flag="bpm_js">获取验证码</span>
+                                </div>
+                                <div class="bind_int">
+                                    <div class="form_btn_box">
+                                        <button class="form_btn dobtn" type="button" id="updateTelBtn">
+                                        <#if _USER_.tel??>
+				                        	修改
+				                        	<#else>
+				                        	绑定
+				                        </#if>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <#include "/public/grzxRightMenu.ftl">
+    </div>
+    
+    <!-- 尾部 -->
+    <#include "/public/foot.ftl">
+    
+    <script type="text/javascript" src="/js/myjs/user/bindsjAndyx.js"></script>
+    
+</body>
+
+</html>

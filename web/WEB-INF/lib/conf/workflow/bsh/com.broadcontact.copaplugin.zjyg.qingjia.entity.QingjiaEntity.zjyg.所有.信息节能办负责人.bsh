@@ -1,0 +1,5 @@
+//´°¿Ú
+if(object.getDept().equals("´°¿Ú"))
+  return "true";
+else
+  return "false";

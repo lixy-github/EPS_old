@@ -1,0 +1,13 @@
+$(function($){
+	$.extend({
+	    updateCartNum:function(num){
+	    	$.ajax({           
+		        url:'/user/grzx/updateCartNum.action',    
+		        data:{"num":num},    
+		        success:function(data){
+		        	$(".car_num").html(Number(data.num));
+	            }       
+		    });
+	    }
+	});
+},$);

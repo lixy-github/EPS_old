@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<registedWorkflows>
+	<flow>com.broadcontact.copa.gongwen.entity.Fawen</flow>
+	<flow>com.broadcontact.copa.gongwen.entity.Shouwen</flow>
+	<flow>com.broadcontact.copa.leave.entity.LeaveFlow</flow>
+	<flow>com.broadcontact.copa.leave.entity.OverTimeFlow</flow>
+	<flow>com.broadcontact.copa.asset.entity.AssetUseEntity</flow>
+	<flow>com.broadcontact.copa.asset.entity.AssetBuyEntity</flow>
+	<flow>com.broadcontact.copa.asset.entity.AssetRepairEntity</flow>
+	<flow>com.broadcontact.copa.car.entity.CarUseFlow</flow>
+	<flow>com.broadcontact.copa.meeting.entity.MeetingEntity</flow>
+    <flow>com.broadcontact.pub.entity.PubObj</flow>	
+    <flow>com.broadcontact.copa.gongwen.entity.GongwenUpdateFlow</flow>		
+    <flow>com.broadcontact.copa.form.entity.FormWorkflowEntity</flow>
+    <flow>com.broadcontact.copa.bgyp.entity.BgypUseEntity</flow>
+    <flow>com.broadcontact.copaplugin.zjyg.qingjia.entity.QingjiaEntity</flow>
+</registedWorkflows>

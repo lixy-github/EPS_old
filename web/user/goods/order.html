@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1250px, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>订单结算页</title>
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/settle-account.css">
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
+    <script src="/js/jquery-1.9.1.min.js"></script>
+    <script src="/user/goods/js/order.js"></script>
+    <script src="/js/distpicker.data.js"></script>
+    <script src="/js/distpicker.js"></script>
+    <!-- [if IE]>
+        <script src="/js/html5shiv-3.7.min.js"></script>
+    <![endif] -->
+</head>
+
+<body>
+  	<!-- 导航条 -->
+    <#include "/public/menu.ftl">
+    <div class="wrapper-container">
+        <h2 class="person-title pt-sett" id="pt-sett">结算页</h2>
+        <p class="settle-title">填写并核对订单信息</p>
+        <div class="settle-box">
+            <!-- 收货人信息 -->
+            <div class="item-buyer">
+                <div class="buyer-info clearfix">
+                    <div class="buyer-name region-title">
+                        收货人信息
+                    </div>
+                    <a class="add-address change-color" href="javascript:;">
+                        新增收货地址
+                    </a>
+                </div>
+                <ul class="show-add" onclick="addressClick(event)" <#if (map['addressList']?size = 0)>style="display:none"</#if>>
+                    <#list map['addressList'] as address>
+	                    <li data-id="${address.id?c}" data-id="address.id" data-province="${address.province!}" data-city="${address.city!}" 
+	                    	data-county="${address.county!}" data-detaladdress="${address.detalAddress!}" data-linkman="${address.linkMan!}"
+	                        data-phonesms="${address.phoneSms!}" class="clearfix" <#if (address_index >0 )>style="display:none"</#if>> 
+	                        <div class="<#if (address_index=0)>item-selected<#else>addr-no</#if> addr-change-js">
+	                            <span>${address.linkMan}</span>
+	                            <b></b>
+	                        </div>
+	                        <div class="addr-detail">
+	                            <span class="addr-name">${address.linkMan!}</span>
+	                            <span class="addr-info">${address.province!} ${address.city!} ${address.county!} ${address.detalAddress!}</span>
+	                            <span class="addr-tel">${address.phoneSms!}</span>
+	                            <span class="addr-default" style="display:none">默认地址</span>
+	                        </div>
+	                        <div class="edit-addr" style="display:none">
+	                            <span class="default-addr change-color" data-edit="default">设为默认地址</span>
+	                            <span class="change-addr change-color" data-edit="edit">编辑</span>
+	                            <span class="del-addr change-color" data-edit="remove">删除</span>
+	                        </div>
+	                    </li>
+                    </#list>
+                </ul>
+                <div class="fold-addr" <#if (map['addressList']?size = 0)>style="display:none"</#if>>
+                    <p class="open-addr">
+                        更多地址
+                        <i class="fa fa-angle-double-down"></i>
+                    </p>
+                    <p class="shrink-addr" style="display:none">
+                        收起地址
+                        <i class="fa fa-angle-double-up"></i>
+                    </p>
+                </div>
+            </div>
+             <!-- 管理收货地址 -->
+		    <div class="manage-address" style="display:none">
+		        <div class="mad-container">
+		            <div class="madc-title">
+		                <span class="madct-name">新增</span>收货人信息
+		                <b class="madc-close"></b>
+		            </div>
+		            <div class="madc-int-info">
+		                <form id="addressForm">
+		                	<input type="hidden" name="address.id">
+		                    <div class="madcii-box">
+		                        <span class="macii-left">
+		                            <i class="must">*</i>
+		                            <span>地区：</span>
+		                        </span>
+		                        <div id="distpicker5">
+		                            <div class="dform-group">
+		                                <label class="sr-only" for="province"></label>
+		                                <select class="" id="province" name="address.province"></select>
+		                            </div>
+		                            <div class="dform-group">
+		                                <label class="sr-only" for="city"></label>
+		                                <select class="" id="city"  name="address.city"></select>
+		                            </div>
+		                            <div class="dform-group">
+		                                <label class="sr-only" for="county"></label>
+		                                <select class="" id="county" name="address.county"></select>
+		                            </div>
+		                        </div>
+		                        <span class="dnot-pass" id="address-msg">请选择地区</span>
+		                    </div>
+		                    <div class="madcii-box">
+		                        <span class="macii-left">
+		                            <i class="must">*</i>
+		                            <span>详细地址：</span>
+		                        </span>
+		                        <input type="text" id="detalAddress" name="address.detalAddress">
+		                        <span class="dnot-pass">请输入详细地址</span>
+		                    </div>
+		                    <div class="madcii-box">
+		                        <span class="macii-left">
+		                            <i class="must">*</i>
+		                            <span>收货人姓名：</span>
+		                        </span>
+		                        <input type="text" id="linkMan" name="address.linkMan">
+		                        <span class="dnot-pass">请输入收货人姓名</span>
+		                    </div>
+		                    <div class="madcii-box">
+		                        <span class="macii-left">
+		                            <i class="must">*</i>
+		                            <span>联系电话：</span>
+		                        </span>
+		                        <input type="text" id="phoneSms" name="address.phoneSms">
+		                        <span class="dnot-pass">请检查联系电话是否正确</span>
+		                    </div>
+		                    <div class="madcii-box">
+		                        <button type="button" class="order-btn" onclick="addAddress()">保存收货人信息</button>
+		                    </div>
+		                </form>
+		            </div>
+		        </div>
+		    </div>
+            <!-- 支付方式 -->
+            <div class="item-pay item-buyer">
+                <div class="region-title">
+                    支付方式
+                </div>
+                <div class="select-pay">
+                    <span class="line-pay pay-confirm">
+                        在线支付
+                        <b style="display:block"></b>
+                    </span>
+                    <span class="offline-pay">
+                        线下支付
+                        <b style="display:none"></b>
+                    </span>
+                </div>
+            </div>
+            <!-- 送货清单 -->
+            <div class="delivery-order">
+                <div class="region-title">
+                    送货清单
+                </div>
+                <#list map['orderList'] as order>
+                	<div class="order-info">
+                    <div class="">
+                        商家：
+                        <span class="business-name">
+                            ${order.seller.companyName!}
+                        </span>
+                    </div>
+                    <#list order.items as item>
+                    <div class="goods-info" data-isenough="${item.enough?string('true','false')}" data-goodsname="${item.goodsName}">
+                        <ul class="clearfix">
+                            <li class="goods-img">
+                                <a href="/supermarket/goodsDetail.action?random=${item.goodsRandom}" target="_blank">
+                                    <img src="${item.imageUrl}">
+                                </a>
+                            </li>
+                            <li class="goods-info-name">
+                                <a href="/supermarket/goodsDetail.action?random=${item.goodsRandom}" target="_blank">
+                                  ${item.goodsName}
+                                </a>
+                                <div class="return-goods">
+                                    <img src="/images/seventwo.png"> 支持7天无理由退货
+                                </div>
+                            </li>
+                            <li class="price-weight">
+                            	<p class="pw-price">￥${item.danjia?string("0.00")}</p>
+                                <p>0.570kg</p>
+                            </li>
+                            <li>x${item.piece}</li>
+                            <li>${item.enough?string("有货","缺货")}</li>
+                        </ul>
+                    </div>
+                    </#list>
+                    <!-- 配送方式 -->
+                    <div class="transport-method">
+                        配送方式：
+                        <span>普通配送</span>
+                    </div>
+                    <!-- 开票信息 -->
+                    <div class="invoice-box">
+                        <div>
+                            <input type="checkbox" class="judge-invoice"> 开具发票
+                        </div>
+                        <div class="invoice-info-box">
+                            <div class="invoice-type disabled">
+                                开票类型：
+                                <span>
+                                    <label class="VAT-special">
+                                        <input type="radio" name="invoice">增值税专用发票
+                                    </label>
+                                </span>
+                                <span>
+                                    <label class="VAT-ordinary">
+                                        <input type="radio" name="invoice">增值税普通发票
+                                    </label>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </#list>
+                
+            </div>
+        </div>
+
+        <div class="order-summery">
+            <div class="order-t">
+                <span class="order-num">${totalNum} </span>件商品，总商品金额：
+                <span class="order-price">
+                    ￥${totalMoney?string("0.00")}
+                </span>
+            </div>
+            <div class="order-t">
+                运费：
+                <span class="order-price">
+                    ￥0.00
+                </span>
+            </div>
+        </div>
+
+        <div class="consignee-info">
+            <div>
+                应付金额：
+                <span class="ci-price">
+                    ￥${totalMoney?string("0.00")}
+                </span>
+            </div>
+            <div class="ci-addr">
+                <span>寄送至：</span>
+                <#if map['addressList'][0]??>
+                <span id="toAddress">
+                	 ${map['addressList'][0].province!} ${map['addressList'][0].city!} 
+                	 ${map['addressList'][0].county!} ${map['addressList'][0].detalAddress!}
+                </span>
+                <div class="cia-addr">
+                    <span>收货人：</span>
+                    <span>${map['addressList'][0].linkMan!}</span>
+                    <span>${map['addressList'][0].phoneSms!}</span>
+                </div>
+                <#else>
+	                <span id="toAddress"></span>
+	                <div class="cia-addr">
+	                    <span></span>
+	                    <span></span>
+	                    <span>请填写收货地址</span>
+	                </div>
+                </#if>
+                
+            </div>
+        </div>
+
+        <div class="order-check">
+            <button type="button" onclick="addOrder()" class="order-btn">
+                提交订单
+            </button>
+        </div>
+    </div>
+    <!-- 开票 -->
+    <div class="open-invoice" style="display:none">
+        <div class="opi-box">
+            <div class="opib-title">
+                <span>发票信息</span>
+                <b class="opib-close"></b>
+            </div>
+            <div class="opib-info">
+                <div class="change-invoice-type">
+                    <span class="VAT-invoice select-VAT-invoice vat-s">
+                        增值税专用发票
+                        <b></b>
+                    </span>
+                    <span class="VAT-invoice vat-o">
+                        增值税普通发票
+                        <b></b>
+                    </span>
+                </div>
+                <form class="int-invoice">
+                    <div class="inti-box">
+                        <span class="inti-left">
+                            <i class="must">*</i>
+                            <span>单位名称：</span>
+                        </span>
+                        <input type="text">
+                        <span class="dnot-pass">不能为空</span>
+                    </div>
+                    <div class="inti-box">
+                        <span class="inti-left">
+                            <i class="must">*</i>
+                            <span>纳税人识别号：</span>
+                        </span>
+                        <input type="text">
+                        <span class="dnot-pass">不能为空</span>
+                    </div>
+                    <div class="inti-box">
+                        <span class="inti-left">
+                            <i class="must">*</i>
+                            <span>注册地址/电话：</span>
+                        </span>
+                        <input type="text">
+                        <span class="dnot-pass">不能为空</span>
+                    </div>
+                    <div class="inti-box">
+                        <span class="inti-left">
+                            <i class="must">*</i>
+                            <span>开户银行/账户：</span>
+                        </span>
+                        <input type="text">
+                        <span class="dnot-pass">不能为空</span>
+                    </div>
+                    <div class="inti-box">
+                        <button type="submit" class="order-btn">保存</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

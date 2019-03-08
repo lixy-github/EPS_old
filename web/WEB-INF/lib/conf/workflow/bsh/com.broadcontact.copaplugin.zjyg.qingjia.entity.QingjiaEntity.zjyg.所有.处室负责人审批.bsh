@@ -1,0 +1,14 @@
+import com.broadcontact.common.manager.Service;
+import com.broadcontact.copa.common.manager.FlowConditionSupport;
+System.out.println(object.getDept().equals("´°¿Ú"));
+if(object.getDept().equals("´°¿Ú"))
+  return "false";
+if(object.getDept().equals("¼ÝÊ»°à"))
+  return "false";  
+FlowConditionSupport departHeaderCondition = Service.getService("departHeaderCondition");
+if(departHeaderCondition.validator(user,object,step))
+	return "false";
+FlowConditionSupport orgHeaderCondition = Service.getService("orgHeaderCondition");
+if(orgHeaderCondition.validator(user,object,step))
+	return "false";
+return "true";	

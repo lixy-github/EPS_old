@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1250px, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title><#if goods??>更新商品<#else>发布商品</#if></title>
+<link rel="stylesheet" href="/css/index.css">
+<link rel="stylesheet" href="/css/personal.css">
+<link href="/css/font-awesome.min.css" rel="stylesheet">
+<script src="/js/jquery-1.9.1.min.js"></script>
+<script src="/js/personal.js"></script>
+<script src="/editor/kindeditor-all.js"></script>
+<script src="/editor/lang/zh-CN.js"></script>
+</head>
+<body>
+	<!-- 导航条 -->
+    <#include "/public/menu.ftl">
+    
+    <!-- 主体内容 -->
+    <div class="person-container clearfix">
+        <div class="pc-left">
+        		<h2 class="person-title pt-publish">
+                发布商品
+            </h2>
+            <div class="uoload_product_box">
+                <div class="upload_step">
+                    <span class="active">基本信息</span>
+                    <span>商品详情</span>
+                    <span>商品图片</span>
+                </div>
+                <div class="publish_goods_box">
+                    <!-- 基本信息 -->
+                    <div class="publish_goods pgb-js">
+                        <form id="jbxxForm">
+                        	<input type="hidden" name="goods.id" id="goodsId" value="${(goods!).id!}">
+                        	<input type="hidden" name="goods.random" id="random" value="${(goods!).random!}">
+                        	<input type="hidden" name="goods.goodsStatus" id="random" value="${(goods!).goodsStatus!}">
+                            <div class="plg_int_box">
+                                <span class="">
+                                    <span class="start">*</span>
+                                    商品种类：
+                                </span>
+                                <div class="select_type">
+                                    <label>
+                                        <input type="radio" name="goods.type" value="成衣" <#if goods??&&goods.type!='成衣'><#else> checked="checked"</#if>>成衣
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="goods.type" value="毛纱" <#if goods??&&goods.type ='毛纱'>checked="checked"</#if>>毛纱
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="goods.type" value="辅料" <#if goods??&&goods.type ='辅料'>checked="checked"</#if>>辅料
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="goods.type" value="设备" <#if goods??&&goods.type ='设备'>checked="checked"</#if>>设备
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="plg_int_box">
+                                <span class="">
+                                    <span class="start">*</span>
+                                    商品名称：
+                                </span>
+                                <input type="text" name="goods.name" value="${(goods!).name!}">
+                                <span class="dnot-pass" style="display:none">字段不能为空</span>
+                            </div>
+                            <div class="plg_int_box">
+                                <span class="">
+                                    <span class="start">*</span>
+                                    规格：
+                                </span>
+                                <input type="text" name="goods.guige" value="${(goods!).guige!}">
+                                <span class="dnot-pass" style="display:none">字段不能为空</span>
+                            </div>
+                            <div class="plg_int_box">
+                                <span class="">
+                                    <span class="start">*</span>
+                                    库存数量：
+                                </span>
+                                <input type="text" name="goods.kucun" value="${((goods!).kucun?c)!}">
+                                <span class="dnot-pass" style="display:none">字段不能为空</span>
+                            </div>
+                            <div class="plg_int_box">
+                                <span class="">
+                                    <span class="start">*</span>
+                                    单位：
+                                </span>
+                                <input type="text" name="goods.danwei" value="${(goods!).danwei!}">
+                                <span class="dnot-pass" style="display:none">字段不能为空</span>
+                            </div>
+                            <div class="plg_int_box">
+                                <span class="">
+                                    <span class="start">*</span>
+                                    单价（元）：
+                                </span>
+                                <input type="text" class="price_section" name="goods.danjia" value="${((goods!).danjia?c)!}">
+                                <span class="dnot-pass" style="display:none">字段不能为空</span>
+                            </div>
+                            <div class="plg_int_box">
+                                <span class="">
+                                    成分：
+                                </span>
+                                <input type="text" name="goods.chengfen" value="${(goods!).chengfen!}">
+                            </div>
+                            <div class="plg_int_box">
+                                <span class="">
+                                    产地：
+                                </span>
+                                <input type="text" name="goods.chandi"  value="${(goods!).chandi!}">
+                            </div>
+                            <div class="plg_int_box">
+                                <span class="">
+                                    物流方式：
+                                </span>
+                                <input type="text" name="goods.wuliuType" value="${(goods!).wuliuType!}">
+                            </div>
+                            <div class="plg_int_box">
+                                <span class="">
+                                    物流价格：
+                                </span>
+                                <input type="text" name="goods.wuliuMoney" value="${(goods!).wuliuMoney!}">
+                            </div>                       
+                            <div class="plg_int_box" style="text-align:center">
+                                <button type="button" onclick="saveGoods()" class="upload_img_btn"><#if goods??>更新<#else>下一步</#if></button>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- 商品详情 -->
+                    <div class="product_information pgb-js" style="display:none">	
+                    	<textarea id="editor_id" style="width: 90%; height: 300px;">${((goods!).html!).content!}</textarea>
+                    	<div class="plg_int_box" style="text-align:center">
+                             <button type="button" onclick="saveGoodsHtml()" class="upload_img_btn" style="margin-top: 17px;"><#if goods??>更新<#else>下一步</#if></button>
+                         </div>
+                    </div>
+                    <!-- 商品图片 -->
+                    <div class="product_img pgb-js" style="display:none">
+	                    <div class="">请上传商品图片<font color="red">（宽800，高800）</font></div>
+	                    <div style="padding: 50px;">
+	                        <ul class="upload-ul clearfix">
+	                        <#if goods??>
+	                        	<#list goods.imageList as image>
+	                        	<li class="diyUploadHover">
+                        			<div class="viewThumb" style="text-align: initial;">
+                        			<p class="diyControl"><span class="diyCancel" onclick="diyCancel(this)"><i></i></span></p>
+                        			<img src="${image.path}" id="${image.random}"></div>
+                        		</li>
+	                        	</#list>                       		
+	                        </#if>
+	                            <li class="upload-pick">
+	                                <div class="webuploader-container clearfix" id="goodsUpload">
+		                                <div class="webuploader-pick"></div>		                          
+		                                <div class="webuploader-div">
+		                                	<div id="iframeDiv"></div>		                                	
+		                                	<form method="post" id="fileForm" action="/user/grzx/saveGoodsImage.action" enctype="multipart/form-data" name="fileForm" >
+			                                	<input id="file" name="file" class="webuploader-element-invisible" onchange="upLoadImg(this)" accept="image/*" type="file">
+			                                	<label for="file" style="opacity: 0; width: 100%; height: 100%; display: block; cursor: pointer; background: rgb(255, 255, 255) none repeat scroll 0% 0%;"></label>		                                	
+		                                	</form>
+		                                </div>
+		                            </div>
+	                            </li>
+	                        </ul>
+	                        <div class="plg_int_box" style="text-align:center">
+	                        	 <#if goods??>
+	                        	 <button type="button" id="goodsUp" onclick="updateGoodsStatus(1)" class="upload_img_btn" style="margin-top: 17px;margin-left: -8px;<#if goods.goodsStatus==1>display:none</#if>">上架</button>
+	                             <button type="button" id="goodsDown" onclick="updateGoodsStatus(-1)" class="upload_img_btn" style="margin-top: 17px;margin-left: -8px;<#if goods.goodsStatus==-1>display:none</#if>">下架</button>
+	                        	 <#else>
+	                        	 <button type="button" id="goodsUp" onclick="updateGoodsStatus(1)" class="upload_img_btn" style="margin-top: 17px;margin-left: -8px;">上架</button>
+	                             <button type="button" id="goodsDown" onclick="updateGoodsStatus(-1)" class="upload_img_btn" style="margin-top: 17px;margin-left: -8px;display:none">下架</button>
+	                        	 </#if>	                        	
+	                         </div>
+	                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+		<#include "/public/grzxRightMenu.ftl">
+	</div>
+	
+	<#include "/public/foot.ftl">
+</body>
+<script>
+	function updateGoodsStatus(status){
+		var random = $("#random").val();
+		if(random==""){
+			layer.alert("请先填写基本信息");
+			return;
+		}
+		$.ajax({    
+            type:'post',        
+            url:'/user/grzx/updateGoodsStatus.action',    
+            data:{"goods.random":random,"status":status},    
+            dataType:'json',    
+            success:function(data){
+            	layer.msg('操作成功', {icon: 1,time:1000});
+            	if(status == -1){
+            		$("#goodsUp").show();
+            		$("#goodsDown").hide();
+            	}else{
+            		$("#goodsUp").hide();
+            		$("#goodsDown").show();
+            	}
+            }
+        });
+	}
+	function saveGoodsHtml(){
+		var random = $("#random").val();
+		if(random==""){
+			layer.alert("请先填写基本信息");
+			return;
+		}
+
+		$.ajax({    
+            type:'post',        
+            url:'/user/grzx/saveGoodsHtml.action',    
+            data:{"goods.random":random,"content":editor.html()},    
+            dataType:'json',    
+            success:function(data){
+            	<#if goods??>
+            		layer.msg('操作成功', {icon: 1,time:1000});
+            		<#else>
+	        		$(".upload_step span:eq(2)").click();
+            	</#if> 
+            }
+        }); 
+	}
+	function upLoadImg(_this) {
+		var goodsId = $("#goodsId").val();
+		if(goodsId == ""){
+			layer.alert("请先填写基本信息");
+			return ;
+		}
+		var file = _this.files[0];
+		if(file.size>2*1024*1024){
+			layer.alert("图片大小应小于2M");
+			return ;
+		}
+		var $li = $(
+					'<li class="diyUploadHover">'+
+				    		'<div class="viewThumb" style="text-align: initial;">'+	 
+						  	'<p class="diyControl">'+
+					    	 	'<span class="diyCancel" onclick="diyCancel(this)"><i></i></span>'+
+						 	'</p>'+   	 	
+						 	'<img src="/images/imgLoading.gif"></img>'+
+						 '</div>'+
+					'</li>'
+				  )
+		var $img = $li.find("img").attr("style","width:100%;height:100%");
+		$(_this).parents("li").before($li);
+		var iframName = "iframe"+ +new Date()
+		$iframe = $("<iframe name='"+iframName+"' width='0' height='0' frameborder='0'>");
+		$("#iframeDiv").append($iframe);
+		var $fileForm = $("#fileForm");
+		if($fileForm.find("input[name='goods.id']").length == 0){
+			$fileForm.append("<input type='hidden' name='goods.id' value='"+goodsId+"'>")
+		}
+		$fileForm.attr("target",iframName).submit();
+		$iframe.load(function(){
+			if($(this).contents().find("title").html()){
+				layer.alert("出错了");
+				$li.remove();
+				fileHidden();
+				return ;
+			}
+			var imageId = $(this).contents().find("imageId").html();
+			if(imageId == ""){
+				layer.alert("上传失败");
+				$li.remove();
+				fileHidden();
+				return ;
+			}
+		    var reader = new FileReader();
+		    reader.readAsDataURL(file);
+		    reader.onload = function(e){
+		        var src = this.result;
+		        $("<img src='"+this.result+"'>").load(function(){		        	
+    				$img.attr("src",src).attr("id",imageId);
+    				fileHidden();
+		        })	        
+		    } 
+	    })
+	    $iframe.error(function(){
+	    	layer.alert("上传失败");
+			$li.remove();
+			fileHidden();
+	    })
+	     
+	}
+	function diyCancel(_this){
+		$.ajax({    
+            type:'post',        
+            url:'/user/grzx/removeGoodsImage.action?random='+$(_this).parents(".viewThumb").find("img").attr("id"),    
+            dataType:'json',    
+            success:function(data){
+            	if(data.status==0){
+            		$(_this).parents(".diyUploadHover").remove();
+            		fileHidden();
+            	}         	
+            }
+        });  		
+	}
+	function fileHidden(){
+		if($(".upload-ul .diyUploadHover").length >= 6){
+			$(".upload-pick").hide();
+		}else{
+			$(".upload-pick").show();
+		}
+	}
+	fileHidden();
+	function saveGoods(){
+		var flag = false
+		$("#jbxxForm input:visible").each(function(){
+			if($(this).val().trim()==""){
+				var $dnot = $(this).siblings(".dnot-pass");
+				if($dnot.length > 0 ){
+					$(this).siblings(".dnot-pass").show();
+					flag = true;
+				}
+			}
+		})
+		if(flag) return ;
+		$.ajax({    
+            type:'post',        
+            url:'/user/grzx/saveGoods.action',    
+            data:$("#jbxxForm").serialize(),    
+            dataType:'json',    
+            success:function(data){
+            	<#if goods??>
+            		layer.msg('操作成功', {icon: 1,time:1000});
+        		<#else>
+	            	$(".upload_step span:eq(1)").click();  
+        		</#if> 
+            	
+            	$("#goodsId").val(data.id);
+            	$("#random").val(data.random);
+            	       	
+            }
+        });    	
+	}
+	$(function(){
+		$("#jbxxForm input").bind("blur",function(){
+			if($(this).val().trim() ==""){
+				$(this).siblings(".dnot-pass").show();
+			}else{
+				$(this).siblings(".dnot-pass").hide();
+			}
+		})
+		$(".price_section").add("input[name='goods.kucun']").bind("keyup onafterpaste",function(){
+			this.value=this.value.replace(/[^\d.]/g,'').replace(/^(\-)*(\d+)\.(\d\d).*$/,'$1$2.$3').replace(/[^\d]{2,}/g,'');
+			if(this.name == 'goods.danjia'){
+				if(this.value > 99999999){
+					this.value = 99999999;
+				}
+			}
+			if(this.name == 'goods.kucun'){
+				this.value=this.value.replace(/[^\d]/g,'');
+				if(this.value > 9999){
+					this.value = 9999;
+				}
+			}
+		})
+		$("input[name='goods.name']").bind("keyup onafterpaste",function(){
+			this.value=this.value.replace(/^(.{40,40})(.+)$/,'$1');
+		})
+	})
+	
+
+	KindEditor.ready(function(K) {
+		window.editor = K.create('#editor_id', {
+			uploadJson : '/editor/jsp/upload_json.jsp',
+			fileManagerJson : '/editor/jsp/file_manager_json.jsp',
+			allowFileManager : false,
+		    allowImageManager : true,
+		    items : [
+			     		'fullscreen', 'source', 'preview','|', 'undo', 'redo', '|', 'template', 'code', 'cut', 'copy', 'paste',
+			     		'plainpaste', 'wordpaste', '|', 'justifyleft', 'justifycenter', 'justifyright',
+			     		'justifyfull', 'insertorderedlist', 'insertunorderedlist', 'indent', 'outdent', 'subscript',
+			     		'superscript', 'clearhtml', 'quickformat', 'selectall', '/',
+			     		'formatblock', 'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold',
+			     		'italic', 'underline', 'strikethrough', 'lineheight', 'removeformat', '|', 'image', 'multiimage',
+			     		'flash', 'media', 'insertfile', 'table', 'hr', 'emoticons', 'baidumap', 'pagebreak',
+			     		'anchor', 'link', 'unlink'
+		     ],
+		     minWidth:690
+		})
+	});
+</script>
+</html>

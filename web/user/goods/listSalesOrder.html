@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1250px, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>我的销售交易</title>
+    <link rel="stylesheet" href="/css/index.css" type="text/css">
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/css/personal.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/purchase.css">
+    <script src="/js/jquery-1.9.1.min.js"></script>
+</head>
+
+<body>
+    <!-- 导航条 -->
+    <#include "/public/menu.ftl">
+    <div class="person-container clearfix">
+        <div class="pc-left">
+            <h2 class="person-title pt-pur">我的销售交易</h2>
+            
+            <div class="purchased-container">
+            	<ul class="extra-l">
+					<li><a href="/user/grzx/listSalesOrder.action?t=all" class="txt <#if t??>curr</#if>">全部订单</a></li>
+					<li><a href="/user/grzx/listSalesOrder.action?status=10" class="txt <#if status=10>curr</#if>">待发货</a></li>
+					<li><a href="/user/grzx/listSalesOrder.action?status=100" class="txt <#if status=100>curr</#if>">待评价</a>
+						<!-- <a href="//club.jd.com/mycomments.aspx"><em>14</em></a> -->
+					</li>
+				</ul>
+                <div class="pur-title">
+                    <ul class="clearfix">
+                        <li>商品</li>
+                        <li>收货人</li>
+                        <li>金额</li>
+                        <li>状态</li>
+                        <li>操作</li>
+                    </ul>
+                </div>
+                <div class="pur-show-goods">
+                	<#list pageSupport.items as order>
+                	<div class="pur-goods">
+                        <ul class="date-order clearfix">
+                            <li>
+                                <span>${order.createTime?string("yyyy-MM-dd HH:mm:ss")}</span>
+                            </li>
+                            <li>
+                                订单号：<span class="order-num">${order.orderNumber}</span>
+                            </li>
+                            <li>
+                                <span class="pur-seller">${order.user.userName!}</span>
+                                <a class="pur-contact fa fa-qq"></a>
+                            </li>
+                        </ul>
+                        <ul class="pur-info clearfix" >
+                            <li>
+                            	<#list order.items as item>
+                           		<div class="pur-goods-box">
+                                    <a class="pur-info-img" href="/supermarket/goodsDetail.action?random=${item.goodsRandom!}" target="_black">
+                                        <img src="${item.imageUrl!}">
+                                    </a>
+                                    <a class="pur-info-text" href="/supermarket/goodsDetail.action?random=${item.goodsRandom!}" target="_black">
+                                    	${item.goodsName!}
+                                    </a>
+                                    <span class="pur-goods-num">x${item.piece}</span>
+                                </div>
+                            	</#list>
+                            </li>
+                            <li>
+                                <span class="pur-color">${order.receiveLinkMan!}</span>
+                                <span class="fa fa-user-o"></span>
+                            </li>
+                            <li>
+                                <p class="pur-title-price">
+                                    总额：<span>¥${order.totalMoney?string("0.00")}</span>
+                                </p>
+                                <p>在线支付</p>
+                            </li>
+                            <li>
+                                <p class="pur-status">
+                                	<#if order.orderStatus=-1>
+                                		已取消
+                                	<#elseif order.orderStatus=0>
+                                		等待付款
+                               		<#elseif order.orderStatus=10>
+                                		待发货
+                                	<#elseif order.orderStatus=20>
+                                		待签收
+                                	<#elseif order.orderStatus=100>
+                                		已完成
+                                	</#if>
+                                </p>
+                                <p>
+                                    <a class="pur-color pur-color-hover" target="_black" href="/user/grzx/getOrderDetail.action?random=${order.random}">订单详情</a>
+                                </p>
+                            </li>
+                            <li class="pur-operate" onclick="orderMethod(event,this)" data-random="${order.random}">
+                            	<#if order.orderStatus==10>
+                                <a class="pur-color-hover onlyone-method" data-method="deliver">发货</a>
+                                </#if>
+                                <#if order.orderStatus==100 && order.sellerEvaluateOver?string("true","false") == "false">
+                                	<a class="pur-color-hover onlyone-method" data-method="evaluate">评价</a>
+                                </#if>
+                                <#if order.orderStatus==100 && order.sellerEvaluateOver?string("true","false") == "true">
+                                	<a class="pur-color-hover onlyone-method">已评价</a>
+                                </#if>
+                            </li>
+                        </ul>
+                    </div>
+                	</#list>
+                </div>
+                 <!-- 分页 -->
+           		${pageSupport.html}
+            </div>
+        </div>
+		<#include "/public/grzxRightMenu.ftl">
+    </div>
+    <!-- 尾部 -->
+    <#include "/public/foot.ftl">
+</body>
+<script>
+function orderMethod(event,_this){
+	var event = event || window.event;
+	var target = event.target || event.srcElement;
+	var method = $(target).data("method");
+	var random = $(_this).data("random");
+	if(method == "deliver"){		
+		deliver(random);
+	}else if(method == "evaluate"){
+		location.href = "/user/grzx/toSellerEvaluate.action?random="+random;
+	}
+}
+
+function deliver(random){
+	layer.prompt({
+		title: '请输入快递单号',
+	},function(value, index, elem){
+		$.ajax({           
+		    url:'/user/grzx/updateOrderStatus.action',    
+		    data:{random:random,status:20,expressNumber:value},    
+		    dataType:'json',    
+		    success:function(data){
+		    	 layer.close(index);
+		    	location.reload(true);
+		    }
+		});
+	});
+	
+}
+
+function evaluate(){
+	
+}
+(function(){
+	var test = $(".pur-info");
+    for (var i = 0; i < test.length; i++) {
+        if ($(test[i]).find("li:first-child").height() != $(test[i]).find("li:gt(0)").height()) {
+            $(test[i]).find("li:gt(0)").height($(test[i]).find("li:first-child").height())
+        }
+    }
+})();
+</script>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1250px, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>忘记密码</title>
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/forgotpw.css">
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
+    <script src="/js/jquery-1.9.1.min.js"></script>
+    <script src="/js/forgotpw.js"></script>
+    
+    <script type="text/javascript" src="/js/myjs/losePw.js"></script>
+</head>
+<body>
+     <!-- 导航条 -->
+    <#include "/public/menu.ftl">
+    
+    <!-- 忘记密码导航 -->
+    <div class="add-nav">
+        <div class="add-nav-box clearfix">
+            <div class="anb-left">
+                <h3>忘记密码</h3>
+            </div>
+            <div class="anb-right">
+                <a href="">Startit</a>
+                <span>></span>
+                <a href="">All</a>
+                <span>></span>
+                <a href="">Innovation</a>
+                <span>></span>
+                <span>UX Design Aimed At Millenials</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 主体内容 -->
+    <div class="forgotpw-container clearfix">
+        <div class="fgpc-left">
+            <!-- <img src="images/b-ux-design-aimed-at-millenials.jpg"> -->
+        </div>
+        <div class="fgpc-right">
+            <ul class="clearfix">
+                <li class="step1 z-old">
+                    <i></i>
+                    <span>验证身份</span>
+                </li>
+                <li class="step2">
+                    <i></i>
+                    <span>设置新密码</span>
+                </li>
+                <li class="step3">
+                    <i></i>
+                    <span>完成</span>
+                </li>
+            </ul>
+            <!-- 第一步 -->
+            <div class="verify-step1" style="display:block">
+                <div class="change">
+                    <p class="phone-pw" style="display:block">
+                        手机号码
+                        <i></i>
+                    </p>
+                    <p class="fox-pw" style="display:none">
+                        邮箱
+                        <i></i>
+                    </p>
+                    <div class="changeBox" style="display:none">
+                        <p class="phone-js">手机号码</p>
+                        <p class="fox-js">邮箱</p>
+                    </div>
+                </div>
+                <!-- 手机 -->
+                <div class="phone-pw-box">
+                    <form>
+                        <div class="marginPublic">
+                            <input type="text" placeholder="手机号码" class="intPhone phone" id="tel">
+                            <span class="dnot-pass"></span>
+                            <span class="got-code getcode" data-flag="forgotpw-container">获取手机验证码</span>
+                        </div>
+                        <div class="marginPublic">
+                            <input type="text" placeholder="输入图形验证码" class="intPhone code" id="imgCode">
+                            <span class="dnot-pass"></span>
+                            <span class="codeimg">
+                            	<img alt="" src="/public/getCodeImg.action" id="codeImgImg" style="cursor: pointer;">
+                            </span>
+                        </div>
+                        <div class="marginPublic">
+                            <input type="text" placeholder="请输入验证码" class="phone-code inputcode" id="telCode">
+                            <span class="dnot-pass"></span>
+                        </div>
+                        <div class="marginPublic">
+                            <button class="submit-btn submit-btn1" type="button" id="tjStep1forTel">提交</button>
+                        </div>
+                    </form>
+                </div>
+                <!-- 邮箱 -->
+                <div class="fox-pw-box" style="display:none">
+                    <form>
+                        <div class="marginPublic">
+                            <input type="text" placeholder="邮箱地址" class="phone-code" id="email">
+                            <span class="dnot-pass"></span>
+                        </div>
+                        <div class="marginPublic">
+                            <button class="submit-btn submit-btn1" type="button" id="tjStep1forEmail">提交</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- 第二步 -->
+            <div class="verify-step2" style="display:none">
+                <form>
+                	<input type="hidden" id="userId">
+                    <div class="marginPublic">
+                    	<span> <!-- 多个span为了节点和注册页面一致 -->
+                        <input type="password" placeholder="新密码（6-16个字符；字母/数字）" class="phone-code phonePassword" style="margin-bottom:40px" id="pwd">
+                      	<span class="dnot-pass"></span>
+                      	</span>
+                    </div>
+                    <div class="marginPublic">
+                    	<span>
+                        <input type="password" placeholder="请再次输入密码" class="phone-code reformintcode" id="rePwd">
+                        <span class="dnot-pass"></span>
+                        </span>
+                    </div>
+                    <div class="marginPublic" style="margin-top:40px">
+                        <button class="submit-btn submit-btn2" type="button" id="tjStep2">提交</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- 第三步 -->
+            <div class="verify-step3" style="display:none">
+                <div class="success-logo">
+                    <img src="images/forget-i4.png">
+                </div>
+                <p class="success-text">
+                    密码修改成功
+                </p>
+                <div class="back-home">
+                    你可以使用新的密码进行登录，
+                    <a href="/index.action">返回首页</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 尾部 -->
+    <#include "/public/foot.ftl">
+</body>
+<script type="text/javascript">
+	$(function(){
+		//layer.alert("${verified!}")
+		<#if verified??>
+			<#if verified=="yes">
+			 $(".verify-step1").css("display", "none");
+	         $(".verify-step2").css("display", "block");
+	       	 $(".verify-step3").css("display", "none");
+			 $(".step2").addClass("z-old").addClass("z-old2");
+			 
+			 var paramStr = "${paramStr!}";
+			 var userId = paramStr.split("_")[0];
+			 $("#userId").val(userId);
+			</#if>
+		</#if>
+	})
+</script>
+</html>

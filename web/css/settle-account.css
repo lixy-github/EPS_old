@@ -1,0 +1,433 @@
+.region-title{
+    font-size:15px;
+    font-weight:bold;
+    color:#000;
+}
+.item-selected{
+    border: 2px solid #fa462e;
+    padding: 4px 10px; 
+    height:18px;
+    line-height:18px;
+    text-align:center;
+    width:120px;
+    position:relative; 
+    display: inline-block;
+    background:#fff;
+}
+.item-selected b,
+.settle-box .item-pay .select-pay span b{
+    display:block;
+    width:12px;
+    height:12px;
+    position:absolute;
+    right:0;
+    bottom:0;
+    background:url("../images/selected-icon.png") no-repeat;
+}
+.order-btn{
+    outline:none;
+    border:none;
+    background:#fa462e;
+    text-align:center;
+    width:135px;
+    height:36px;
+    line-height:36px;
+    color:#fff;
+    border-radius:3px;
+    cursor:pointer;
+}
+.order-btn:hover{
+    background:#e82a11;
+}
+.addr-detail .addr-default{
+	background-color: #999;
+	color: #fff;
+	padding: 0px 3px;
+	line-height: 20px;
+	margin: -2px 10px;
+}
+.settle-title{
+    margin-left:6px;
+    color: #797979;
+    font-size: 16px;
+}
+.settle-box{
+    width:990px;
+    height:auto;
+    color:#797979;
+    box-sizing:border-box;
+    border:1px solid #f0f0f0;
+    padding:20px;
+    margin:0 auto;
+    margin-top:20px;
+    font-size:13px;
+}
+.settle-box .item-buyer{
+    padding-bottom:25px;
+    border-bottom:1px solid #e6e6e6;
+}
+.settle-box .buyer-info .buyer-name{
+    float:left;
+}
+.settle-box .buyer-info .add-address{
+    float:right;
+}
+.settle-box .show-add{
+    width: 95%;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+.settle-box .show-add li{
+    margin-top:15px;
+    padding-right:10px;
+    cursor:default;
+}
+.settle-box .show-add li:hover{
+    background-color:#fff3f3;
+}
+.settle-box .show-add li:hover > .edit-addr{
+   display: block !important;
+}
+.settle-box .show-add li .addr-no{
+    display: inline-block;
+    width: 120px;
+    padding: 4px 10px; 
+    height:20px;
+    line-height:20px;
+    text-align:center;
+    background:#fff;
+    border:1px solid #e6e6e6;
+}
+.settle-box .show-add .addr-detail{
+    display:inline-block;
+    margin-left:10px;
+}
+.settle-box .show-add .addr-detail span{
+    display:inline-block;
+    margin-left:10px;
+    vertical-align:top;
+}
+.settle-box .show-add .addr-detail .addr-name,
+.settle-box .show-add .addr-detail .addr-info{
+    margin-right:10px;
+}
+.settle-box .show-add .addr-detail .addr-info{
+    max-width: 300px;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}
+.settle-box .show-add .edit-addr{
+    float:right;
+    line-height:30px;
+}
+.settle-box .show-add .edit-addr span{
+    margin-left:10px;
+}
+.settle-box .fold-addr{
+    margin:10px 0 0 20px;
+}
+.settle-box .fold-addr>p{
+    cursor:pointer;
+}
+.settle-box .item-pay{
+    margin-top:20px;
+}
+.settle-box .item-pay .select-pay{
+    margin: 15px 0 0 20px;
+}
+.settle-box .item-pay .select-pay span{
+    display:inline-block;
+    border:1px solid #e6e6e6;
+    text-align:center;
+    padding:5px 26px;
+    height:22px;
+    line-height:22px;
+    margin-right:10px;
+    cursor:pointer;
+    position:relative;
+}
+.settle-box .item-pay .select-pay span:hover,
+.settle-box .item-pay .select-pay .pay-confirm{
+    border:2px solid #fa462e;
+    height:20px;
+    line-height:20px;
+    padding:5px 25px;
+}
+.settle-box .delivery-order{
+    margin-top:20px;
+}
+.settle-box .delivery-order .order-info{
+    background:#f6f6f6;
+    padding: 15px 20px 5px 20px;
+    margin-top:15px;
+}
+.settle-box .delivery-order .order-info .goods-info{
+    margin: 15px 0 5px 0;
+    padding-bottom:20px;
+    border-bottom:1px solid #e6e6e6;
+}
+.settle-box .delivery-order .order-info .goods-info li{
+    float:left;
+    margin-left:100px;
+}
+.settle-box .delivery-order .order-info .goods-info li:first-child{
+    margin-left:0;
+}
+.settle-box .delivery-order .order-info .goods-info .goods-img{
+    border:1px solid #e6e6e6;
+    background:#fff;
+    width:80px;
+    height:80px;
+}
+.settle-box .delivery-order .order-info .goods-info .goods-img img{
+    width:100%;
+    height:100%;
+}
+.settle-box .delivery-order .order-info .goods-info .goods-info-name{
+    margin-top: 3px;
+}
+.settle-box .delivery-order .order-info .goods-info .goods-info-name>a{
+    display: inline-block;
+    width: 300px;
+    max-height: 35px;
+    overflow: hidden;
+    color:#797979;
+}
+.settle-box .delivery-order .order-info .goods-info .goods-info-name .return-goods{
+    margin-top: 10px;
+    color:#159eee;
+}
+.settle-box .delivery-order .order-info .goods-info .goods-info-name .return-goods img{
+    vertical-align:top;
+}
+.settle-box .delivery-order .order-info .goods-info .price-weight{
+    margin-left: 60px;
+    text-align:right;
+}
+.settle-box .delivery-order .order-info .goods-info .price-weight .pw-price{
+    color:#fa462e;
+    font-weight:bold;
+    font-size: 14px;
+    margin-bottom:5px;
+}
+.settle-box .delivery-order .order-info .transport-method{
+    margin:15px 0 15px 0;
+}
+.settle-box .delivery-order .order-info .invoice-box .invoice-info-box{
+    margin-left:20px;
+}
+.settle-box .delivery-order .order-info .invoice-box .invoice-type{
+    margin:15px 0;
+}
+.settle-box .delivery-order .order-info .invoice-box .invoice-type>span{
+    margin-right:20px;
+}
+.settle-box .delivery-order .order-info .invoice-box .invoice-type>span input{
+    margin-right:8px;
+}
+.disabled{
+    pointer-events:none;
+    color:#ccc;
+    user-select:none;
+}
+.order-summery,.consignee-info{
+    text-align:right;
+    color:#797979;
+    font-size: 13px;
+    padding: 0 25px;
+    margin-top: 20px;
+}
+.order-summery .order-t{
+    margin-bottom:10px;
+}
+.order-summery .order-num{
+    color:#fa462e;
+}
+.order-summery .order-price{
+    display:inline-block;
+    width: 125px;
+    color: #333;
+}
+.consignee-info{
+    background:#f4f4f4;
+    border-top:1px solid #e6e6e6;
+    padding:15px 25px 20px 0;
+}
+.consignee-info .ci-price{
+    color:#fa462e;
+    font-weight:bold;
+    font-size: 15px;
+}
+.consignee-info .ci-addr{
+    margin-top:8px;
+}
+.consignee-info .ci-addr .cia-addr{
+    display:inline-block;
+    margin-left: 20px;
+}
+.order-check{
+    text-align:right;
+    margin-top: 10px;
+}
+
+/* 管理收货地址及开票 */
+.manage-address,
+.open-invoice{
+    background:rgba(0,0,0,.1);
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index:1000;
+    color:#5e5c5c;
+}
+.manage-address .mad-container{
+    position:absolute;
+    top:50%;
+    left:50%;
+    width:430px;
+    height:300px;
+    margin-top: -155px;
+    margin-left: -203px;
+    background:#fff;
+    border:4px solid rgba(0,0,0,.2);
+    border-radius:5px;
+}
+.manage-address .mad-container .madc-title,
+.open-invoice .opi-box .opib-title{
+    position:relative;
+    height:32px;
+    line-height:32px;
+    font-size:14px;
+    padding-left: 10px;
+    color:#333;
+    background:#f3f3f3;
+}
+.manage-address .mad-container .madc-title .madc-close,
+.open-invoice .opi-box .opib-title .opib-close{
+    position:absolute;
+    right:10px;
+    bottom:10px;
+    width:13px;
+    height:13px;
+    cursor:pointer;
+    background:url("../images/dialog.png") no-repeat;
+}
+.manage-address .mad-container .madc-int-info{
+    margin:25px 0 0 15px;
+    font-size:13px;
+}
+.manage-address .mad-container .madc-int-info .madcii-box,
+.int-invoice .inti-box{
+    margin-bottom:22px;
+    position:relative;
+}
+.manage-address .mad-container .madc-int-info .madcii-box .macii-left,
+.int-invoice .inti-box .inti-left{
+    display:inline-block;
+    width:90px;
+    text-align:right;
+    margin-right: 15px;
+}
+.must{
+    color:#fa462e;
+    font-style:normal;
+}
+.manage-address .mad-container .madc-int-info .madcii-box input,
+.int-invoice .inti-box input{
+    height: 18px;
+    width: 231px;
+    padding: 3px 5px 2px 10px;
+    border: 1px solid #ccc;
+}
+.manage-address .mad-container .madc-int-info .madcii-box .dnot-pass,
+.int-invoice .inti-box .dnot-pass{
+    top: 25px;
+    left: 110px;
+    display: none;
+}
+.manage-address .mad-container .madc-int-info .madcii-box .order-btn{
+    margin-left:110px;
+    width:114px;
+    height:28px;
+    line-height:28px;
+}
+
+#distpicker5,#distpicker5 .dform-group{
+    display:inline-block;
+}
+#distpicker5 .dform-group select{
+    outline:none;
+    border:1px solid #ccc;
+    width:80px;
+    font-size:12px;
+}
+#distpicker5 .dform-group select option:first-child{
+    text-align:center;
+}
+
+.open-invoice .opi-box{
+    position:absolute;
+    width:450px;
+    height:360px;
+    top:50%;
+    left:50%;
+    font-size:13px;
+    margin-top:-180px;
+    margin-left:-205px;
+    border:4px solid rgba(0,0,0,.2);
+    border-radius:5px;
+    background:#fff;
+}
+.open-invoice .opi-box .opib-info{
+    margin: 25px 0 0 25px;
+}
+.open-invoice .opi-box .change-invoice-type .VAT-invoice{
+    border:1px solid #ccc;
+    display:inline-block;
+    width:140px;
+    height:29px;
+    text-align:center;
+    line-height:29px;
+    margin-right:10px;
+    cursor:pointer;
+    position:relative;
+}
+.open-invoice .opi-box .change-invoice-type .VAT-invoice b{
+    position:absolute;
+    width:12px;
+    height:12px;
+    right:0;
+    bottom:0;
+    background:url("../images/selected-icon.png") no-repeat;
+    display:none;
+}
+.open-invoice .opi-box .change-invoice-type .select-VAT-invoice{
+    border:2px solid #fa462e;
+    width: 138px;
+    height: 27px;
+    line-height:27px;
+}
+.open-invoice .opi-box .change-invoice-type .select-VAT-invoice b{
+    display:block;
+}
+.open-invoice .opi-box .opib-info .int-invoice{
+    margin-top: 25px;
+}
+.int-invoice .inti-box .inti-left{
+    width:110px;
+}
+.int-invoice .inti-box .dnot-pass{
+    left:130px;
+}
+.int-invoice .inti-box .order-btn{
+    margin-left: 130px;
+    width: 105px;
+    height: 30px;
+    line-height: 30px;
+}
+
+
+/**************/

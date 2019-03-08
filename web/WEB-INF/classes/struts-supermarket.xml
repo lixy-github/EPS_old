@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE struts PUBLIC  
+"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"  
+"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+	<!-- 超市 -->
+	<package name="supermarket" extends="json-default" namespace="/supermarket">
+	    <action name="listGoods" class="com.broadcontact.clothing.action.supermarket.SupermarketAction" method="listGoods">
+			<result type="freemarker">/main/supermarket.html</result>			
+		</action>
+		<action name="goodsDetail" class="com.broadcontact.clothing.action.supermarket.SupermarketAction" method="goodsDetail">
+			<result type="freemarker">/supermarket/goodsDetail.html</result>			
+		</action>
+	</package>
+</struts>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1250px, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>毛衫供应链</title>
+    <link rel="stylesheet" href="/css/index.css" type="text/css">
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/css/shop.css" rel="stylesheet">
+    <link href="/css/chain.css" rel="stylesheet">
+    <script src="/js/jquery-1.9.1.min.js"></script>
+    <script src="/js/head-foot.js"></script>
+     <script type="text/javascript">
+    	function toPage(num){
+    		window.location.href = "/chain.action?currentPage="+num+"&demandType=${demandType!}&keyword=${keyword!}";
+    	}
+    	function searchData(obj){
+    		var demandType;
+    		if(obj){
+    			demandType = $(obj).text().trim();
+    		}else{
+    			demandType = "${demandType!}";
+    		}
+    		var keyword = $("#keyword").val().trim();
+    		
+    		window.location.href = "/chain.action?demandType="+demandType+"&keyword="+keyword;
+    	}
+    	$(function(){
+    		$("#keyword").keyup(function(e){
+    			if(e.keyCode ==13){
+    				searchData();
+    			}
+    		})
+    	})
+    </script>
+</head>
+
+<body>
+    <!-- 头部 -->
+    <#include "/public/chainMenu.ftl">
+
+    <div class="shop_container clearfix">
+        
+        <!--与个人中心 我发布的需求共用-->
+        <#include "/public/eachDemand.ftl">
+        
+        <div class="sc_right">
+             <div class="search_pro_box clearfix">
+                 <input type="text" class="int_pro" placeholder="Search" id="keyword" value="${keyword!}">
+                 <button class="search_pro fa fa-search" onclick="searchData();" style="cursor: pointer;"></button>
+             </div>
+
+            <div class="product_classify">
+                <h4 class="list_title">需求类别</h4>
+                <ul>
+                    <li>
+                        <a href="#" onclick="searchData(this);" <#if (demandType!)=="成衣订购">style="color:#159eee;"</#if> >成衣订购</a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="searchData(this);" <#if (demandType!)=="工序加工">style="color:#159eee;"</#if> >工序加工</a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="searchData(this);" <#if (demandType!)=="原料采购">style="color:#159eee;"</#if> >原料采购</a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="searchData(this);" <#if (demandType!)=="服装设计">style="color:#159eee;"</#if> >服装设计</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- 尾部 -->
+    <#include "/public/foot.ftl">
+
+    <script>
+        $(function () {
+            $(".nav_header_box").show();
+            $(".little_nav").hide();
+            $(window).resize(function () {
+                $(".nav_header_box").show();
+                $(".little_nav").hide();
+            })
+        })
+    </script>
+</body>
+
+</html>

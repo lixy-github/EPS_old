@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE struts PUBLIC  
+"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"  
+"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<constant name="struts.enable.DynamicMethodInvocation" value="true"/>
+	
+	<package name="public" extends="json-default" namespace="/public">
+		<action name="getTelCode" class="com.broadcontact.clothing.action.PublicAction" method="getTelCode">
+			<result type="json"><param name="root">map</param></result>			
+		</action>
+		<action name="sendEmail" class="com.broadcontact.clothing.action.PublicAction" method="sendEmail">
+			<result type="json"><param name="root">map</param></result>			
+		</action>
+		<action name="getCodeImg" class="com.broadcontact.clothing.action.PublicAction" method="getCodeImg">
+		</action>		
+	</package>
+</struts>

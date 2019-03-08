@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1250px, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>交易评价</title>
+    <link rel="stylesheet" href="/css/index.css" type="text/css">
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/css/personal.css" rel="stylesheet">
+    <link href="/css/order-detail.css" rel="stylesheet">
+    <script src="/js/jquery-1.9.1.min.js"></script>
+    <script src="/js/webuploader.min.js"></script>
+    <script src="/js/diyUpload-2.js"></script>
+</head>
+
+<body>
+
+<#include "/public/menu.ftl">
+
+<div class="evaluate-container">
+    <div class="wrapper-container">
+        <div class="evaluate-head">
+            <p class="eh-title">交易评价</p>
+            <div>
+                <span>
+                    订单号：
+                    <a class="od-color eh-onum">${order.orderNumber}</a>
+                </span>
+                <span>${order.createTime?string("yyyy-MM-dd HH:mm:ss")}</span>
+            </div>
+        </div>
+       	<div class="ec-content clearfix goods-evaluate">
+            <div class="ec-goods" style="padding-top: 82px ">
+                <div class="ecg-img">
+                    <a>
+                    	<#if order.user.headImg??>
+                    	<img src="/upfile/head/${order.user.headImg!}">
+                    	<#else>
+                    	<img src="/images/user-default-photo7.png">
+                    	</#if>
+                    </a>
+                </div>
+                <div class="ec-info">
+                    <a>${order.user.userName?default("买家")}</a>
+                </div>
+            </div>
+           <div class="ec-eva">
+           <!-- 卖家评价买家 -->
+           <div class="seller-eva-buyer">
+                <div class="buy-eva">
+                    <span class="garde-name">评价买家：</span>
+                    <div class="buy-eva-star">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </div>
+                    <span class="grade">5分</span>
+                </div>
+                <div class="evaluate-single clearfix">
+                    <div class="evas-name">评价内容：</div>
+                    <div class="es-text">
+                        <textarea onkeyup="limitWord(this)"></textarea>
+                        <div class="es-residue">
+                            还可以输入<span class="num">500</span>字
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+	   
+    <div class="ec-content">
+        <div class="ecc-btn-box">
+            <button class="ecc-btn" onclick="submitEcaluate()">提交</button>
+        </div>
+    </div>
+</div>
+<#include "/public/foot.ftl">
+
+<script>
+function submitEcaluate(){
+	 var starNum = parseInt($(".grade").html());
+	 $("<form action='/user/grzx/saveSellerEvaluate.action' method='post' style='display:none'>"+
+			"<input name='starNum' value='"+starNum+"'>"+
+			"<input name='id' value='${order.id?c}'>"+
+			"<input name='reason' value='"+$(".es-text textarea").val()+"'>"+
+		 "</form>").appendTo("body").submit(); 
+}
+
+function limitWord(_this){
+	var length = _this.value.length;
+	if(length > 500){
+		_this.value = _this.value.substring(0,500)
+	}
+	$(_this).parent().find(".num").html(500-_this.value.length);
+}
+$(function () {
+    $(".buy-eva-star i").bind("click", function () {
+        $(this).parent().find("i").removeClass("fa-star").addClass("fa-star-o")
+        $(this).removeClass("fa-star-o").addClass("fa-star")
+            .prevAll().removeClass("fa-star-o").addClass("fa-star");
+        $(this).parent().siblings(".grade").html(($(this).index() + 1) + "分")
+    })
+})
+</script>
+</body>
+
+</html>

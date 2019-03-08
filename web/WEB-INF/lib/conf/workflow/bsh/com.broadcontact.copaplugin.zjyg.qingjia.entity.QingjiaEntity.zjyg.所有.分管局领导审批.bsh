@@ -1,0 +1,4 @@
+import com.broadcontact.common.manager.Service;
+import com.broadcontact.copa.common.manager.FlowConditionSupport;
+FlowConditionSupport departHeaderCondition = Service.getService("departHeaderCondition");
+return departHeaderCondition.validator(user,object,step);

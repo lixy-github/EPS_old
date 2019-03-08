@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1250px, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>我的商品</title>
+    <link rel="stylesheet" href="css/index.css" type="text/css">
+    <link rel="stylesheet" href="css/personal.css" type="text/css">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/shop.css" rel="stylesheet">
+    <script src="js/jquery-1.9.1.min.js"></script>
+    <script src="js/head-foot.js"></script>
+    <script src="js/slide.js"></script>
+    <script src="js/webuploader.min.js"></script>
+    <script src="js/diyUpload.js"></script>
+    <script src="js/shop.js"></script>
+    <script src="js/personal.js"></script>
+
+</head>
+
+<body>
+    <!-- 头部 -->
+    <div class="header">
+        <!-- 导航条 -->
+        <div class="nav navFixed">
+            <div class="logo">
+                <a href="">
+                    <img src="images/logo.png">
+                </a>
+            </div>
+            <div class="nav_list">
+                <ul class="clearfix">
+                    <li>
+                        <a href="">首页</a>
+                    </li>
+                    <li>
+                        <a href="">供应链</a>
+                    </li>
+                    <li>
+                        <a href="market.html">超市</a>
+                    </li>
+                    <li>
+                        <a href="">设计</a>
+                    </li>
+                    <li>
+                        <a href="">智能工厂</a>
+                    </li>
+                    <li class="line line-js"></li>
+                </ul>
+            </div>
+            <div class="login-register-btns" style="display:none">
+                <a class="login">登录</a>
+                <a class="register">注册</a>
+            </div>
+            <!-- 登陆成功后显示购物车 -->
+            <div class="buy-car-box" style="display:block">
+                <a class="car-icon fa fa-shopping-cart">
+                    <i class="car_num">0</i>
+                </a>
+                <div class="head-img">
+                    <img src="images/user-default-photo7.png">
+                    <div class="per_withdraw" style="display:none">
+                        <!-- <i class="fa fa-angle-up"></i> -->
+                        <a href="个人中心.html">个人中心</a>
+                        <a href="index.html">退出</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="add-nav">
+        <div class="add-nav-box clearfix">
+            <div class="anb-left">
+                <h3>我的商品</h3>
+            </div>
+            <div class="anb-right">
+                <a href="">易品速</a>
+                <span>></span>
+                <a href="">我的商品</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="shop_container clearfix">
+        <div class="sc_left">
+            <div class="sc_l_top clearfix">
+                <div class="show_num">
+                    Showing
+                    <span>1</span>–
+                    <span>6</span> of
+                    <span>11</span> results
+                </div>
+                <div class="show_list">
+                    <div class="show_list_text clearfix">
+                        <span>产品分类</span>
+                        <i class="fa fa-angle-down"></i>
+                    </div>
+                    <div class="show_list_option" style="display:none">
+                        <p>Default sorting</p>
+                        <p>Sort by popularity</p>
+                        <p>Sort by average ratingccccccccccccccccccccccc</p>
+                        <p>Sort by newness</p>
+                        <p>Sort by newness</p>
+                        <p>Sort by newness</p>
+                    </div>
+                </div>
+            </div>
+            <div class="sc_l_bottom clearfix">
+                <div class="product_show">
+                    <a href="market-detail.html">
+                        <img src="images/s-3-in-one-lux-router-550x550.jpg">
+                    </a>
+                    <div class="product_info_holder">
+                        <div class="pro_info_top clearfix">
+                            <div class="product_price">
+                                <h4>3 In One Lux Router</h4>
+                                <p class="price">$100.00</p>
+                            </div>
+                            <div class="product_level">
+                                ★★★★✩
+                            </div>
+                        </div>
+                        <div class="pro_info_bottom">
+                            <div class="add_car_box">
+                                <a class="p_info">商品上架</a>
+                                <a class="add_car">商品下架</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product_show">
+                    <a href="market-detail.html">
+                        <img src="images/s-3-in-one-lux-router-550x550.jpg">
+                    </a>
+                    <div class="product_info_holder">
+                        <div class="pro_info_top clearfix">
+                            <div class="product_price">
+                                <h4>3 In One Lux Router</h4>
+                                <p class="price">$100.00</p>
+                            </div>
+                            <div class="product_level">
+                                ★★★★✩
+                            </div>
+                        </div>
+                        <div class="pro_info_bottom">
+                            <div class="add_car_box">
+                                <a class="p_info">商品上架</a>
+                                <a class="add_car">商品下架</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product_show">
+                    <a href="market-detail.html">
+                        <img src="images/s-3-in-one-lux-router-550x550.jpg">
+                    </a>
+                    <div class="product_info_holder">
+                        <div class="pro_info_top clearfix">
+                            <div class="product_price">
+                                <h4>3 In One Lux Router</h4>
+                                <p class="price">$100.00</p>
+                            </div>
+                            <div class="product_level">
+                                ★★★★✩
+                            </div>
+                        </div>
+                        <div class="pro_info_bottom">
+                            <div class="add_car_box">
+                                <a class="p_info">商品上架</a>
+                                <a class="add_car">商品下架</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product_show">
+                    <a href="market-detail.html">
+                        <img src="images/s-3-in-one-lux-router-550x550.jpg">
+                    </a>
+                    <div class="product_info_holder">
+                        <div class="pro_info_top clearfix">
+                            <div class="product_price">
+                                <h4>3 In One Lux Router</h4>
+                                <p class="price">$100.00</p>
+                            </div>
+                            <div class="product_level">
+                                ★★★★✩
+                            </div>
+                        </div>
+                        <div class="pro_info_bottom">
+                            <div class="add_car_box">
+                                <a class="p_info">商品上架</a>
+                                <a class="add_car">商品下架</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product_show">
+                    <a href="market-detail.html">
+                        <img src="images/s-3-in-one-lux-router-550x550.jpg">
+                    </a>
+                    <div class="product_info_holder">
+                        <div class="pro_info_top clearfix">
+                            <div class="product_price">
+                                <h4>3 In One Lux Router</h4>
+                                <p class="price">$100.00</p>
+                            </div>
+                            <div class="product_level">
+                                ★★★★✩
+                            </div>
+                        </div>
+                        <div class="pro_info_bottom">
+                            <div class="add_car_box">
+                                <a class="p_info">商品上架</a>
+                                <a class="add_car">商品下架</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product_show">
+                    <a href="market-detail.html">
+                        <img src="images/s-3-in-one-lux-router-550x550.jpg">
+                    </a>
+                    <div class="product_info_holder">
+                        <div class="pro_info_top clearfix">
+                            <div class="product_price">
+                                <h4>3 In One Lux Router</h4>
+                                <p class="price">$100.00</p>
+                            </div>
+                            <div class="product_level">
+                                ★★★★✩
+                            </div>
+                        </div>
+                        <div class="pro_info_bottom">
+                            <div class="add_car_box">
+                                <a class="p_info">商品上架</a>
+                                <a class="add_car">商品下架</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product_show">
+                    <a href="market-detail.html">
+                        <img src="images/s-3-in-one-lux-router-550x550.jpg">
+                    </a>
+                    <div class="product_info_holder">
+                        <div class="pro_info_top clearfix">
+                            <div class="product_price">
+                                <h4>3 In One Lux Router</h4>
+                                <p class="price">$100.00</p>
+                            </div>
+                            <div class="product_level">
+                                ★★★★✩
+                            </div>
+                        </div>
+                        <div class="pro_info_bottom">
+                            <div class="add_car_box">
+                                <a class="p_info">商品上架</a>
+                                <a class="add_car">商品下架</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product_show">
+                    <a href="market-detail.html">
+                        <img src="images/s-3-in-one-lux-router-550x550.jpg">
+                    </a>
+                    <div class="product_info_holder">
+                        <div class="pro_info_top clearfix">
+                            <div class="product_price">
+                                <h4>3 In One Lux Router</h4>
+                                <p class="price">$100.00</p>
+                            </div>
+                            <div class="product_level">
+                                ★★★★✩
+                            </div>
+                        </div>
+                        <div class="pro_info_bottom">
+                            <div class="add_car_box">
+                                <a class="p_info">商品上架</a>
+                                <a class="add_car">商品下架</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product_show">
+                    <a href="market-detail.html">
+                        <img src="images/s-3-in-one-lux-router-550x550.jpg">
+                    </a>
+                    <div class="product_info_holder">
+                        <div class="pro_info_top clearfix">
+                            <div class="product_price">
+                                <h4>3 In One Lux Router</h4>
+                                <p class="price">$100.00</p>
+                            </div>
+                            <div class="product_level">
+                                ★★★★✩
+                            </div>
+                        </div>
+                        <div class="pro_info_bottom">
+                            <div class="add_car_box">
+                                <a class="p_info">商品上架</a>
+                                <a class="add_car">商品下架</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product_show">
+                    <a href="market-detail.html">
+                        <img src="images/s-3-in-one-lux-router-550x550.jpg">
+                    </a>
+                    <div class="product_info_holder">
+                        <div class="pro_info_top clearfix">
+                            <div class="product_price">
+                                <h4>3 In One Lux Router</h4>
+                                <p class="price">$100.00</p>
+                            </div>
+                            <div class="product_level">
+                                ★★★★✩
+                            </div>
+                        </div>
+                        <div class="pro_info_bottom">
+                            <div class="add_car_box">
+                                <a class="p_info">商品上架</a>
+                                <a class="add_car">商品下架</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 分页 -->
+            <div class="pagination"></div>
+        </div>
+        <div class="pc-right">
+            <ul>
+                <li>
+                    <p>账户信息</p>
+                    <div class="drop-down" style="display:none">
+                        <a>账户资料</a>
+                        <a>修改密码</a>
+                        <a>绑定邮箱/手机</a>
+                        <a href="完善资料.html">完善资料</a>
+                        <a>工厂认证</a>
+                    </div>
+                </li>
+                <li>
+                    <p>我的需求</p>
+                </li>
+                <li>
+                    <p>我的生产订单</p>
+                </li>
+                <li>
+                    <p>我的收藏</p>
+                </li>
+                <li>
+                    <p>商品信息</p>
+                    <div class="drop-down" style="display:none">
+                        <a href="publish-goods.html">发布商品</a>
+                        <a href="my-goods.html">我的商品</a>
+                    </div>
+                </li>
+                <li>
+                    <p>我的超市交易</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>

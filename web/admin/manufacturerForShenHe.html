@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1250px, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>工厂认证管理</title>
+    <link rel="stylesheet" href="/css/login_alone.css">
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/personal.css">
+    <link href="/css/jqgrid/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
+     <!-- jqgrid-->
+    <link href="/css/jqgrid/ui.jqgrid.css" rel="stylesheet">
+    <link href="/css/jqgrid/style.css" rel="stylesheet">
+    <script src="/js/jquery-1.9.1.min.js"></script>
+    <script src="/js/head-foot.js"></script>
+    <script src="/js/personal.js"></script>
+    <script src="/js/webuploader.min.js"></script>
+    <script src="/js/diyUpload.js"></script>
+    <style>
+        /* Additional style to fix warning dialog position */
+        #alertmod_table_list_2 {
+            top: 900px !important;
+        }
+        .person-container{
+        	width: 1300px;
+        }
+        .person-container .pc-left{
+        	width: 1280px;
+        }
+        .person-container{
+        	margin-top: 66px;
+        }
+    </style>
+</head>
+
+<body class="gray-bg">
+	<!-- top -->
+	<#include "/admin/menu/top.ftl">
+	
+    <!-- 主体内容 -->
+    <div class="person-container clearfix">
+        <div class="pc-left">
+             <div class="wrapper wrapper-content  animated fadeInRight">
+		        <div class="row">
+		            <div class="col-sm-12">
+		                <div class="ibox ">
+		                    <div class="ibox-title">
+		                   		<select id="sel">
+		                   			<option value="dsh">待审核</option>
+		                   			<option value="ysh">已审核</option>
+		                   			<option value="shbtg">审核不通过</option>
+		                   		</select>
+		                    </div> 
+		                    <div class="ibox-content">
+		                        <div class="jqGrid_wrapper">
+		                            <table id="table_list_2"></table>
+		                            <div id="pager_list_2"></div>
+		                        </div>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+		    </div>
+        </div>
+    </div>
+    
+    
+    
+    <!-- 全局js -->
+    <script src="/js/jquery-1.9.1.min.js"></script>
+    <script src="/js/jqgrid/bootstrap.min.js"></script>
+    <!-- Peity -->
+    <script src="/js/jqgrid/jquery.peity.min.js"></script>
+    <!-- jqGrid -->
+    <script src="/js/jqgrid/grid.locale-cn.js"></script>
+    <script src="/js/jqgrid/jquery.jqGrid.min.js"></script>
+    
+    <script>
+        $(document).ready(function () {
+        	
+            $.jgrid.defaults.styleUI = 'Bootstrap';
+
+            $("#table_list_2").jqGrid({
+                datatype: "json",
+                url:'/admin/back/getManufacturerStatusEq123.action',
+                height: 350,
+                autowidth: true,
+                shrinkToFit: true,
+                rowNum: 10,
+                rowList: [10, 20, 30],
+                colNames: ['random', '联系人', '类型电话', '地址'],
+                colModel: [
+					{
+					    name: 'random',
+					    index: 'random',
+					    width: 60,
+					    key:true,
+					    hidden:true,
+					},
+                    {
+                        name: 'lxr',
+                        index: 'lxr',
+                        editable: true,
+                        width: 60,
+                        search: true,
+                    },
+                    {
+                        name: 'tel',
+                        index: 'tel',
+                        editable: true,
+                        width: 90,
+                        search: true
+                    },
+                    {
+                        name: 'address',
+                        index: 'address',
+                        editable: true,
+                        width: 90,
+                        search: true
+                    },
+                ],
+                pager: "#pager_list_2",/* 分页div id */
+                viewrecords: true,/* 是否显示行数 */
+                caption: "工厂认证管理",
+                hidegrid: false,
+                multiselect: false, 
+                jsonReader : {
+	               	root: "rows",
+	               	page: "page",/*数据页码 第几页  */
+	               	total: "total",/*数据总页码  */
+	               	records: "records",/*数据总条数 或者 总行数 或者 总记录数 */
+	               	repeatitems: false
+               	},
+                ondblClickRow:function(rowid,iRow,iCol,e){
+                	window.location.href = "/admin/back/getManufacturerInfo.action?manufacturerEntity.random="+rowid;
+                }
+            });
+
+            // Add selection
+            $("#table_list_2").setSelection(1, true);
+
+            // Setup buttons
+            $("#table_list_2").jqGrid('navGrid', '#pager_list_2', {
+                edit: false,
+                add: false,
+                del: false,
+                search: true,
+            }, {
+                height: 200,
+                reloadAfterSubmit: true
+            });
+
+            // Add responsive to jqGrid
+            $(window).bind('resize', function () {
+                var width = $('.jqGrid_wrapper').width();
+                $('#table_list_2').setGridWidth(width);
+            });
+            
+            $("#sel").change(function(){
+            	
+            	var selName = $("#sel").val();
+            	
+            	$("#table_list_2").jqGrid('setGridParam',{    
+                    datatype:'json',    
+                    postData:{'selName':selName},  
+                }).trigger("reloadGrid");  
+            })
+            
+            
+            
+        });
+    </script>
+    
+</body>
+
+</html>

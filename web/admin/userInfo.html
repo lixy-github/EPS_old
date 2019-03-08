@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1250px, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>审核用户信息</title>
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/personal.css">
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
+    <script src="/js/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="/js/layer/layer.js"></script>
+    <script src="/js/personal.js"></script>
+    <script src="/js/webuploader.min.js"></script>
+    <script src="/js/diyUpload.js"></script>
+
+</head>
+
+<body>
+	<div class="person-container clearfix" style="margin-top: 20px;">
+	<#include "/user/wszl_form.ftl">
+	</div>
+	
+	
+	<script type="text/javascript" src="/js/myjs/user/uploadZzwj.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$("#wszlForm input[type='checkbox']").attr("disabled","disabled");
+			$("#wszlForm input[type='text']").attr("readonly","readonly");
+			
+			//不通过
+			$("#wszlNsh").click(function(){
+				
+				var remarks = prompt("不通过原因","");
+				if (remarks!=null && remarks!=""){
+					sh("noPass",remarks);
+				}else{
+					layer.alert("已取消...")
+				}
+				
+			});
+			
+			
+			//通过
+			$("#wszlSh").click(function(){
+				sh("pass");
+			})
+			
+		})
+		
+		
+		function sh(op,remarks){
+			$.ajax({
+				url:"/admin/back/updateUserType.action",
+				type:"post",
+				data:{
+					"userEntity.random":"${userEntity.random}",
+					"remarks":remarks,
+					"paramOp":op
+				},
+				success:function(data){
+					if(data.result==0){
+						window.location.href = "/admin/back/getAllUserPage.action";
+					}else{
+						layer.alert(data.msg);
+					}
+					/* layer.alert(data.msg,function(){
+					}); */
+				}
+			})
+			
+		}
+	</script>
+	
+</body>
+
+</html>

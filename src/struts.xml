@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE struts PUBLIC  
+"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"  
+"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<constant name="struts.enable.DynamicMethodInvocation" value="true"/>
+	<constant name="struts.devMode" value="true"/> 
+
+	<include file="struts-root.xml"></include>
+	<include file="struts-user.xml"></include>
+	<include file="struts-admin.xml"></include>
+	<include file="struts-public.xml"></include>
+	<include file="struts-index.xml"></include>
+	<include file="struts-chain.xml"></include>
+	<include file="struts-design.xml"></include>
+	<include file="struts-factory.xml"></include>
+	<include file="struts-supermarket.xml"></include>
+</struts>

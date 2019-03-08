@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    version="2.5"
+    xmlns="http://java.sun.com/xml/ns/javaee"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" >
+
+	<filter>
+		<filter-name>openSessionInViewFilter</filter-name>
+		<filter-class>org.springframework.orm.hibernate3.support.OpenSessionInViewFilter</filter-class>
+	</filter>
+    <filter>
+		<filter-name>struts2</filter-name>
+		<filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+		<init-param>
+            <param-name>actionPackages</param-name>
+            <param-value>com.broadcontact.clothing.action</param-value>
+        </init-param>
+	</filter>
+	<filter>
+		<filter-name>UserLoginFilter</filter-name>
+		<filter-class>com.broadcontact.common.web.LoginFilter</filter-class>
+		<init-param>
+			<param-name>loginPage</param-name>
+			<param-value>/index.action</param-value>
+		</init-param>
+		<init-param>
+			<param-name>sessionAttr</param-name>
+			<param-value>_USER_</param-value>
+		</init-param>
+	</filter>
+	<!--针对管理员的 拦截器  -->
+	<filter>
+		<filter-name>AdminLoginFilter</filter-name>
+		<filter-class>com.broadcontact.common.web.LoginFilter</filter-class>
+		<init-param>
+			<param-name>loginPage</param-name>
+			<param-value>/admin/toLoginPage.action</param-value>
+		</init-param>
+		<init-param>
+			<param-name>sessionAttr</param-name>
+			<param-value>_ADMIN_</param-value>
+		</init-param>
+	</filter>
+	
+	<filter-mapping>
+		<filter-name>openSessionInViewFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>UserLoginFilter</filter-name>
+		<url-pattern>/user/*</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>AdminLoginFilter</filter-name>
+		<url-pattern>/admin/back/*</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>struts2</filter-name>
+		<url-pattern>*.action</url-pattern>
+	</filter-mapping>
+	
+	<servlet>
+        <servlet-name>ssi</servlet-name>
+        <servlet-class>
+          org.apache.catalina.ssi.SSIServlet
+        </servlet-class>
+        <init-param>
+          <param-name>inputEncoding</param-name>
+          <param-value>utf-8</param-value>
+        </init-param>
+        <init-param>
+          <param-name>outputEncoding</param-name>
+          <param-value>utf-8</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+	<!-- 
+    <servlet-mapping>
+		<servlet-name>ssi</servlet-name>
+		<url-pattern>*.shtml</url-pattern>
+    </servlet-mapping>
+	 -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	
+    <welcome-file-list>
+		<welcome-file>/index.jsp</welcome-file>
+	</welcome-file-list>
+
+</web-app>

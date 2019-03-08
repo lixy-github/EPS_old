@@ -1,0 +1,327 @@
+.shop-cart-container {
+    width: 1000px;
+    margin: 0 auto;
+    margin-top: 130px;
+    margin-bottom: 60px;
+}
+
+.shop-cart-box {
+    text-align: center;
+}
+
+.shop-cart-box .shop-cart-head li {
+    float: left;
+    color: #797979;
+    margin-left: 52px;
+}
+
+.shop-cart-box .shop-cart-head li:nth-child(2) {
+    margin-left: 100px;
+}
+
+.shop-cart-box .shop-cart-head li:nth-child(4) {
+    margin-left: 220px;
+}
+
+.shop-cart-box .shop-cart-head li:nth-child(5) {
+    margin-left: 114px;
+}
+
+.shop-cart-box .shop-cart-head li:nth-child(6) {
+    margin-left: 115px;
+}
+
+.shop-cart-box .shop-cart-head li:nth-child(7) {
+    margin-left: 67px;
+}
+
+.shop-cart-box .shop-cart-head li:first-child label {
+    cursor: pointer;
+}
+
+.shop-cart-box .shop-cart-head li:first-child label input {
+    cursor: pointer;
+    vertical-align: top;
+    margin-top: 6px;
+    font-size: 14px;
+}
+
+.shop-cart-box .cart-info {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #797979;
+}
+
+.shop-cart-box .cart-info .seller-name {
+    text-align: left;
+    padding-left: 52px;
+}
+
+.shop-cart-box .cart-info .seller-name .seller-nm:hover {
+    color: #fa462e;
+}
+
+.shop-cart-box .cart-info .seller-name .contact-seller {
+    color: #1c9eff;
+}
+
+.shop-cart-box .cart-info .seller-shop {
+    width: 950px;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    margin-top: 20px;
+}
+
+.shop-cart-box .cart-info .seller-shop ul {
+    padding: 13px;
+    border-top: 1px solid #e7e7e7;
+}
+
+.shop-cart-box .cart-info .seller-shop ul:first-child {
+    border: none;
+}
+
+.shop-cart-box .cart-info .seller-shop ul li {
+    float: left;
+    width: 13%;
+    margin-top: 30px;
+    margin-right: 25px;
+}
+
+.shop-cart-box .cart-info .seller-shop ul .ss-img {
+    width: 80px;
+    height: 80px;
+    margin: 0 40px 0 5px;
+}
+
+.shop-cart-box .cart-info .seller-shop ul .ss-img a img {
+    width: 80px;
+    height: 80px;
+}
+
+.shop-cart-box .cart-info .seller-shop .ss-checkbox {
+    width: 20px;
+    margin: 29px 5px 0 10px;
+}
+
+.shop-cart-box .cart-info .seller-shop .cart-goods-info {
+    width: 225px;
+    height: 20px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.shop-cart-box .cart-info .seller-shop .shop-num-change {
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.shop-cart-box .cart-info .seller-shop .shop-price,
+.shop-cart-box .cart-info .seller-shop .shop-title-price {
+    width: 100px;
+    overflow:hidden;
+    margin-left: 20px;
+}
+
+.shop-cart-box .cart-info .seller-shop ul .shop-del {
+    width: 50px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.shop-cart-box .cart-info .seller-shop ul .shop-del:hover {
+    color: #fa462e;
+}
+
+.change-num {
+    display: inline-block;
+    border: 1px solid #b4b4b4;
+    border-radius: 3px;
+    margin-top: -10px;
+}
+
+.change-num input {
+    width: 36px;
+    height: 36px;
+    text-align: center;
+    outline: none;
+    border: none;
+    background: #159eee;
+    color: #fff;
+    vertical-align: bottom;
+    font-size: 17px;
+    font-weight: 600;
+    user-select:none;
+    -webkit-user-select:none;
+    -ms-user-select:none;
+    -moz-user-select: none;
+    -o-user-select:none;
+}
+
+.change-num span {
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
+    color: #b4b4b4;
+    cursor: pointer;
+    user-select:none;
+    -webkit-user-select:none;
+    -ms-user-select:none;
+    -moz-user-select: none;
+    -o-user-select:none;
+}
+
+.change-num span:hover {
+    color: #000;
+}
+
+.settle-account {
+    width: 952px;
+    margin: 0 auto;
+    line-height: 49px;
+    box-sizing: border-box;
+    background: #e5e5e5;
+    margin-top: 20px;
+    font-size: 13px;
+    color: #333;
+}
+
+.settle-account .sa-qs {
+    float: left;
+    margin-left: 10px;
+}
+
+.settle-account .sa-qs label {
+    cursor: pointer;
+}
+
+.settle-account .sa-qs .sa-del {
+    margin-left: 30px;
+    cursor: pointer;
+}
+
+.settle-account .sa-qs .sa-del:hover {
+    color: #fa462e;
+}
+
+.settle-account .sa-right {
+    float: right;
+}
+
+.settle-account .sa-right>div {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.settle-account .sa-right .goods-num-box {
+    margin-right: 30px;
+}
+
+.settle-account .sa-right .goods-num-box .goods-num,
+.settle-account .sa-right .goods-price-box span {
+    color: #fa462e;
+    font-size: 17px;
+}
+
+.settle-account .sa-right .goods-price-box .title-price {
+    margin-left: -5px;
+}
+
+.settle-account .sa-right .settle-btn-ok,
+.settle-account .sa-right .settle-btn-no {
+    width: 120px;
+    height: 50px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    font-size: 17px;
+    color: #fff;
+    background: #fa462e;
+}
+.settle-account .sa-right .settle-btn-no{
+    background:#a4a3a3;
+}
+.settle-account .sa-right .settle-btn-no:hover{
+    cursor:not-allowed;
+}
+
+.settle-account .sa-right .settle-btn-ok:hover {
+    background: #de2c14;
+}
+
+/* 购物车为空 */
+.cart-none{
+    text-align:center;
+    font-size: 18px;
+    min-height:242px;
+}
+.cart-none a{
+    color:#fa462e;
+}
+/******************/
+
+/* 删除 弹窗 */
+.confirm-del-box{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index:1000;
+    background:rgba(0,0,0,.5);
+}
+.confirm-del-box .del-info{
+    position:absolute;
+    top:50%;
+    left:50%;
+    width: 330px;
+    height: 145px;
+    margin-left:-165px;
+    margin-top:-73px;
+    background:#fff;
+    padding: 15px 30px;
+    font-size: 14px;
+    border:3px solid rgba(0,0,0,.6);
+}
+.confirm-del-box .del-info .del-info-btn{
+    position:absolute;
+    top:8px;
+    right:10px;
+    cursor:pointer;
+}
+.confirm-del-box .del-info .del-info-title{
+    font-weight:bold;
+    font-size:15px;
+    margin-top: 10px;
+}
+.confirm-del-box .del-info .del-info-text{
+    margin: 25px 0;
+}
+.confirm-del-box .del-info span{
+    display:inline-block;
+    width:60px;
+    height:30px;
+    box-sizing:border-box;
+    text-align:center;
+    line-height:30px;
+    border-radius:2px;
+    vertical-align:top;
+    cursor:pointer;
+}
+.confirm-del-box .del-info span:hover{
+    text-decoration:underline;
+}
+.confirm-del-box .del-info .confirm-del{
+    background:#52a0e5;
+    color:#fff;
+}
+.confirm-del-box .del-info .cancel-del{
+    border:1px solid #d9d9d9;
+    margin-left: 10px;
+}
+.confirm-del-box .del-info .cancel-del:hover{
+    color:#fa462e;
+}
+/******************/
